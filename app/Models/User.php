@@ -42,4 +42,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function deals(){
+        return $this->hasMany(Deal::class,'user_id');
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class,'user_id');
+    }
+
+
+
+    public function dealsFavorite(){
+        return $this->BelongsToMany(Deal::class,'deals_favorite')->withTimestamps();
+    }
+    public function favoriteHas($dealId){
+        return self::dealsFavorite()->where('deal_id', $dealId)->exists();
+    }
+
 }

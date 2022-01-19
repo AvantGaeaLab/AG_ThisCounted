@@ -31,8 +31,8 @@ Route::resource('categories', CategoryController::class);
 Route::resource('orders', OrderController::class);
 
 //Dashboard routes
-Route::get('/admin_dashboard', [App\Http\Controllers\DashboardController::class, 'admin_dashboards'])->name('admin_dashboards');
-Route::get('/user_dashboard', [App\Http\Controllers\DashboardController::class, 'user_dashboards'])->name('user_dashboards');
+Route::get('/admin_dashboard', [App\Http\Controllers\DashboardController::class, 'admin_dashboard'])->name('admin_dashboard');
+Route::get('/user_dashboard', [App\Http\Controllers\DashboardController::class, 'user_dashboard'])->name('user_dashboard');
 
 //Favorite routes
 Route::post('favorite', [App\Http\Controllers\FavoriteController::class, 'store'])->name('favorite.store');

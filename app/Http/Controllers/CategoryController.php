@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth')-> except('show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category=new Category();
+        $category->all();
     }
 
     /**
@@ -35,7 +42,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::id() > 3){
+            return abort(401);
+        }
+
+        $category = new Category;
+        $category->title = $request->title;
+        $category->save();
+        return redirect()-> back()->with('status','Category Added Successfully');
     }
 
     /**
@@ -69,7 +83,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        if(Auth::id() > 3){
+            return abort(401);
+        }
+        $category->update($request->all());
+        return redirect()->back()->with('status','Category Updated Successfully');
     }
 
     /**
@@ -80,6 +98,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if(Auth::id() >= 3){
+            return abort(401);
+        }
+
+        $category->delete();
+        return redirect()->back()->with('status','The category Deleted Successfully');
+
     }
 }

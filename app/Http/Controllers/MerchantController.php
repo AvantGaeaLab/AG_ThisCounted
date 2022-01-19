@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Merchant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class MerchantController extends Controller
 {
@@ -35,7 +37,22 @@ class MerchantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::id() > 3){
+            return abort(401);
+        }
+
+        $merchant = new Merchant;
+        $merchant->name = $request->name;
+        if($request->hasFile('merchant_logo')) {
+            $file = $request->file('merchant_logo');
+            $extension = $file->getClientOriginalExtension();
+            $filename=time().'.'.$extension;
+            $file->move('uploads/merchants_logo', $filename);
+            $merchant->merchant_logo = $filename;
+        }
+        $merchant->save();
+        return redirect()-> back()->with('status','Merchant Added Successfully');
+
     }
 
     /**
@@ -69,7 +86,26 @@ class MerchantController extends Controller
      */
     public function update(Request $request, Merchant $merchant)
     {
-        //
+        if(Auth::id() > 3){
+            return abort(401);
+        }
+
+        $merchant->name = $request->name;
+        if($request->hasFile('merchant_logo')) {
+            $destination = 'uploads/merchants_logo/'.$merchant->merchant_logo;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $file = $request->file('merchant_logo');
+            $extension = $file->getClientOriginalExtension();
+            $filename=time().'.'.$extension;
+            $file->move('uploads/merchants_logo', $filename);
+            $merchant->merchant_logo = $filename;
+        }
+        $merchant->update();
+
+        return redirect()->back()->with('status','Merchant Updated Successfully');
+
     }
 
     /**
@@ -80,6 +116,11 @@ class MerchantController extends Controller
      */
     public function destroy(Merchant $merchant)
     {
-        //
+        if(Auth::id() > 3){
+            return abort(401);
+        }
+        $merchant->delete();
+        return redirect()->back()->with('status','The Merchant Deleted Successfully');
+
     }
 }
