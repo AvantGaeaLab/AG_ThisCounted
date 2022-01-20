@@ -26,7 +26,7 @@ class FavoriteController extends Controller
             ->dealsFavorite()
             ->latest()
             ->get();
-        return view('favorite',compact('deals'));
+        return view('pages.favorite',compact('deals'));
     }
 
     public function destroy(){

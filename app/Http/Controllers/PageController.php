@@ -12,9 +12,11 @@ class PageController extends Controller
 {
 
     // for now this is the home page
-    public function index(){
+    public function mainPage(){
         if(auth::user()){
             $favDeals = auth()->user()->dealsFavorite()->latest()->get();
+        }else{
+            $favDeals=null;
         }
         $lastDeals = Deal::take(7)->orderBy('id', 'DESC')->get();
         $foodCat = Category::find(1);

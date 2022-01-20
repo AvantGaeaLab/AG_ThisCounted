@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DealController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
@@ -18,17 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\PageController::class, 'mainPage'])->name('home');
 
+//Method routes
 Auth::routes();
+Route::get('CheckOrder', [App\Http\Controllers\OrderController::class, 'CheckOrder'])->name('CheckOrder');
+
 
 //Resource routes
 Route::resource('deals', DealController::class);
 Route::resource('merchants', MerchantController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('orders', OrderController::class);
+Route::resource('favorites', FavoriteController::class);
 
 //Dashboard routes
 Route::get('/admin_dashboard', [App\Http\Controllers\DashboardController::class, 'admin_dashboard'])->name('admin_dashboard');
@@ -42,6 +45,5 @@ Route::get('favorite', [App\Http\Controllers\FavoriteController::class, 'show'])
 
 //Pages Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('', [App\Http\Controllers\PageController::class, 'index'])->name('home');
 
 
