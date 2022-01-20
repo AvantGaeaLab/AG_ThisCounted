@@ -14,6 +14,7 @@ class CreateDealsMerchants extends Migration
     public function up()
     {
         Schema::create('deals_merchants', function (Blueprint $table) {
+            $table->id('deal_mer');
             $table->unsignedBigInteger('deal_id');
             $table->unsignedBigInteger('merchant_id');
 

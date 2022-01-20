@@ -14,6 +14,7 @@ class CreateDealsCategories extends Migration
     public function up()
     {
         Schema::create('deals_categories', function (Blueprint $table) {
+            $table->id('deal_cat');
             $table->unsignedBigInteger('deal_id');
             $table->unsignedBigInteger('category_id');
 

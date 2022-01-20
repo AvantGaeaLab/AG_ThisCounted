@@ -15,11 +15,11 @@ class DealsFavorite extends Migration
     {
         Schema::create('deals_favorite',function(Blueprint $table)
         {
+            $table->id('deal_fav');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('deal_id');
             $table->timestamps();
 
-            $table->primary(['user_id', 'deal_id']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('deal_id')->references('id')->on('deals')->onDelete('cascade');
         });
