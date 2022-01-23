@@ -228,7 +228,6 @@
                 <table class="table table-bordered ">
                     <tr class="myTable-h">
                         <th id="id">Logo</th>
-                        <th id="id">ID</th>
                         <th id="title">Title</th>
                         <th>Actions</th>
                     </tr>
@@ -240,9 +239,6 @@
                                     <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$merchant->merchant_logo)}}"  width="480px" height="720px" >
                                         @endisset
                                 </div>
-                            </td>
-                            <td>
-                                {{$merchant->id}}
                             </td>
                             <td>
                                 <b>

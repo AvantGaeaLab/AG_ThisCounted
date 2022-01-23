@@ -2,7 +2,7 @@
 <div class="form-group" >
     <input type="text" name="title" class="form-control" placeholder="Title" @isset($deal) value="{{$deal->title}}"@endisset required>
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     @foreach($categories as $key =>$title)
         <label for="category_{{$key}}">{{$title}}</label>
         <input id="category_{{$key}}" type="checkbox" name="categories[]" value="{{$key}}"
@@ -10,7 +10,7 @@
     @endforeach
 </div>
 
-<div class="form-group">
+<div class="form-group mb-3">
     @foreach($merchants as $merchant)
         <label for="merchant_{{$merchant->id}}">{{$merchant->name}}</label>
         <input id="merchant_{{$merchant->id}}" type="radio" name="merchants[]" value="{{$merchant->id}}"
@@ -18,27 +18,27 @@
     @endforeach
 </div>
 
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="start_at">Valid date start: @isset($deal->start_at)<br><span> current date <b>{{$deal->start_at}}</b></span>@endisset</label>
     <input type="date" name="start_at" class="form-control" placeholder="start at" @isset($deal) value={{$deal->start_at}} @endisset>
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="end_at">Valid date end: @isset($deal->end_at)<br><span> current date <b>{{$deal->end_at}}</b></span>@endisset</label>
     <input type="date" name="end_at" class="form-control" placeholder="end at" @isset($deal) value={{$deal->end_at}}@endisset>
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     <input type="text" name="retails_price" class="form-control" placeholder="retails_price" @isset($deal) value="{{$deal->retails_price}}"@endisset>
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     <input type="text" name="price" class="form-control" placeholder="price" @isset($deal) value="{{$deal->price}}"@endisset>
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     <textarea type="textarea" name="description" class="form-control" placeholder="description" >@isset($deal) {{$deal->description}}@endisset</textarea>
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     <input type="text" name="more_info" class="form-control" placeholder="more info" @isset($deal) value="{{$deal->more_info}}"@endisset>
 </div>
-<div class="form-group">
+<div class="form-group mb-3">
     <input type="text" name="location" class="form-control" placeholder="location" @isset($deal) value="{{$deal->location}}"@endisset >
 </div>
 <div>

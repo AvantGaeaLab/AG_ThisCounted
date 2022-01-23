@@ -11,8 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 
     <!-- for the sliders -->
@@ -45,9 +45,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar navbar-expand-lg container-fluid">
-            <div class="col-sm-3">
+            <div class="col-xs-4 col-md-4">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="img-fluid nav-logo"  src="{{asset('images/logo.png')}}" alt="ThisCounted Logo">
+                    <img  src="{{asset('images/logo.png')}}" alt="ThisCounted Logo" width="70%" height="70%">
                 </a>
             </div>
             <div class="col mt-auto mb-auto">
@@ -56,21 +56,21 @@
             </div>
 
             <!-- Search bar -->
-            <div class="navbar-nav col mt-auto mb-auto">
-                <form class="form-inline my-1 mt-auto">
-                    <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-warning MainButt my-2 my-sm-0" type="submit">Search</button>
+            <div class="navbar-nav col">
+                <form class="form-group my-2" role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-warning MainButt my-2" type="submit">Search</button>
                 </form>
             </div>
             <!-- Authentication Links -->
             <ul class="navbar-nav">
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link  btn MainButt mr-2" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link  btn MainButt me-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link btn MainButt" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link btn MainButt mt-2" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
@@ -79,11 +79,11 @@
                     </a>
 
                     <li class="nav-item dropdown ">
-                        <a id="navbarDropdown" class="font-weight-bold nav-link dropdown-toggle lead" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="font-weight-bold nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right" for="navbarDropdown" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item  " href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
