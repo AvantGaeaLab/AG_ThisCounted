@@ -6,6 +6,12 @@
       <h1 class="myShow-title"><b>{{$deal->title}}</b></h1>
     </div>
     <div>
+        @foreach($deal-> merchants as $merchant)
+            <b class="myMerchantName">{{$merchant->name}}</b>
+        @endforeach
+    </div>
+    <br>
+    <div>
         <h3>{!!nl2br($deal->description)!!}</h3>
     </div>
     <br>
@@ -41,5 +47,6 @@
         <h4>{{$deal->location}}</h4>
     </div>
     @endisset
+    <br>
     @include('forms._placeOrder')
 </div>

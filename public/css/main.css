@@ -46,11 +46,21 @@ html, body {
     border-radius: 20px;
 }
 
+.mySlider-main-img-container{
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+}
 .mySlider-main{
+    display: block;
+    position: relative;
 }
 .mySlider-main-img{
+    display: block;
+    margin: 0 auto;
     width: 200px;
-    height:200px;
+    max-height: 100%;
     border-radius: 25px;
 }
 
@@ -93,7 +103,6 @@ html, body {
 }
 
 .nav-logo{
-    width: 1;
     height:50%;
 }
 .MainButt {
@@ -164,9 +173,13 @@ html, body {
 
 /* Icons */
 .myHeart-deal{
-    height:20px;
-    width:20px;
-    size:30px;
+    text-align:center;
+    height:30px;
+    width:30px;
+    size:40px;
+    color:#636b6f;
+    font-size:30px;
+    display: inline-block
 }
 .myHeart-deal:hover{
     color: #f66f6c;
@@ -183,10 +196,50 @@ html, body {
     border-radius: 6px;
     background-color: #ffe362;
 }
-.myShow-img{
-    max-width: 466px;
-    max-height: 720px;
+.myShow-img-container{
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 6px;
+}
+.myShow-img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 6px;
+}
+
+/* My text */
+.myDescription{
+    display: block;
+    margin-top:0 ;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    height:44px;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.myTitle{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    height:47px;
+    -webkit-box-orient: vertical;
+}
+.myMerchantName{
+    padding:7px;
+    border-radius:3px;
+    font-size: 20px;
+    background-color: rgb(255, 220, 97);
+}
+
+.myPrice{
+    border-radius:3px;
+    padding:5px;
+    font-size: 16px;
+    background-color: #c4c4cd;
 }
 
 
