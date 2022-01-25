@@ -57,40 +57,29 @@
         <div class="tab-pane fade" id="nav-merchants" role="tabpanel" aria-labelledby="nav-merchants-tab">
             <table class="table table-bordered ">
                 <tr class="myTable-h">
+                    <th>Logo</th>
                     <th>Merchant</th>
                     <th>Remove</th>
                 </tr>
+                @foreach($merchants as $merchant)
                 <tr class="myTable-r">
-                    <td></td>
-                    <td></td>
+                    <td>
+                            @isset($merchant->merchant_logo)
+                                <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$merchant->merchant_logo)}}"  width="480px" height="720px" >
+                            @endisset
+                    </td>
+                    <td>{{$merchant->name}}</td>
+                    <td>
+                        <a class="myHeart-fav removeFavMerchant" data-merchant-id="{{$merchant->id}}">
+                            <i class="bi bi-star-fill "></i>
+                        </a>
+                    </td>
                 </tr>
+                    @endforeach
             </table>
 
         </div>
     </div>
     </div>
-
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                "X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $(document).on('click', '.removeFavDeal', function (e){
-            e.preventDefault();
-            @guest()
-
-            @endguest
-            $.ajax({
-                type:'delete',
-                url:"{{Route('favorite.destroy')}}",
-                data:{'dealId': $(this).attr('data-deal-id')},
-                success: function(data){
-                location.reload();
-                }
-            })
-        })
-    </script>
-
+    @include('components.deleteFavoritejs')
 @endsection

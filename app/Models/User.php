@@ -60,4 +60,11 @@ class User extends Authenticatable
         return self::dealsFavorite()->where('deal_id', $dealId)->exists();
     }
 
+    public function merchantsFavorite(){
+        return $this->BelongsToMany(Merchant::class,'merchants_favorite')->withTimestamps();
+    }
+    public function merchantFavoriteHas($merchantId){
+        return self::merchantsFavorite()->where('merchant_id', $merchantId)->exists();
+    }
+
 }

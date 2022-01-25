@@ -33,17 +33,20 @@ Route::resource('deals', DealController::class);
 Route::resource('merchants', MerchantController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('orders', OrderController::class);
-Route::resource('favorites', FavoriteController::class);
 
 //Dashboard routes
 Route::get('/admin_dashboard', [App\Http\Controllers\DashboardController::class, 'admin_dashboard'])->name('admin_dashboard');
 Route::get('/user_dashboard', [App\Http\Controllers\DashboardController::class, 'user_dashboard'])->name('user_dashboard');
 
-//Favorite routes
-Route::post('favorite', [App\Http\Controllers\FavoriteController::class, 'store'])->name('favorite.store');
-Route::delete('favorite', [App\Http\Controllers\FavoriteController::class, 'destroy'])->name('favorite.destroy');
-Route::get('favorite', [App\Http\Controllers\FavoriteController::class, 'index'])->name('favorite.index');
-Route::get('favorite', [App\Http\Controllers\FavoriteController::class, 'show'])->name('favorite.show');
+//Deals Favorite routes
+Route::post('favorites', [FavoriteController::class, 'store'])->name('favorites.store');
+Route::delete('favorites', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+Route::get('favorites', [FavoriteController::class, 'show'])->name('favorites.show');
+//Merchants Favorite routes
+Route::post('favorite', [FavoriteController::class, 'MerStore'])->name('MerStore');
+Route::delete('favorite', [FavoriteController::class, 'MerDestroy'])->name('MerDestroy');
+
 
 //Pages Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

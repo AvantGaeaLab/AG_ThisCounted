@@ -16,7 +16,7 @@
             <i class="bi bi-heart-fill myHeart-deal"></i>
                 <p style="font-size:12px; margin: 0">Deal</p>
             </a>
-        <a class=" AddToFavorite guest-modal " href="#" data-deal-id="{{$deal->id}}" style="color:#636b6f;  font-size:33px; display: inline-block" >
+        <a class=" AddMerToFavorite guest-modal " href="#" data-merchant-id="{{$merchant->id}}" style="color:#636b6f;  font-size:33px; display: inline-block" >
             <i class="bi bi-star-fill myHeart-deal"></i>
             <p style="font-size:12px">Merchant</p>
         </a>
