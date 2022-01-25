@@ -82,7 +82,7 @@ class DealController extends Controller
      */
     public function show(Deal $deal)
     {
-        //
+        return view('deals.show', compact('deal'));
     }
 
     /**

@@ -84,31 +84,7 @@
         <!-- for the sliders -->
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                "X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $(document).on('click', '.AddToFavorite', function (e){
-            e.preventDefault();
-            @guest()
-            alert('Most login to make favorite deal! ✖✖')
-
-            @endguest
-            $.ajax({
-                type:'post',
-                url:"{{Route('favorites.store')}}",
-                data:{'dealId': $(this).attr('data-deal-id')},
-                success: function(data){
-                    alert('❤ Deal added to favorite !')
-                }
-            })
-        })
-    </script>
-
+        @include('components.addFavoritejs')
     <script type="text/javascript">
         $('.slider').slick({
             slidesToShow: 5,
