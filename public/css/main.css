@@ -224,6 +224,7 @@ html, body {
     -webkit-box-orient: vertical;
 }
 .myTitle{
+    text-align-all: center;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -244,6 +245,12 @@ html, body {
     padding:5px;
     font-size: 16px;
     background-color: #c4c4cd;
+}
+.myTitle-search{
+    padding:5px;
+    border-radius:3px;
+    background-color: rgb(255, 220, 97);
+    height:60px;
 }
 
 

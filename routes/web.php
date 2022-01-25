@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,7 @@ Route::get('/', [App\Http\Controllers\PageController::class, 'mainPage'])->name(
 
 //Method routes
 Auth::routes();
+Route::get("search",[DealController::class,'search'])->name("deals.search");
 Route::get('CheckOrder', [App\Http\Controllers\OrderController::class, 'CheckOrder'])->name('CheckOrder');
 
 
