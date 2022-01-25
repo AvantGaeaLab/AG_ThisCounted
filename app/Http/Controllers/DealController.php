@@ -165,4 +165,11 @@ class DealController extends Controller
         return redirect()->back()->with('status','The Deal Deleted Successfully');
 
     }
+
+    function search(Request $request){
+        $title = $request->title;
+        $searchDeals = Deal::where("title", "like", "%".$title."%")->get();
+        return view('pages.search', compact('searchDeals', 'title'));
+    }
+
 }
