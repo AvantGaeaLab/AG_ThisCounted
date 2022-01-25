@@ -7,7 +7,9 @@ html, body {
     background-attachment: fixed;
     background-size: cover;
     font-family: 'Raleway', serif;
+    max-width: 100%;
     font-weight: 500;
+    overflow: initial;
     height: 100vh;
     margin: 0;
 
@@ -21,6 +23,8 @@ html, body {
 }
 
 .myNav{
+    max-width: 100%;
+    margin: 0 auto;
     background-color:#fff9e4;
 }
 .flex-wrapper{
