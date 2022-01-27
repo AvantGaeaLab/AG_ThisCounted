@@ -38,9 +38,7 @@
                     <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
                         {{$deal->title}}
                     </td>
-                    @foreach($deal->merchants as $merchant)
-                    <td>{{$merchant->name}}</td>
-                    @endforeach
+                    <td>{{$deal->merchant->name}}</td>
                     <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->price}}</td>
                     <td>
                         <a class="myHeart-fav removeFavDeal" data-deal-id="{{$deal->id}}">

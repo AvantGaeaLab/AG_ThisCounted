@@ -1,6 +1,6 @@
 @csrf
 <div class="form-group" >
-    <input type="text" name="title" class="form-control" placeholder="Title" @isset($deal) value="{{$deal->title}}"@endisset required>
+    <input type="text" name="title" class="form-control mb-3" placeholder="Title" @isset($deal) value="{{$deal->title}}"@endisset required>
 </div>
 <div class="form-group mb-3">
     @foreach($categories as $key =>$title)
@@ -9,13 +9,15 @@
                @if(isset($deal) && in_array($key, $dealCategories)) checked @endif>
     @endforeach
 </div>
-
 <div class="form-group mb-3">
-    @foreach($merchants as $merchant)
-        <label for="merchant_{{$merchant->id}}">{{$merchant->name}}</label>
-        <input id="merchant_{{$merchant->id}}" type="radio" name="merchants[]" value="{{$merchant->id}}"
-               @if(isset($deal) && in_array($merchant->id, $dealMerchants))checked @endif>
-    @endforeach
+    <label  for="merchant">Merchant</label>
+    <select id="merchant" class="form-select" name="merchant_id">
+        @isset($deal)<option selected>{{$deal->merchant->name}}</option>@endisset
+        <option></option>
+            @foreach($merchants as $merchant)
+                    <option value="{{$merchant->id}}">{{$merchant->name}}</option>
+                @endforeach
+    </select>
 </div>
 
 <div class="form-group mb-3">
@@ -62,6 +64,6 @@
         <img src="{{asset('uploads/deals_pics/'.$deal->pic3)}}"  width="480px" height="720px" >
     @endisset
 </div>
-<button type="submit" class="MainButt btn">{{$submitText}}</button>
+<button type="submit" class="MainButt btn mt-2">{{$submitText}}</button>
 
 

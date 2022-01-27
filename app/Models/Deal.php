@@ -15,6 +15,7 @@ class Deal extends Model
     use SoftDeletes;
     protected $fillable =[
         'title',
+        'merchant_id',
         'main_pic',
         'pic2',
         'pic3',
@@ -28,11 +29,12 @@ class Deal extends Model
         'status',
     ];
 
-
     public function user(){
         return$this->belongsTo(User::class);
     }
-
+    public function merchant(){
+        return$this->belongsTo(Merchant::class, 'merchant_id');
+    }
     //M2M between Deal&Category
     public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
@@ -40,20 +42,10 @@ class Deal extends Model
             'deal_id',
             'category_id');
     }
-
-    //O2M between Merchant&deals
-    public function merchants(){
-        return $this->BelongsToMany(Merchant::class, 'deals_merchants',
-            'deal_id',
-            'merchant_id');
-    }
-
     public function orders(){
         return $this->belongsTo(Order::class,'orders_deals',
             'deal_id',
             'order_id');
     }
-
-
 
 }

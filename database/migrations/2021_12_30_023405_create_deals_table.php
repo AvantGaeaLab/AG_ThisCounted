@@ -16,6 +16,7 @@ class CreateDealsTable extends Migration
         Schema::create('deals', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('merchant_id');
             $table->timestamps();
             $table->string('title')->unique();
             $table->string('main_pic');
