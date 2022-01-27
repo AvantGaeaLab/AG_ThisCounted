@@ -3,7 +3,9 @@
         <div class="mySlider-main-img-container">
             <img class="mySlider-main-img " data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" src="{{asset('uploads/deals_pics/'.$deal->main_pic)}}">
         </div>
+    <a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
         <b>{{$deal->merchant->name}}</b>
+    </a>
         <div>
            <p class="myDescription mt-0">{!!nl2br($deal->description)!!}</p>
         </div>

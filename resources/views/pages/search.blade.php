@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('search'))
+@section('title', __("Search: ".$title))
 @section('content')
 
     <div class="content">
@@ -22,28 +22,7 @@
                 @include('popups.showDeal')
             @endforeach
     </div>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
-    $(document).on('click', '.AddToFavorite', function (e){
-        e.preventDefault();
-        @guest()
-        alert('Most login to make favorite deal! ✖✖')
-
-        @endguest
-        $.ajax({
-            type:'post',
-            url:"{{Route('favorites.store')}}",
-            data:{'dealId': $(this).attr('data-deal-id')},
-            success: function(data){
-                alert('❤ Deal added to favorite !')
-            }
-        })
-    })
-</script>
+    @include('components.addFavoritejs')
 @endsection
 

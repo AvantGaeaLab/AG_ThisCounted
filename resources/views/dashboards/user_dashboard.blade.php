@@ -40,9 +40,12 @@
                 <tr class="myTable-r">
                     <td>{{$item->id}}</td>
                     @foreach($item->deals as $deal)
-                    <td>{{$deal->title}}</td>
-                    <td>{{$deal->merchant->name}}</td>
+                    <td  data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->title}}</td>
+                    <td><a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
+                        {{$deal->merchant->name}}
+                        </a></td>
                     <td>{{\Carbon\Carbon::parse($deal->end_at)->format('Y-m-d')}}</td>
+                        @include('popups.showDeal')
                     @endforeach
                     <td>{{$item->quantity}}</td>
                     <td>{{$item->used}}</td>

@@ -24,7 +24,6 @@ Route::get('/', [App\Http\Controllers\PageController::class, 'mainPage'])->name(
 
 //Method routes
 Auth::routes();
-Route::get("search",[DealController::class,'search'])->name("deals.search");
 Route::get('CheckOrder', [App\Http\Controllers\OrderController::class, 'CheckOrder'])->name('CheckOrder');
 
 
@@ -50,5 +49,8 @@ Route::delete('favorite', [FavoriteController::class, 'MerDestroy'])->name('MerD
 
 //Pages Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get("search",[DealController::class,'search'])->name("deals.search");
+Route::get("merchant/{merchant}",[MerchantController::class,'merDeals'])->name("merchants.deals");
+
 
 

@@ -62,11 +62,12 @@
                 @foreach($merchants as $merchant)
                 <tr class="myTable-r">
                     <td>
-                            @isset($merchant->merchant_logo)
-                                <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$merchant->merchant_logo)}}"  width="480px" height="720px" >
-                            @endisset
+                        @isset($merchant->merchant_logo)
+                            <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$merchant->merchant_logo)}}"  width="480px" height="720px" >
+                        @endisset
                     </td>
-                    <td>{{$merchant->name}}</td>
+                    <td>
+                        <a class="merName" href="{{route('merchants.deals', $merchant)}}" target="_blank"><b>{{$merchant->name}}</b></a></td>
                     <td>
                         <a class="myHeart-fav removeFavMerchant" data-merchant-id="{{$merchant->id}}">
                             <i class="bi bi-star-fill "></i>

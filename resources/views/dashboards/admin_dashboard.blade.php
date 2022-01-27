@@ -103,6 +103,8 @@
                         <th>ID</th>
                         <th>username</th>
                         <th>Email</th>
+                        <th>Phone number</th>
+                        <th>Orders count</th>
                         <th>Actions</th>
                     </tr>
                     @foreach($users as $user)
@@ -115,6 +117,12 @@
                             </td>
                             <td>
                                 {{$user->email}}
+                            </td>
+                            <td>
+                                {{$user->phone_number}}
+                            </td>
+                            <td>
+                                {{$user->orders->count()}}
                             </td>
                             <!-- Edit User -->
                             <td class="myTable-r">
@@ -166,7 +174,9 @@
                             <td>
                                 {{$orderDeal->title}}</td>
                             <td>
+                                <a class="merName" href="{{route('merchants.deals', $merchant=$orderDeal->merchant)}}" target="_blank"><b>
                                 {{$orderDeal->merchant->name}}
+                                    </b></a>
                             </td>
                             @endforeach
                                 <td>{{$order->user->name}}</td>
@@ -223,31 +233,35 @@
                 <table class="table table-bordered ">
                     <tr class="myTable-h">
                         <th id="id">Logo</th>
-                        <th id="title">Title</th>
+                        <th id="title">Name</th>
+                        <th id="title">Deals</th>
                         <th>Actions</th>
                     </tr>
-                    @foreach($merchants as $merchant)
+                    @foreach($merchants as $newMerchant)
                         <tr class="myTable-r">
                             <td>
                                 <div >
-                                    @isset($merchant->merchant_logo)
-                                    <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$merchant->merchant_logo)}}"  width="480px" height="720px" >
+                                    @isset($newMerchant->merchant_logo)
+                                    <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$newMerchant->merchant_logo)}}"  width="480px" height="720px" >
                                         @endisset
                                 </div>
                             </td>
                             <td>
-                                <b>
-                                {{$merchant->name}}
-                                </b>
+                                <b><a class="merName" href="{{route('merchants.deals', $merchant=$newMerchant)}}" target="_blank">
+                                        {{$newMerchant->name}}
+                                    </a></b>
+                            </td>
+                            <td>
+                                {{$newMerchant->deals->count()}}
                             </td>
                             <!-- Edit Merchant -->
                             <td>
-                                <button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#EditMerchant{{$merchant->id}}">Edit</button>
-                                <div class="modal fade" id="EditMerchant{{$merchant->id}}" tabindex="-1" aria-labelledby="EditMerchantModalLabel" aria-hidden="true">
+                                <button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#EditMerchant{{$newMerchant->id}}">Edit</button>
+                                <div class="modal fade" id="EditMerchant{{$newMerchant->id}}" tabindex="-1" aria-labelledby="EditMerchantModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="EditMerchantModalLabel">Edit Merchant <br> {{$merchant->name}}</h5>
+                                                <h5 class="modal-title" id="EditMerchantModalLabel">Edit Merchant <br> {{$newMerchant->name}}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -262,10 +276,10 @@
                                 </div>
 
                                         <!-- Delete Merchant-->
-                                <form method='post' action="{{route('merchants.destroy', $merchant)}}">
+                                <form method='post' action="{{route('merchants.destroy', $newMerchant)}}">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want delete ({{$merchant->name}}) ?')" >Delete</button>
+                                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want delete ({{$newMerchant->name}}) ?')" >Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -322,8 +336,9 @@
                                 <div class="row">
                                     <div class="col-6" >
                                 <a class="btn MainButt" data-bs-toggle="modal" data-bs-target="#EditCategory{{$key}}">Edit</a>
-                                <div class="modal fade" id="EditCategory{{$key}}" tabindex="-1" aria-labelledby="EditCategoryModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                    </div>
+                                    <div class="modal fade" id="EditCategory{{$key}}" tabindex="-1" aria-labelledby="EditCategoryModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="EditCategoryModalLabel">Edit Category <br> {{$title}}</h5>
@@ -345,7 +360,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                    </div>
                                 <!-- Delete Category -->
                                 <form class="col-6" method='post' action="{{route('categories.destroy', $key)}}">
                                     @method('DELETE')

@@ -71,15 +71,26 @@
                                 @include('forms._home_DealsSlider', $deal)
                             @endforeach
                         </div>
-                    @endauth
+                            @foreach($favDeals as $deal)
+                                @include('popups.showDeal')
+                            @endforeach
+                        @endauth
                 </div>
             </div>
-
-            @foreach($deals as $deal)
+                <!-- Linking the popups -->
+            @foreach($lastDeals as $deal)
+                @include('popups.showDeal')
+            @endforeach
+            @foreach($foodCat->deals as $deal)
+                @include('popups.showDeal')
+            @endforeach
+            @foreach($drinksCat->deals as $deal)
+                @include('popups.showDeal')
+            @endforeach
+            @foreach($studentsCat->deals as $deal)
                 @include('popups.showDeal')
             @endforeach
 
-            @include('popups.favoriteListGuest')
         </div>
         <!-- for the sliders -->
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

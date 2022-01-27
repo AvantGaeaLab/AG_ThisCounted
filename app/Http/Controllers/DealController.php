@@ -79,6 +79,7 @@ class DealController extends Controller
      */
     public function show(Deal $deal)
     {
+        $title=$deal->title;
         return view('deals.show', compact('deal'));
     }
 
@@ -167,5 +168,4 @@ class DealController extends Controller
         $searchDeals = Deal::where("title", "like", "%".$title."%")->get();
         return view('pages.search', compact('searchDeals', 'title'));
     }
-
 }
