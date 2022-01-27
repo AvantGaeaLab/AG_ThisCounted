@@ -252,7 +252,15 @@ html, body {
     background-color: rgb(255, 220, 97);
     height:60px;
 }
+.merName{
+    color:black;
+}
+/* END Text */
 
+.myBg-index{
+    background-color: rgba(255, 243, 205, 0.89);
+    border-radius:10px;
+}
 
 
 

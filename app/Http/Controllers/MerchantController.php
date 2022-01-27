@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deal;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -121,6 +122,8 @@ class MerchantController extends Controller
         }
         $merchant->delete();
         return redirect()->back()->with('status','The Merchant Deleted Successfully');
-
+    }
+    public function merDeals( Merchant $merchant){
+        return view('pages.merchantDeals', compact( 'merchant'));
     }
 }

@@ -6,17 +6,20 @@
     @foreach($categories as $key =>$title)
         <label for="category_{{$key}}">{{$title}}</label>
         <input id="category_{{$key}}" type="checkbox" name="categories[]" value="{{$key}}"
-               @if(isset($deal) && in_array($key, $dealCategories)) checked @endif>
+               @if(isset($deal) && in_array($key, $dealCategories)) checked
+            @endif>
     @endforeach
 </div>
 <div class="form-group mb-3">
     <label  for="merchant">Merchant</label>
     <select id="merchant" class="form-select" name="merchant_id">
-        @isset($deal)<option selected>{{$deal->merchant->name}}</option>@endisset
+        @isset($deal)
+            <option value="{{$deal->merchant->id}}" selected>{{$deal->merchant->name}}</option>
+        @endisset
         <option></option>
             @foreach($merchants as $merchant)
-                    <option value="{{$merchant->id}}">{{$merchant->name}}</option>
-                @endforeach
+                <option value="{{$merchant->id}}">{{$merchant->name}}</option>
+            @endforeach
     </select>
 </div>
 
