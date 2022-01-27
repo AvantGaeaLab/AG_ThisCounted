@@ -52,17 +52,14 @@ class DealController extends Controller
         $request->validate([
             'title' => 'min:3|max:50|required',
             'categories' => 'required',
-            'merchants' => 'required',
+            'merchant_id' => 'required',
             'main_pic' => 'required',
         ]);
 
         $user = Auth::user();
         $categories = array_values($request->categories);
-        $merchants = array_values($request->merchants);
-        $deal = $user->deals()->create($request->except('categories', 'merchants'));
+        $deal = $user->deals()->create($request->except('categories'));
         $deal->categories()->attach($categories);
-        $deal->merchants()->attach($merchants);
-
         if($request->hasFile('main_pic')) {
             $file = $request->file('main_pic');
             $extension = $file->getClientOriginalExtension();
@@ -99,8 +96,7 @@ class DealController extends Controller
         $categories = Category::all()->pluck('title', 'id');
         $merchants = Merchant::all();
         $dealCategories = $deal->categories()->pluck('id')->toArray();
-        $dealMerchants = $deal->merchants()->pluck('id')->toArray();
-        return view('deals.edit', compact('categories', 'merchants', 'deal','dealMerchants','dealCategories'));
+        return view('deals.edit', compact('categories', 'merchants', 'deal','dealCategories'));
     }
 
     /**
@@ -119,10 +115,11 @@ class DealController extends Controller
         $request->validate([
             'title' => 'min:3|max:50|required',
             'categories' => 'required',
-            'merchants' => 'required',
+            'merchant_id' => 'required',
         ]);
 
         $deal->title = $request->title;
+        $deal->merchant_id = $request->merchant_id;
         $deal->start_at = $request->start_at;
         $deal->end_at = $request->end_at;
         $deal->retails_price = $request->retails_price;
@@ -144,7 +141,6 @@ class DealController extends Controller
         }
         $deal->update();
         $deal->categories()->sync($request->categories);
-        $deal->merchants()->sync($request->merchants);
         return redirect('admin_dashboard')->with('status','The deal updated successfully');
 
     }

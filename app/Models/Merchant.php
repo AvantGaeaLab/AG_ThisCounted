@@ -18,11 +18,8 @@ class Merchant extends Model
         'merchant_logo'
     ];
 
-    public function deals()
-    {
-        return $this->belongsTo(Deal::class, 'deals_merchants',
-            'merchant_id',
-            'deal_id');
+    public function deals(){
+        return $this->hasMany(Deal::class,'merchant_id');
     }
 
 

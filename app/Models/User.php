@@ -51,8 +51,6 @@ class User extends Authenticatable
         return $this->hasMany(Order::class,'user_id');
     }
 
-
-
     public function dealsFavorite(){
         return $this->BelongsToMany(Deal::class,'deals_favorite')->withTimestamps();
     }

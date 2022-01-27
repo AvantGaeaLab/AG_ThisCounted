@@ -66,10 +66,7 @@
                                 {{$deal->title}}
                             </td>
                             <td>
-                                @foreach($deal-> merchants as $merchantDeal)
-                                    <b>{{$merchantDeal->name}}</b>
-                                    @endforeach
-
+                                <b>{{$deal->merchant->name}}</b>
                             </td>
                             <td>
                                 {{$deal->start_at}}
@@ -168,11 +165,9 @@
                             @foreach($order->deals as $orderDeal)
                             <td>
                                 {{$orderDeal->title}}</td>
-                            @foreach($orderDeal->merchants as $orderMerchants)
                             <td>
-                                {{$orderMerchants->name}}
+                                {{$orderDeal->merchant->name}}
                             </td>
-                                @endforeach
                             @endforeach
                                 <td>{{$order->user->name}}</td>
                                 <td>{{$order->user->email}}</td>

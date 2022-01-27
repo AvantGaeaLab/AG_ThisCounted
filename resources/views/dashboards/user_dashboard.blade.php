@@ -41,9 +41,7 @@
                     <td>{{$item->id}}</td>
                     @foreach($item->deals as $deal)
                     <td>{{$deal->title}}</td>
-                    @foreach($deal->merchants as $dealMerchant)
-                    <td>{{$dealMerchant->name}}</td>
-                        @endforeach
+                    <td>{{$deal->merchant->name}}</td>
                     <td>{{\Carbon\Carbon::parse($deal->end_at)->format('Y-m-d')}}</td>
                     @endforeach
                     <td>{{$item->quantity}}</td>

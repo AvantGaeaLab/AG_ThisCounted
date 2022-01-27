@@ -6,9 +6,7 @@
       <h1 class="myShow-title"><b>{{$deal->title}}</b></h1>
     </div>
     <div>
-        @foreach($deal-> merchants as $merchant)
-            <b class="myMerchantName">{{$merchant->name}}</b>
-        @endforeach
+        <b class="myMerchantName">{{$deal->merchant->name}}</b>
     </div>
     <br>
     <div>

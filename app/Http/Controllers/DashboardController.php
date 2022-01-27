@@ -28,16 +28,13 @@ class DashboardController extends Controller
         $categories = Category::all()->pluck('title', 'id');
 
         $dealCategories = $deal->categories()->pluck('id')->toArray();
-        $dealMerchants = $deal->merchants()->pluck('name', 'id')->toArray();
         return view('dashboards/admin_dashboard', compact(
             'users',
             'categories',
             'merchants',
             'deals',
             'orders',
-            'dealMerchants',
             'dealCategories'
-
         ));
     }
 
