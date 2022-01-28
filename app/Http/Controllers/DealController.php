@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\File;
 
 class DealController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show', 'catDeals');
+        if (Auth::id() > 3) {
+            return abort(401);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
