@@ -51,6 +51,7 @@ Route::delete('favorite', [FavoriteController::class, 'MerDestroy'])->name('MerD
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get("search",[DealController::class,'search'])->name("deals.search");
 Route::get("merchant/{merchant}",[MerchantController::class,'merDeals'])->name("merchants.deals");
+Route::get("category/{category}",[CategoryController::class,'catDeals'])->name("categories.deals");
 
 
 

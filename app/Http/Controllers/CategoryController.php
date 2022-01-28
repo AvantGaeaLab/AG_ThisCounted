@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Deal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -98,12 +99,14 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if(Auth::id() >= 3){
+        if(Auth::id() > 3){
             return abort(401);
         }
-
         $category->delete();
         return redirect()->back()->with('status','The category Deleted Successfully');
-
+    }
+    public function catDeals(Category $category){
+        $catDeals = Category::find($category->id);
+        return view('pages.categoryDeals', compact( 'category','catDeals'));
     }
 }

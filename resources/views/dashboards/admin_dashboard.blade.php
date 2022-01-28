@@ -62,7 +62,7 @@
                             <td>
                                 {{$deal->id}}
                             </td>
-                            <td>
+                            <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
                                 {{$deal->title}}
                             </td>
                             <td>
@@ -88,10 +88,11 @@
                                 </div>
                             </td>
                         </tr>
+                        @include('popups.showDeal', $deal)
                     @endforeach
                 </table>
 
-                <!--END Deals list table -->
+            <!--END Deals list table -->
 
             </div>
             <div class="tab-pane fade" id="nav-Users" role="tabpanel" aria-labelledby="nav-Users-tab">

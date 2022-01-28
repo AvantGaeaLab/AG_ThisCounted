@@ -124,6 +124,6 @@ class MerchantController extends Controller
         return redirect()->back()->with('status','The Merchant Deleted Successfully');
     }
     public function merDeals( Merchant $merchant){
-        return view('pages.merchantDeals', compact( 'merchant'));
+        return view('pages.merchantDeals', compact('merchant'));
     }
 }

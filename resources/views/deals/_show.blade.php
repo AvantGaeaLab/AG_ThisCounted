@@ -52,5 +52,9 @@
         </div>
     @endisset
 
+
+    <br/>
+    @include('components.showCategories')
+    <br><br>
     @include('forms._placeOrder')
 </div>
