@@ -12,15 +12,29 @@
             </div>
             <!-- the main slider-->
             <div class="myContainer">
-                <div class="row slider mb-5">
-                    @include('forms._home_mainSlider',['categoryImg'=>'food.jpg'])
-                    @include('forms._home_mainSlider',['categoryImg'=>'drinks.jpg'])
-                    @include('forms._home_mainSlider',['categoryImg'=>'Act_Category.jpg'])
-                    @include('forms._home_mainSlider',['categoryImg'=>'SnacksAndDesserts_Category.jpg'])
-                    @include('forms._home_mainSlider',['categoryImg'=>'students_Category.jpg'])
-                    @include('forms._home_mainSlider',['categoryImg'=>'Under10_Category.jpg'])
-                    @include('forms._home_mainSlider',['categoryImg'=>'Under20_Category.jpg'])
+                <div class="row mb-5">
+                    <a class="col" href="{{route('foodPage')}}">
+                    <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/food.jpg')}}" alt="">
+                    </a>
+                    <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/drinks.jpg')}}" alt="">
+                    <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/Act_Category.jpg')}}" alt="">
                 </div>
+                <div class="row">
+                    <a class="col" href="{{route('categories.deals', $category=5)}}" target="_blank">
+                    <img class="subCat-img" src="{{asset('uploads/mainCats_imgs/SnacksAndDesserts_Category.jpg')}}" alt="" >
+                    </a>
+                    <a class="col" href="{{route('categories.deals', $category=3)}}" target="_blank">
+                    <img class="subCat-img" src="{{asset('uploads/mainCats_imgs/Under10_Category.jpg')}}" alt="">
+                    </a>
+                    <a class="col" href="{{route('categories.deals', $category=4)}}" target="_blank">
+                    <img class="subCat-img" src="{{asset('uploads/mainCats_imgs/Under20_Category.jpg')}}" alt="">
+                    </a>
+                </div>
+                <br>
+                <a class="merName" href="{{route('categories.deals', $category=6)}}" target="_blank">
+                <img class="sub-img-student" src="{{asset('uploads/mainCats_imgs/Student_exclusive.png')}}" alt="Student exclusive" >
+                </a>
+            </div>
                 <!-- new deals slider-->
                 <br>
                 <div class="mt-5">
@@ -41,7 +55,7 @@
                     <h1> Food Deals </h1>
                         </a>
                     <div class="row slider mt-5">
-                        @foreach($foodCat->deals as $deal)
+                        @foreach($foodCat as $deal)
                             @include('forms._home_DealsSlider', $deal)
                         @endforeach
                     </div>
@@ -50,7 +64,7 @@
                         <h1> Drinks Deals </h1>
                         </a>
                     <div class="row slider mt-5">
-                        @foreach($drinksCat->deals as $deal)
+                        @foreach($drinksCat as $deal)
                             @include('forms._home_DealsSlider', $deal)
                         @endforeach
                     </div>
@@ -59,7 +73,7 @@
                     <h1> Students exclusive Deals </h1>
                     </a>
                     <div class="row slider mt-5">
-                        @forelse($studentsCat->deals as $deal)
+                        @forelse($studentsCat as $deal)
                             @include('forms._home_DealsSlider', $deal)
                         @empty
                             <h2>Sorry no content for now</h2>
@@ -83,78 +97,22 @@
             @foreach($lastDeals as $deal)
                 @include('popups.showDeal')
             @endforeach
-            @foreach($foodCat->deals as $deal)
+            @foreach($foodCat as $deal)
                 @include('popups.showDeal', $deal)
             @endforeach
-            @foreach($drinksCat->deals as $deal)
+            @foreach($drinksCat as $deal)
                 @include('popups.showDeal')
             @endforeach
-            @foreach($studentsCat->deals as $deal)
+            @foreach($studentsCat as $deal)
                 @include('popups.showDeal')
             @endforeach
 
         </div>
         <!-- for the sliders -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
         @include('components.addFavoritejs')
-    <script type="text/javascript">
-        $('.slider').slick({
-            slidesToShow: 5,
-            slidesToScroll: 2,
-            mobileFirst: true,
-            infinite:true,
-            loop: true,
-            dots: true,
-            arrows: false,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            responsive: [
-                {
-                    breakpoint: 1920,
-                    settings: {
-                        slidesToShow: 5,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
-                    }
-                },{
-                    breakpoint: 1025,
-                    settings: {
-                        slidesToShow: 4,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 700,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 380,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
-            ]
+        @include('components.sliderjs')
 
-        });
-    </script>
 @endsection
 
 
