@@ -21,6 +21,9 @@ class CategoriesSeeder extends Seeder
                 ['title'=>'MealsUnder20'],
                 ['title'=>'Snacks And Desserts'],
                 ['title'=>'Students Exclusive'],
+                ['title'=>'Activities'],
+                ['title'=>'Indoor Activities'],
+                ['title'=>'Outdoor Activities'],
             ]
         );
     }

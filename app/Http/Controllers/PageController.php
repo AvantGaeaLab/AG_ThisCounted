@@ -50,17 +50,32 @@ class PageController extends Controller
         })->take(7)->get();
 
         $foodDeals= Category::find(1);
+        $SnacksAndDesserts = Category::find(5);
 
         /*
         $foodUnder10 = Deal::whereHas('categories', function ($query) use($foodUnder10Id) {
             $query->where('id', $foodUnder10Id);
         })->get();*/
 
-        $SnacksAndDesserts = Category::find(5);
 
         return view('pages.categories.foodCat',compact(
             'lastDeals',
             'foodDeals',
             'SnacksAndDesserts'));
+    }
+
+    public function activitiesPage(){
+        $categoryId = 7;
+
+        $lastDeals = Deal::whereHas('categories', function ($query) use($categoryId) {
+            $query->where('id', $categoryId);
+        })->take(7)->get();
+        $Indoor= Category::find(8);
+        $Outdoor = Category::find(9);
+
+        return view('pages.categories.activitiesCat',compact(
+            'lastDeals',
+            'Indoor',
+            'Outdoor'));
     }
 }

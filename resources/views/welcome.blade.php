@@ -16,8 +16,12 @@
                     <a class="col" href="{{route('foodPage')}}">
                     <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/food.jpg')}}" alt="">
                     </a>
+                    <a class="col" href="{{route('categories.deals', $category=2)}}" target="_blank">
                     <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/drinks.jpg')}}" alt="">
+                    </a>
+                    <a class="col" href="{{route('activitiesPage')}}">
                     <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/Act_Category.jpg')}}" alt="">
+                    </a>
                 </div>
                 <div class="row">
                     <a class="col" href="{{route('categories.deals', $category=5)}}" target="_blank">

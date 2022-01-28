@@ -56,6 +56,7 @@ Route::get("search",[DealController::class,'search'])->name("deals.search");
 Route::get("merchant/{merchant}",[MerchantController::class,'merDeals'])->name("merchants.deals");
 Route::get("category/{category}",[CategoryController::class,'catDeals'])->name("categories.deals");
 Route::get("food",[PageController::class,'foodPage'])->name("foodPage");
+Route::get("Activities",[PageController::class,'activitiesPage'])->name("activitiesPage");
 
 
 
