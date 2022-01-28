@@ -33,6 +33,8 @@
             @isset($deal->price)
                 <h4>${{$deal->price}}</h4>
             @endisset
+            @include('components.showCategories')
+
         </div>
         <br>
         @include('forms._placeOrder')

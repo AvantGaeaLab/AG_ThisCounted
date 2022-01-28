@@ -37,33 +37,35 @@
                 <!-- Food slider-->
                 <br>
                 <div class="mt-5">
-                    @isset($foodCat->deals)
+                        <a class="merName" href="{{route('categories.deals', $category=1)}}" target="_blank">
                     <h1> Food Deals </h1>
+                        </a>
                     <div class="row slider mt-5">
                         @foreach($foodCat->deals as $deal)
                             @include('forms._home_DealsSlider', $deal)
                         @endforeach
                     </div>
                         <hr>
-                    @endisset
-                        @isset($drinksCat->deals)
+                        <a class="merName" href="{{route('categories.deals', $category=2)}}" target="_blank">
                         <h1> Drinks Deals </h1>
+                        </a>
                     <div class="row slider mt-5">
                         @foreach($drinksCat->deals as $deal)
                             @include('forms._home_DealsSlider', $deal)
                         @endforeach
                     </div>
                             <hr>
-                        @endisset
-                        @isset($drinksCat->deals)
-                        <h1> Students exclusive Deals </h1>
+                    <a class="merName" href="{{route('categories.deals', $category=6)}}" target="_blank">
+                    <h1> Students exclusive Deals </h1>
+                    </a>
                     <div class="row slider mt-5">
-                        @foreach($studentsCat->deals as $deal)
+                        @forelse($studentsCat->deals as $deal)
                             @include('forms._home_DealsSlider', $deal)
-                        @endforeach
+                        @empty
+                            <h2>Sorry no content for now</h2>
+                        @endforelse
                     </div>
                             <hr>
-                        @endisset
                     @auth()
                         <h1>Favourite deals  </h1>
                         <div class="row slider mt-5">
@@ -82,7 +84,7 @@
                 @include('popups.showDeal')
             @endforeach
             @foreach($foodCat->deals as $deal)
-                @include('popups.showDeal')
+                @include('popups.showDeal', $deal)
             @endforeach
             @foreach($drinksCat->deals as $deal)
                 @include('popups.showDeal')
