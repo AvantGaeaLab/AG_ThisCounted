@@ -157,7 +157,6 @@ class DealController extends Controller
         if(Auth::id() > 3){
             return abort(401);
         }
-
         $deal->delete();
         return redirect()->back()->with('status','The Deal Deleted Successfully');
 

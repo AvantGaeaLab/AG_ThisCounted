@@ -60,13 +60,36 @@ html, body {
     display: block;
     position: relative;
 }
-.mySlider-main-img{
-    display: block;
+.mySlider-main-img {
+    display: inline-block;
     margin: 0 auto;
-    width: 200px;
-    max-height: 100%;
+    width: 12rem;
+    height: 12rem;
     border-radius: 25px;
 }
+
+.mainCat-img{
+    display: inline-block;
+    margin: 0 auto;
+    width: 26rem;
+    height: 27rem;
+    border-radius: 25px;
+
+}.subCat-img{
+     display: inline-block;
+     margin: 0 auto;
+     width: 20rem;
+     height: 20rem;
+     border-radius: 25px;
+ }
+
+ .sub-img-student{
+     margin: 0 auto;
+     width: 50rem;
+     height: 30rem;
+     border-radius: 25px;
+
+ }
 
 .flex-center {
     align-items: center;

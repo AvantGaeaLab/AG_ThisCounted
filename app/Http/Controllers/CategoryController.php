@@ -11,7 +11,10 @@ class CategoryController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth')-> except('show');
+        $this->middleware('auth')-> except('show', 'catDeals');
+        if(Auth::id() > 3){
+            return abort(401);
+        }
     }
 
     /**

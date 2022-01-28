@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +23,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\PageController::class, 'mainPage'])->name('home');
+Route::get('/', [PageController::class, 'mainPage'])->name('home');
 
 //Method routes
 Auth::routes();
-Route::get('CheckOrder', [App\Http\Controllers\OrderController::class, 'CheckOrder'])->name('CheckOrder');
+Route::get('CheckOrder', [OrderController::class, 'CheckOrder'])->name('CheckOrder');
 
 
 //Resource routes
@@ -34,8 +37,8 @@ Route::resource('categories', CategoryController::class);
 Route::resource('orders', OrderController::class);
 
 //Dashboard routes
-Route::get('/admin_dashboard', [App\Http\Controllers\DashboardController::class, 'admin_dashboard'])->name('admin_dashboard');
-Route::get('/user_dashboard', [App\Http\Controllers\DashboardController::class, 'user_dashboard'])->name('user_dashboard');
+Route::get('/admin_dashboard', [DashboardController::class, 'admin_dashboard'])->name('admin_dashboard');
+Route::get('/user_dashboard', [DashboardController::class, 'user_dashboard'])->name('user_dashboard');
 
 //Deals Favorite routes
 Route::post('favorites', [FavoriteController::class, 'store'])->name('favorites.store');
@@ -48,10 +51,11 @@ Route::delete('favorite', [FavoriteController::class, 'MerDestroy'])->name('MerD
 
 
 //Pages Routes
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get("search",[DealController::class,'search'])->name("deals.search");
 Route::get("merchant/{merchant}",[MerchantController::class,'merDeals'])->name("merchants.deals");
 Route::get("category/{category}",[CategoryController::class,'catDeals'])->name("categories.deals");
+Route::get("food",[PageController::class,'foodPage'])->name("foodPage");
 
 
 
