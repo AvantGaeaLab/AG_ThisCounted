@@ -34,10 +34,10 @@
                 <h4>${{$deal->price}}</h4>
             @endisset
             @include('components.showCategories')
-
+            <br>
+            <hr>
+            @include('forms._placeOrder')
         </div>
-        <br>
-        @include('forms._placeOrder')
     </div>
     </div>
 

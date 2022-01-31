@@ -185,7 +185,7 @@
                                     </a></b>
                             </td>
                             <td>
-                                {{$newMerchant->deals->count()}}
+                                {{$newMerchant->deals->where('status', 'Valid')->count()}}
                             </td>
                             <!-- Edit Merchant -->
                             <td>
@@ -212,7 +212,7 @@
                                 <form method='post' action="{{route('merchants.destroy', $newMerchant)}}">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want delete ({{$newMerchant->name}}) ?')" >Delete</button>
+                                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want delete all deals from ({{$newMerchant->name}}) ?')" >Delete deals</button>
                                 </form>
                             </td>
                         </tr>

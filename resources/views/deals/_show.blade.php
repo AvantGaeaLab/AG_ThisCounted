@@ -54,6 +54,6 @@
 
     <br/>
     @include('components.showCategories')
-    <br><br>
+    <br><hr>
     @include('forms._placeOrder')
 </div>

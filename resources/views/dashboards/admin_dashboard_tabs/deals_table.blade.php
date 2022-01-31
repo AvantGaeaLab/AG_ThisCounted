@@ -17,7 +17,7 @@
                 {{$deal->title}}
             </td>
             <td>
-                <b>{{$deal->merchant->name}}</b>
+                <b>{{$deal->merchant->name ?? "Deleted Merchant"}}</b>
             </td>
             <td>
                 {{$deal->start_at}}
