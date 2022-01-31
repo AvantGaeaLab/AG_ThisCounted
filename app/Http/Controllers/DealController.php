@@ -130,6 +130,7 @@ class DealController extends Controller
 
         $deal->title = $request->title;
         $deal->merchant_id = $request->merchant_id;
+        $deal->status = $request->status;
         $deal->start_at = $request->start_at;
         $deal->end_at = $request->end_at;
         $deal->retails_price = $request->retails_price;
@@ -166,14 +167,14 @@ class DealController extends Controller
         if(Auth::id() > 3){
             return abort(401);
         }
-        $deal->delete();
+        $deal->status="Deleted";
+        $deal->update();
         return redirect()->back()->with('status','The Deal Deleted Successfully');
-
     }
 
     function search(Request $request){
         $title = $request->title;
-        $searchDeals = Deal::where("title", "like", "%".$title."%")->get();
+        $searchDeals = Deal::where("title", "like", "%".$title."%")->ValidDeal()->latest()->get();
         return view('pages.search', compact('searchDeals', 'title'));
     }
 

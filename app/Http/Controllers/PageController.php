@@ -19,17 +19,18 @@ class PageController extends Controller
         $drinkCatId = 2;
         $studentsCatId = 6;
 
-        $lastDeals = Deal::take(7)->orderBy('id', 'DESC')->get();
+        $lastDeals = Deal::take(7)->where('status', 'Valid')->orderBy('id', 'DESC')->get();
 
         $foodCat = Deal::whereHas('categories', function ($query) use($foodCatId) {
-            $query->where('id', $foodCatId);
+            $query->where('id', $foodCatId)->where('status', 'Valid');
         })->take(7)->get();
 
         $drinksCat = Deal::whereHas('categories', function ($query) use($drinkCatId) {
-            $query->where('id', $drinkCatId);
+            $query->where('id', $drinkCatId)->where('status', 'Valid');
         })->take(7)->get();
+
         $studentsCat = Deal::whereHas('categories', function ($query) use($studentsCatId) {
-            $query->where('id', $studentsCatId);
+            $query->where('id', $studentsCatId)->where('status', 'Valid');
         })->take(7)->get();
 
 
@@ -42,38 +43,37 @@ class PageController extends Controller
     }
 
     public function foodPage(){
-        $categoryId = 1;
-        $foodUnder10Id= [1,3];
 
-        $lastDeals = Deal::whereHas('categories', function ($query) use($categoryId) {
-            $query->where('id', $categoryId);
-        })->take(7)->get();
+        $foodDeals= Deal::findCat(1)->ValidDeal()->latest()->get();
 
-        $foodDeals= Category::find(1);
-        $SnacksAndDesserts = Category::find(5);
+        $lastDeals = $foodDeals->take(7);
 
-        /*
-        $foodUnder10 = Deal::whereHas('categories', function ($query) use($foodUnder10Id) {
-            $query->where('id', $foodUnder10Id);
-        })->get();*/
+        $foodUnder10Deals = Deal::findCat(1)->findCat(3)->ValidDeal()->get();
 
+        $foodUnder20Deals = Deal::findCat(1)->findCat(4)->ValidDeal()->get();
+
+        $SnacksAndDesserts = Deal::findCat(5)->ValidDeal()->get();
 
         return view('pages.categories.foodCat',compact(
             'lastDeals',
             'foodDeals',
-            'SnacksAndDesserts'));
+            'SnacksAndDesserts',
+            'foodUnder10Deals',
+            'foodUnder20Deals'));
     }
 
     public function activitiesPage(){
-        $categoryId = 7;
+        $lastDeals = Deal::whereRelation('categories', 'id' , 7)
+            ->where('status', 'Valid')->latest()->take(7)->get();
 
-        $lastDeals = Deal::whereHas('categories', function ($query) use($categoryId) {
-            $query->where('id', $categoryId);
-        })->take(7)->get();
-        $Indoor= Category::find(8);
-        $Outdoor = Category::find(9);
+        $Indoor=  Deal::whereRelation('categories', 'id' , 8)
+            ->where('status', 'Valid')->latest()->get();
 
-        return view('pages.categories.activitiesCat',compact(
+        $Outdoor =  Deal::whereRelation('categories', 'id' , 9)
+            ->where('status', 'Valid')->latest()->get();
+
+        return view('pages.categories.activitiesCat',
+            compact(
             'lastDeals',
             'Indoor',
             'Outdoor'));

@@ -21,15 +21,22 @@
             <br>
             <hr>
             <h1 class="mt-5"><b>Food Deals</b></h1>
-            @forelse($foodDeals->deals as $deal)
+            @forelse($foodDeals as $deal)
                 @include('deals.index', $deal)
             @empty
                 <br>
                 <h4> Sorry, this category did not match any deals. Please try again.</h4>
             @endforelse
             <hr>
+            <h1 class="mt-5"><b>Food under $10</b></h1>
+            @forelse($foodUnder10Deals as $deal)
+                @include('deals.index', $deal)
+            @empty
+                <h4> Sorry, this category did not match any deals.</h4>
+            @endforelse
+            <br><hr>
             <h1 class="mt-5"><b>Snacks And Desserts Deals</b></h1>
-            @forelse($SnacksAndDesserts->deals as $deal)
+            @forelse($SnacksAndDesserts as $deal)
                 @include('deals.index', $deal)
             @empty
                 <br>
@@ -39,6 +46,15 @@
 
         @foreach($lastDeals as $deal)
             @include('popups.showDeal')
+        @endforeach
+        @foreach($foodUnder10Deals as $deal)
+            @include('popups.showDeal')
+        @endforeach
+        @foreach($foodUnder20Deals as $deal)
+            @include('popups.showDeal')
+        @endforeach
+        @foreach($SnacksAndDesserts as $deal)
+           @include('popups.showDeal')
         @endforeach
     </div>
 

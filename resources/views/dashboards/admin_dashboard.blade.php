@@ -24,77 +24,9 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-Deals" role="tabpanel" aria-labelledby="nav-Deals-tab">
-                <!-- Deals list table -->
-
-                <!--add new deal -->
-                <button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#dealModal" >New deal</button>
-                <div class="modal fade" id="dealModal" tabindex="-1" aria-labelledby="dealModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="dealModalLabel">Add new Deal</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{{route('deals.store')}}"  method="POST" enctype="multipart/form-data">
-                                @include('deals._form',['submitText'=>'Create'])
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--END add new deal -->
-
-                <!--Deals list table -->
-                <h3>Deals list</h3>
-                <table class="table table-bordered table-">
-                    <tr class="myTable-h">
-                        <th>ID</th>
-                        <th>Deal title</th>
-                        <th>Merchant</th>
-                        <th>start at</th>
-                        <th>end at</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                    @foreach($deals as $deal)
-                        <tr class="myTable-r">
-                            <td>
-                                {{$deal->id}}
-                            </td>
-                            <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
-                                {{$deal->title}}
-                            </td>
-                            <td>
-                                <b>{{$deal->merchant->name}}</b>
-                            </td>
-                            <td>
-                                {{$deal->start_at}}
-                            </td>
-                            <td>
-                                {{$deal->end_at}}
-                            </td>
-                            <td>
-                                {{$deal->status}}
-                            </td>
-                            <td class="px-5">
-                                <div class="row">
-                                <a class="col-6 MainButt btn" href="{{route('deals.edit',$deal)}}">Edit</a>
-                                <form class="col-6" method='post' action="{{route('deals.destroy', $deal)}}">
-                                    @method('DELETE')
-                                    @csrf
-                                <a class="btn btn-danger" onclick="return confirm('Are you sure you want delete ({{$deal->title}}) ?')" >Delete</a>
-                                </form>
-                                </div>
-                            </td>
-                        </tr>
-                        @include('popups.showDeal', $deal)
-                    @endforeach
-                </table>
-
-            <!--END Deals list table -->
-
+                @include('dashboards.admin_dashboard_tabs.deals')
             </div>
+
             <div class="tab-pane fade" id="nav-Users" role="tabpanel" aria-labelledby="nav-Users-tab">
                 <!-- Users list table -->
                 <h3>Users list</h3>

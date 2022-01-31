@@ -24,9 +24,10 @@ class CreateDealsTable extends Migration
             $table->string('pic3')->nullable();
             $table->datetime('start_at')->nullable();
             $table->datetime('end_at')->nullable();
+            $table->string('date')->nullable();
             $table->string('retails_price')->nullable();
-            $table->string('price')->nullable();
-            $table->string('description')->nullable();
+            $table->double('price')->nullable();
+            $table->longText('description')->nullable();
             $table->string('more_info')->nullable();
             $table->string('location')->nullable();
             $table->string('status')->default('Valid');

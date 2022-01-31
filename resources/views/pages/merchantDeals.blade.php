@@ -11,14 +11,14 @@
              {{$merchant->name}}
         </h1>
         <br>
-        @forelse($merchant->deals as $deal)
+        @forelse($merchantDeals as $deal)
             @include('deals.index')
         @empty
             <br>
             <h4> Sorry, "{{$merchant->name}}" did not have any deals for now.</h4>
         @endforelse
 
-        @foreach($merchant->deals as $deal)
+        @foreach($merchantDeals as $deal)
             @include('popups.showDeal')
         @endforeach
     </div>

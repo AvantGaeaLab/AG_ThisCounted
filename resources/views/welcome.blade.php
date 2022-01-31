@@ -7,7 +7,17 @@
                 <h6 class="alert alert-success">{{session('status')}}</h6>
             @endif
 
-            <div class="title m-b-md">
+                @if(session('error'))
+                    <div class="alert alert-danger " role="alert">
+                        <h4 class="alert-heading">{{session('error')}}</h4>
+                        <p></p>
+                        <hr>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+
+                <div class="title m-b-md">
                 ThisCounted
             </div>
             <!-- the main slider-->

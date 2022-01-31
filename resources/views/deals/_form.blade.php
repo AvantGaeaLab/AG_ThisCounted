@@ -23,6 +23,19 @@
     </select>
 </div>
 
+@isset($deal)
+    <div class="form-group mb-3">
+        <label  for="merchant">Deal </label>
+        <select id="merchant" class="form-select" name="status">
+                <option value="{{$deal->status}}" selected>{{$deal->status}}</option>
+                <option></option>
+                <option value="Valid">Valid</option>
+                <option value="Expired">Expired</option>
+                <option value="Deleted">Deleted</option>
+        </select>
+    </div>
+    @endisset
+
 <div class="form-group mb-3">
     <label for="start_at">Valid date start: @isset($deal->start_at)<br><span> current date <b>{{$deal->start_at}}</b></span>@endisset</label>
     <input type="date" name="start_at" class="form-control" placeholder="start at" @isset($deal) value={{$deal->start_at}} @endisset>
@@ -32,10 +45,13 @@
     <input type="date" name="end_at" class="form-control" placeholder="end at" @isset($deal) value={{$deal->end_at}}@endisset>
 </div>
 <div class="form-group mb-3">
+    <input type="text" name="date" class="form-control" placeholder="the date of the deal" @isset($deal) value={{$deal->date}}@endisset>
+</div>
+<div class="form-group mb-3">
     <input type="text" name="retails_price" class="form-control" placeholder="retails_price" @isset($deal) value="{{$deal->retails_price}}"@endisset>
 </div>
 <div class="form-group mb-3">
-    <input type="text" name="price" class="form-control" placeholder="price" @isset($deal) value="{{$deal->price}}"@endisset>
+    <input type="number" step="any" min="0" name="price" class="form-control" placeholder="price" @isset($deal) value="{{$deal->price}}"@endisset>
 </div>
 <div class="form-group mb-3">
     <textarea type="textarea" name="description" class="form-control" placeholder="description" >@isset($deal) {{$deal->description}}@endisset</textarea>
@@ -64,7 +80,7 @@
     <label for="pic3"> Deal pic 3 </label>
     <input type="file" name="pic3" class="form-control" >
     @isset($deal->pic3)
-        <img src="{{asset('uploads/deals_pics/'.$deal->pic3)}}"  width="480px" height="720px" >
+        <img src="{{asset('uploads/deals_pics/'.$deal->pic3)}}"  width="480px" height="auto" >
     @endisset
 </div>
 <button type="submit" class="MainButt btn mt-2">{{$submitText}}</button>
