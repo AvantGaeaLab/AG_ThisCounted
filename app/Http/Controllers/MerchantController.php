@@ -9,24 +9,10 @@ use Illuminate\Support\Facades\File;
 
 class MerchantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function __construct()
     {
-        //
+        $this->middleware('auth')->except('merDeals');
     }
 
     /**
@@ -54,29 +40,6 @@ class MerchantController extends Controller
         return redirect()-> back()->with('status','Merchant Added Successfully');
 
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Merchant  $merchant
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Merchant $merchant)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Merchant  $merchant
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Merchant $merchant)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -119,9 +82,14 @@ class MerchantController extends Controller
         if(Auth::id() > 3){
             return abort(401);
         }
-        $merchant->delete();
+        $merchant->name = "Deleted merchant";
+        foreach($merchant->deals as $Dealsstatus)
+            $Dealsstatus->status = "Deleted";
+        $Dealsstatus->update();
+
         return redirect()->back()->with('status','The Merchant Deleted Successfully');
     }
+
     public function merDeals( Merchant $merchant){
         $merchantDeals = $merchant->deals->where('status', 'Valid');
         return view('pages.merchantDeals', compact('merchant','merchantDeals'));

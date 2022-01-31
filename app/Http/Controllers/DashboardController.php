@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show', 'catDeals');
+    }
+
     public function user_dashboard(){
         $order = Order::where('user_id', Auth::id())->get();;
         return view('dashboards/user_dashboard', compact('order'));
