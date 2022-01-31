@@ -22,7 +22,7 @@
 
         <hr>
         <h1 class="mt-5"><b>Indoor Activities</b></h1>
-        @forelse($Indoor->deals as $deal)
+        @forelse($Indoor as $deal)
             @include('deals.index', $deal)
         @empty
             <br>
@@ -31,7 +31,7 @@
         <hr>
 
         <h1 class="mt-5"><b>Outdoor Activities</b></h1>
-        @forelse($Outdoor->deals as $deal)
+        @forelse($Outdoor as $deal)
             @include('deals.index', $deal)
         @empty
             <br>
@@ -42,6 +42,12 @@
         @foreach($lastDeals as $deal)
             @include('popups.showDeal')
         @endforeach
+            @foreach($Indoor as $deal)
+                @include('popups.showDeal')
+            @endforeach
+            @foreach($Outdoor as $deal)
+                @include('popups.showDeal')
+            @endforeach
     </div>
 
     @include('components.addFavoritejs')

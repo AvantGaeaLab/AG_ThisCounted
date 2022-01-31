@@ -12,7 +12,6 @@ class Merchant extends Model
     use SoftDeletes;
     protected $dates = ['delete_at'];
 
-
     protected $fillable =[
         'name',
         'merchant_logo'

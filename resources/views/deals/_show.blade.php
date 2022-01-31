@@ -1,4 +1,4 @@
-<div>
+<div style="text-align:center">
     <div>
         <img class="myShow-img" src="{{asset('uploads/deals_pics/'.$deal->main_pic)}}">
     </div>
@@ -51,7 +51,6 @@
             <br>
         </div>
     @endisset
-
 
     <br/>
     @include('components.showCategories')

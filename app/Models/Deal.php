@@ -29,6 +29,24 @@ class Deal extends Model
         'status',
     ];
 
+    #Scopes
+    public function scopeValidDeal($query){
+        return $query->where('status', 'Valid');
+    }
+    public function scopeExpiredDeal($query){
+        return $query->where('status', 'Expired');
+    }
+    public function scopeDeletedDeal($query){
+        return $query->where('status', 'Deleted');
+    }
+
+    public function scopefindCat($query, $catId){
+        return $query->whereRelation('categories', 'id' , $catId);
+    }
+
+
+
+    #Relations
     public function user(){
         return$this->belongsTo(User::class);
     }

@@ -22,7 +22,9 @@ class DashboardController extends Controller
             return abort(401);
         }
         $orders = Order::all();
-        $deals=Deal::all();
+        $validDeals=Deal::ValidDeal()->latest()->get();
+        $expiredDeals=Deal::ExpiredDeal()->latest()->get();
+        $deletedDeals=Deal::DeletedDeal()->latest()->get();
         $users=User::all();
         $merchants = Merchant::all();
         $categories = Category::all()->pluck('title', 'id');
@@ -32,7 +34,9 @@ class DashboardController extends Controller
             'users',
             'categories',
             'merchants',
-            'deals',
+            'validDeals',
+            'expiredDeals',
+            'deletedDeals',
             'orders',
             'dealCategories'
         ));

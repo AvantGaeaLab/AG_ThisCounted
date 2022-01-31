@@ -36,10 +36,14 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
+        if($request->status != "Valid"){
+            return redirect('/')->with('error', 'The deal is invalid');
+        }
+
         $request->validate([
             'quantity' => 'min:1|max:50|required',
         ]);
@@ -63,7 +67,7 @@ class OrderController extends Controller
                 $order->used++;
                 if($order->used >= $order->quantity) {$order['status']='Used';}
                 $order->update();
-                return redirect('user_dashboard')->with('status', 'The order is Valid')->with('orderTitle', $request->order_title);
+                return redirect('user_dashboard')->with('status', 'The order is Redemmed')->with('orderTitle', $request->order_title);
             }else{
                 return redirect('user_dashboard')->with('error', 'The code is Expire');
             }

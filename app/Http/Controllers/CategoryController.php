@@ -109,7 +109,9 @@ class CategoryController extends Controller
         return redirect()->back()->with('status','The category Deleted Successfully');
     }
     public function catDeals(Category $category){
-        $catDeals = Category::find($category->id);
+        $category = Category::find($category->id);
+        $catDeals = Deal::findCat($category->id)
+            ->ValidDeal()->get();
         return view('pages.categoryDeals', compact( 'category','catDeals'));
     }
 }
