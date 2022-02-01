@@ -1,22 +1,23 @@
 /*Temp*/
 @import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap');
 
-html{
-    height: 100%;
-    box-sizing: border-box;
-}
-body {
-    min-height: 100vh;
-    font-family: 'Raleway', serif;
-    max-width: 100%;
-    font-weight: 500;
-    overflow: initial;
+html, body {
     background-image: url('bg-pic.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    font-family: 'Raleway', serif;
+    max-width: 100%;
+    font-weight: 500;
+    overflow: initial;
+    height: 100vh;
     margin: 0;
 }
+img {
+    padding: 0;
+    margin: 0 auto;
+}
+
 .myContainer{
     min-height: 70vh;
     position: relative;
@@ -73,6 +74,7 @@ body {
 
 .mainCat-img{
     display: inline-block;
+    padding: 0;
     margin: 0 auto;
     width: 26rem;
     height: 27rem;
@@ -87,17 +89,16 @@ body {
  }
 
  .sub-img-student{
+     padding: 0;
      margin: 0 auto;
-     width: 50rem;
-     height: 30rem;
-     border-radius: 25px;
-
+     max-height: 100%;
+     max-width: 100%;
  }
 
 .flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
 }
 
 .position-ref {
@@ -115,7 +116,7 @@ body {
 }
 
 .title {
-    font-size: 84px;
+    font-size: 8vh;
 }
 
 .links > a {

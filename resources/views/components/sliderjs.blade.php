@@ -12,15 +12,24 @@
         autoplaySpeed: 2000,
         responsive: [
             {
-                breakpoint: 1920,
+                breakpoint: 1400,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 1199,
                 settings: {
                     slidesToShow: 5,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                     infinite: true,
                     dots: true
                 }
             },{
-                breakpoint: 1025,
+                breakpoint: 1000,
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 1,
@@ -29,14 +38,14 @@
                 }
             },
             {
-                breakpoint: 700,
+                breakpoint: 750,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 500,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1
