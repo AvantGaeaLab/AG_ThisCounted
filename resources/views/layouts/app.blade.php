@@ -6,7 +6,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
     <!-- Scripts -->
@@ -18,6 +17,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="icon" href="{{ url('favicon.ico') }}">
+    <link rel="shortcut icon" sizes="114x114" href="{{ asset('favicon.ico') }}">
+
+
     <!--bootstrap 5.1-->
 
     <!-- bootstrap icons-->
@@ -35,8 +38,8 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
 </head>
-<body class="flex-wrapper myBg antialiased">
-    <div id="app" class="myContainer0 ">
+<body class="flex-wrapper myBg">
+    <div id="app">
         <!-- Header -->
         @include('layouts.header')
         <!-- END Header -->

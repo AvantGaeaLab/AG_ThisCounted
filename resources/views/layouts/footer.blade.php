@@ -17,7 +17,7 @@
                             <div>
                                 <div>
                                     <input type="email" class="form-control" placeholder="Email" />
-                                    <button type="submit" class="btn MainButt">Subscribe</button>
+                                    <button type="submit" class="btn MainButt mt-1">Subscribe</button>
                                 </div>
                             </div>
                         </form>
@@ -32,9 +32,9 @@
                             </a>
                             <div>
                                 <p>
-                                    <strong>2022 ThisCounted. All rights reserved.
-                                        <br>design by Avant Gaea
-                                    </strong>
+                                    <strong>2022 ThisCounted. All rights reserved.</strong>
+                                    <br>
+                                    <span><a  style="color:black;" href="http://www.avantgaea.com/">design by Avant Gaea</a></span>
                                 </p>
                             </div>
                         </div>
@@ -42,9 +42,15 @@
                     <!-- END Logo&Rights -->
 
                     <div class="col mt-auto mb-auto">
-                        <img src="https://img.icons8.com/fluency/48/000000/telegram-app.png"/>
-                        <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/>
+                            <a href="https://t.me/ThisCounted" target="_blank">
+                                <img src="https://img.icons8.com/fluency/48/000000/telegram-app.png"/>
+                            </a>
+                            <a href="https://www.instagram.com/thiscounted/" target="_blank"  >
+                                <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/>
+                            </a>
+                        <a href="mailto:info@thiscounted.com" target="_blank"  >
                         <img src="https://img.icons8.com/ios/50/000000/chat-message--v1.png"/>
+                        </a>
                     </div>
                 </div>
             </div>

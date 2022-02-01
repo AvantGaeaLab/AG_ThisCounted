@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Welcome'))
+@section('title', __("It's time to get out"))
 @section('content')
         <div class="content">
             @if (session('status'))
@@ -15,39 +15,36 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-
-
-                <div class="title m-b-md">
-                ThisCounted
-            </div>
             <!-- the main slider-->
-            <div class="myContainer">
+            <div>
                 <div class="row mb-5">
                     <a class="col" href="{{route('foodPage')}}">
-                    <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/food.jpg')}}" alt="">
+                    <img class='mainCat-img mt-3' src="{{asset('images/mainCats_imgs/food.jpg')}}" alt="">
                     </a>
                     <a class="col" href="{{route('categories.deals', $category=2)}}" target="_blank">
-                    <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/drinks.jpg')}}" alt="">
+                    <img class='mainCat-img mt-3' src="{{asset('images/mainCats_imgs/drinks.jpg')}}" alt="">
                     </a>
                     <a class="col" href="{{route('activitiesPage')}}">
-                    <img class='mainCat-img mt-3' src="{{asset('uploads/mainCats_imgs/Act_Category.jpg')}}" alt="">
+                    <img class='mainCat-img mt-3' src="{{asset('images/mainCats_imgs/Act_Category.jpg')}}" alt="">
                     </a>
                 </div>
                 <div class="row">
                     <a class="col" href="{{route('categories.deals', $category=5)}}" target="_blank">
-                    <img class="subCat-img" src="{{asset('uploads/mainCats_imgs/SnacksAndDesserts_Category.jpg')}}" alt="" >
+                    <img class="subCat-img mt-3" src="{{asset('images/mainCats_imgs/SnacksAndDesserts_Category.jpg')}}" alt="" >
                     </a>
                     <a class="col" href="{{route('categories.deals', $category=3)}}" target="_blank">
-                    <img class="subCat-img" src="{{asset('uploads/mainCats_imgs/Under10_Category.jpg')}}" alt="">
+                    <img class="subCat-img mt-3" src="{{asset('images/mainCats_imgs/Under10_Category.jpg')}}" alt="">
                     </a>
                     <a class="col" href="{{route('categories.deals', $category=4)}}" target="_blank">
-                    <img class="subCat-img" src="{{asset('uploads/mainCats_imgs/Under20_Category.jpg')}}" alt="">
+                    <img class="subCat-img mt-3" src="{{asset('images/mainCats_imgs/Under20_Category.jpg')}}" alt="">
                     </a>
                 </div>
                 <br>
+                <div style="display: grid;height: 100%;">
                 <a class="merName" href="{{route('categories.deals', $category=6)}}" target="_blank">
-                <img class="sub-img-student" src="{{asset('uploads/mainCats_imgs/Student_exclusive.png')}}" alt="Student exclusive" >
+                <img class="sub-img-student" src="{{asset('images/mainCats_imgs/Student_exclusive.png')}}" alt="Student exclusive" >
                 </a>
+                </div>
             </div>
                 <!-- new deals slider-->
                 <br>
@@ -93,8 +90,8 @@
                             <h2>Sorry no content for now</h2>
                         @endforelse
                     </div>
-                            <hr>
                     @auth()
+                        <hr>
                         <h1>Favourite deals  </h1>
                         <div class="row slider mt-5">
                             @foreach($favDeals as $deal)
@@ -105,6 +102,15 @@
                                 @include('popups.showDeal')
                             @endforeach
                         @endauth
+                    <br>
+                    <hr>
+                    <div>
+                        <img class='sub-img-student mt-3' src="{{asset('images/thumbnails/Vendor Activty.png')}}" alt="Vendor Activity">
+                        <div class="row">
+                            <img class='subCat-img col mt-3' src="{{asset('images/thumbnails/Vendor Food.png')}}" alt="Vendor Activity">
+                            <img class='subCat-img col mt-3' src="{{asset('images/thumbnails/Telegram banner.png')}}" alt="Vendor Activity">
+                        </div>
+                    </div>
                 </div>
             </div>
                 <!-- Linking the popups -->
