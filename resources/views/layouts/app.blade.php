@@ -9,8 +9,10 @@
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
     <!-- Scripts -->
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
 
     <!-- for the sliders -->
@@ -37,6 +39,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     @include('components.Mailchimp')
+    @livewireStyles
 </head>
 <body class="flex-wrapper myBg">
     <div id="app">
