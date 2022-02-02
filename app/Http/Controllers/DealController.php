@@ -8,14 +8,31 @@ use App\Models\Merchant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class DealController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth')->except('show', 'catDeals','search');
     }
+    
+    private function handleImgDeal($request,$deal, $imgNum)
+    {
+        if($request->hasFile('main_pic')) {
+            $destination = 'uploads/deals_pics/'.$deal->main_pic;
+            if(File::exists($destination)){
+                Storage::delete($destination);
+                File::delete($destination);
+            }
+            $file = $request->file('main_pic');
+            $filename=$file->getClientOriginalName();
+            $path = $request->file('main_pic')->storeAs('uploads/deals_pics',$filename);
+            $file->move('uploads/deals_pics', $filename);
+            $deal->main_pic = $filename;
+        }
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -66,13 +83,8 @@ class DealController extends Controller
         $categories = array_values($request->categories);
         $deal = $user->deals()->create($request->except('categories'));
         $deal->categories()->attach($categories);
-        if($request->hasFile('main_pic')) {
-            $file = $request->file('main_pic');
-            $extension = $file->getClientOriginalExtension();
-            $filename=time().'.'.$extension;
-            $file->move('uploads/deals_pics', $filename);
-            $deal->main_pic = $filename;
-        }
+        $this->handleImgDeal($request,$deal,'main_pic');
+
         $deal->save();
         return redirect("admin_dashboard")->with('status','The Deal Added Successfully');
     }
@@ -135,18 +147,8 @@ class DealController extends Controller
         $deal->description = $request->description;
         $deal->more_info = $request->more_info;
         $deal->location = $request->location;
+        $this->handleImgDeal($request,$deal,'main_pic');
 
-        if($request->hasFile('main_pic')) {
-            $destination = 'uploads/deals_pics/'.$deal->main_pic;
-            if(File::exists($destination)){
-                File::delete($destination);
-            }
-            $file = $request->file('main_pic');
-            $extension = $file->getClientOriginalExtension();
-            $filename=time().'.'.$extension;
-            $file->move('uploads/deals_pics', $filename);
-            $deal->main_pic = $filename;
-        }
         $deal->update();
         $deal->categories()->sync($request->categories);
         return redirect('admin_dashboard')->with('status','The deal updated successfully');
