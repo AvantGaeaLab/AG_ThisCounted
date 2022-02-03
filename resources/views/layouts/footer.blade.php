@@ -3,7 +3,6 @@
         <!-- Grid container -->
         <div class="container">
             <!-- Newsletter Subs -->
-            <div class="container">
                 <div class="row">
                     <div class="col">
                         <form action="">
@@ -54,6 +53,5 @@
                     </div>
                 </div>
             </div>
-        </div>
     </footer>
 </div>
