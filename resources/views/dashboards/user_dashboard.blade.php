@@ -3,7 +3,10 @@
 @section('content')
 
     <style>
-        .user-td:nth-of-type(1):before { background-color: #ffce23; padding-inline:6px; font-weight: bold; content: "ID"; }
+        @media
+        only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px)  {
+            .user-td:nth-of-type(1):before { background-color: #ffce23; padding-inline:6px; font-weight: bold; content: "ID"; }
         .user-td:nth-of-type(2):before { font-weight: bold; content: "Title"; }
         .user-td:nth-of-type(3):before { font-weight: bold; content: "Merchant"; }
         .user-td:nth-of-type(4):before { font-weight: bold; content: "Expire on"; }
@@ -11,6 +14,7 @@
         .user-td:nth-of-type(6):before { font-weight: bold; content: "Used"; }
         .user-td:nth-of-type(7):before { font-weight: bold; content: "Total"; }
         .user-td:nth-of-type(8):before { font-weight: bold; content: "Status"; }
+        }
     </style>
 
     <div class="content">

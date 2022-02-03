@@ -17,34 +17,30 @@
                 @endif
             <!-- the main slider-->
             <div>
-                <div class="row mb-5">
+                <div class="row">
                     <a class="col" href="{{route('foodPage')}}">
-                    <img class='mainCat-img mt-3' src="{{asset('images/mainCats_imgs/food.jpg')}}" alt="">
+                    <img class='mainCat-img' src="{{asset('images/mainCats_imgs/food.jpg')}}" alt="">
                     </a>
                     <a class="col" href="{{route('categories.deals', $category=2)}}" target="_blank">
-                    <img class='mainCat-img mt-3' src="{{asset('images/mainCats_imgs/drinks.jpg')}}" alt="">
+                    <img class='mainCat-img' src="{{asset('images/mainCats_imgs/drinks.jpg')}}" alt="">
                     </a>
                     <a class="col" href="{{route('activitiesPage')}}">
-                    <img class='mainCat-img mt-3' src="{{asset('images/mainCats_imgs/Act_Category.jpg')}}" alt="">
+                    <img class='mainCat-img' src="{{asset('images/mainCats_imgs/Act_Category.jpg')}}" alt="">
                     </a>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <a class="col" href="{{route('categories.deals', $category=5)}}" target="_blank">
-                    <img class="subCat-img mt-3" src="{{asset('images/mainCats_imgs/SnacksAndDesserts_Category.jpg')}}" alt="" >
+                    <img class="subCat-img" src="{{asset('images/mainCats_imgs/SnacksAndDesserts_Category.jpg')}}" alt="" >
                     </a>
                     <a class="col" href="{{route('categories.deals', $category=3)}}" target="_blank">
-                    <img class="subCat-img mt-3" src="{{asset('images/mainCats_imgs/Under10_Category.jpg')}}" alt="">
+                    <img class="subCat-img" src="{{asset('images/mainCats_imgs/Under10_Category.jpg')}}" alt="">
                     </a>
                     <a class="col" href="{{route('categories.deals', $category=4)}}" target="_blank">
-                    <img class="subCat-img mt-3" src="{{asset('images/mainCats_imgs/Under20_Category.jpg')}}" alt="">
+                    <img class="subCat-img" src="{{asset('images/mainCats_imgs/Under20_Category.jpg')}}" alt="">
                     </a>
+                    <img class="sub-img-student" href="{{route('categories.deals', $category=6)}}" src="{{asset('images/mainCats_imgs/Student_exclusive.png')}}" alt="Student exclusive" >
                 </div>
-                <br>
-                <div style="display: grid;height: 100%;">
-                <a class="merName" href="{{route('categories.deals', $category=6)}}" target="_blank">
-                <img class="sub-img-student" src="{{asset('images/mainCats_imgs/Student_exclusive.png')}}" alt="Student exclusive" >
-                </a>
-                </div>
+
             </div>
                 <!-- new deals slider-->
                 <br>

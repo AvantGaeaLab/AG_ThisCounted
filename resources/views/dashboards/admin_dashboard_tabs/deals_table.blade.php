@@ -1,11 +1,15 @@
 <style>
-    .admin-deal-btns-td{ padding-left: 50px; padding-top: 6px;text-align: center}
+    @media
+    only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px)  {
+        .admin-deal-btns-td{ padding-left: 50px; padding-top: 6px;text-align: center}
     .admin-deal-td:nth-of-type(1):before { background-color: #ffce23; padding-inline:6px; font-weight: bold; content: "ID"; }
     .admin-deal-td:nth-of-type(2):before { font-weight: bold; content: "Deal title"; }
     .admin-deal-td:nth-of-type(3):before { font-weight: bold; content: "Merchant"; }
     .admin-deal-td:nth-of-type(4):before { font-weight: bold; content: "start at"; }
     .admin-deal-td:nth-of-type(5):before { font-weight: bold; content: "end at"; }
     .admin-deal-td:nth-of-type(6):before { font-weight: bold; content: "Status"; }
+    }
 </style>
 
 <table>
