@@ -2,6 +2,17 @@
 @section('title', __('User dashboard'))
 @section('content')
 
+    <style>
+        .user-td:nth-of-type(1):before { background-color: #ffce23; padding-inline:6px; font-weight: bold; content: "ID"; }
+        .user-td:nth-of-type(2):before { font-weight: bold; content: "Title"; }
+        .user-td:nth-of-type(3):before { font-weight: bold; content: "Merchant"; }
+        .user-td:nth-of-type(4):before { font-weight: bold; content: "Expire on"; }
+        .user-td:nth-of-type(5):before { font-weight: bold; content: "Quantity"; }
+        .user-td:nth-of-type(6):before { font-weight: bold; content: "Used"; }
+        .user-td:nth-of-type(7):before { font-weight: bold; content: "Total"; }
+        .user-td:nth-of-type(8):before { font-weight: bold; content: "Status"; }
+    </style>
+
     <div class="content">
         @if (session('status'))
             <div class="alert alert-success" role="alert">
@@ -24,8 +35,9 @@
 
             <h1 class="s-b-sm">User dashboard</h1>
 
-            <table class="table table-bordered">
-                <tr class="myTable-h">
+            <table>
+                <thead>
+                <tr>
                     <th>ID</th>
                     <th>Title</th>
                     <th>Merchant</th>
@@ -36,22 +48,24 @@
                     <th>Status</th>
                     <th>Merchant code</th>
                 </tr>
+                </thead>
                 @foreach($order as $item)
-                <tr class="myTable-r">
-                    <td>{{$item->id}}</td>
+                    <tbody>
+                    <tr>
+                    <td class="user-td td-fullTable">{{$item->id}}</td>
                     @foreach($item->deals as $deal)
-                    <td  data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->title}}</td>
-                    <td><a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
+                    <td class="user-td td-fullTable" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->title}}</td>
+                    <td class="user-td td-fullTable" ><a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
                         {{$deal->merchant->name}}
                         </a></td>
-                    <td>{{\Carbon\Carbon::parse($deal->end_at)->format('Y-m-d')}}</td>
+                    <td class="user-td td-fullTable">{{\Carbon\Carbon::parse($deal->end_at)->format('Y-m-d')}}</td>
                         @include('popups.showDeal')
                     @endforeach
-                    <td>{{$item->quantity}}</td>
-                    <td>{{$item->used}}</td>
-                    <td>{{$item->total}}</td>
-                    <td>{{$item->status}}</td>
-                    <td>
+                    <td class="user-td td-fullTable">{{$item->quantity}}</td>
+                    <td class="user-td td-fullTable">{{$item->used}}</td>
+                    <td class="user-td td-fullTable">{{$item->total}}</td>
+                    <td class="user-td td-fullTable">{{$item->status}}</td>
+                    <td class="user-td">
                         @if($item->status == 'Valid')
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CheckOrder{{$item->id}}">
                             merchant code
@@ -87,8 +101,12 @@
                             @endif
                     </td>
                 </tr>
+             </tbody>
                 @endforeach
             </table>
+
+
+
     </div>
 
 @endsection

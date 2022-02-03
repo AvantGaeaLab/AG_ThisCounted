@@ -179,26 +179,75 @@ img {
 .tab-content{
     font-size: large;
 }
+
 /*END Tabs*/
 
 /* table */
-.myTable{
-    align-items: center;
-    align-self: center;
-    justify-content:center;
-
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
-.myTable-h{
-    background-color: #f5ca3d;
-    color: #000 ;
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background:  #fff9e4;
 }
-.myTable-r{
-    margin-top:0 ;
-    text-align:center;
-    background-color: #fff9e4 ;
+th {
+    background: #f5ca3d;
+    color: black;
+    font-weight: bold;
+}
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: center;
 }
 .myTable-img{
-    max-height:140px;
+    max-height: 140px;
+}
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid #b1b1b1; margin-top: 9px }
+
+    td {
+        /* Behave  like a "row" */
+        border-bottom: 1px solid #ffefaf;
+        position: relative;
+        text-align: center;
+        min-height:42px;
+    }
+    .td-fullTable {
+        /* Behave  like a "row" */
+        border-bottom: 1px solid #ffefaf;
+        position: relative;
+        text-align: left;
+        min-height:42px;
+        padding-left: 50%;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
 }
 /* END table */
 
