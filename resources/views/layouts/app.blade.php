@@ -36,7 +36,7 @@
     <!-- CSS only -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-
+    @include('components.Mailchimp')
 </head>
 <body class="flex-wrapper myBg">
     <div id="app">
@@ -56,6 +56,7 @@
             @yield('content')
         </main>
         <!-- FOOTER -->
+        @include('components.LiveChat')
         @include('layouts.footer')
     </div>
 </body>
