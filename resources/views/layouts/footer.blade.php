@@ -5,21 +5,10 @@
             <!-- Newsletter Subs -->
                 <div class="row">
                     <div class="col">
-                        <form action="">
-                            <!--Grid row-->
-                            <!--Grid column-->
-                            <div>
-                                <p>
-                                    <strong>Sign up for our newsletter</strong>
-                                </p>
-                            </div>
-                            <div>
-                                <div>
-                                    <input type="email" class="form-control" placeholder="Email" />
-                                    <button type="submit" class="btn MainButt mt-1">Subscribe</button>
-                                </div>
-                            </div>
-                        </form>
+                        @include('components.Mailchimp')
+                        <p>
+
+                        </p>
                     </div>
                     <!-- End Newsletter Subs -->
 

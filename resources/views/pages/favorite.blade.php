@@ -22,15 +22,18 @@
     <div class="tab-content" id="nav-tabContent">
             <!-- Favorite Deals -->
         <div class="tab-pane fade show active" id="nav-deals" role="tabpanel" aria-labelledby="nav-deals-tab">
-            <table class="table table-bordered myTable">
-                <tr class="myTable-h">
+            <table>
+                <thead>
+                <tr>
                     <th>Deal</th>
                     <th>Title</th>
                     <th>Merchant</th>
                     <th>price</th>
                     <th>Remove</th>
                 </tr>
+                </thead>
                 @foreach($deals as $deal)
+                    <tbody>
                 <tr class="myTable-r">
                     <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
                         <img class="myShow-img" src="{{asset('uploads/deals_pics/'.$deal->main_pic)}}" width="70" height="70"  alt="{{$deal->title}}">
@@ -46,6 +49,7 @@
                         </a>
                     </td>
                 </tr>
+                    </tbody>
                     @include('popups.showDeal')
                 @endforeach
 
@@ -53,17 +57,20 @@
         </div>
         <!-- Favorite Merchants -->
         <div class="tab-pane fade" id="nav-merchants" role="tabpanel" aria-labelledby="nav-merchants-tab">
-            <table class="table table-bordered ">
-                <tr class="myTable-h">
+            <table>
+                <thead>
+                <tr>
                     <th>Logo</th>
                     <th>Merchant</th>
                     <th>Remove</th>
                 </tr>
+                </thead>
                 @foreach($merchants as $merchant)
-                <tr class="myTable-r">
+                <tbody>
+                    <tr>
                     <td>
                         @isset($merchant->merchant_logo)
-                            <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$merchant->merchant_logo)}}"  width="480px" height="720px" >
+                            <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$merchant->merchant_logo)}}">
                         @endisset
                     </td>
                     <td>
@@ -74,7 +81,9 @@
                         </a>
                     </td>
                 </tr>
-                    @endforeach
+            </tbody>
+
+                @endforeach
             </table>
 
         </div>
