@@ -25,26 +25,12 @@ class DashboardController extends Controller
 
     public function admin_dashboard(Request $request, Deal $deal){
         if(Auth::id() > 3){
-            return abort(401);
-        }
-        $orders = Order::all();
-        $validDeals=Deal::ValidDeal()->latest()->get();
-        $expiredDeals=Deal::ExpiredDeal()->latest()->get();
-        $deletedDeals=Deal::DeletedDeal()->latest()->get();
-        $users=User::all();
-        $merchants = Merchant::all();
+            return abort(401);}
+
         $categories = Category::all()->pluck('title', 'id');
 
-        $dealCategories = $deal->categories()->pluck('id')->toArray();
         return view('dashboards/admin_dashboard', compact(
-            'users',
             'categories',
-            'merchants',
-            'validDeals',
-            'expiredDeals',
-            'deletedDeals',
-            'orders',
-            'dealCategories'
         ));
     }
 

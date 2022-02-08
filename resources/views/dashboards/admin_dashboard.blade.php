@@ -24,24 +24,24 @@
                 <!-- Deals Tab -->
                 <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-Deals" role="tabpanel" aria-labelledby="nav-Deals-tab">
-                    @include('dashboards.admin_dashboard_tabs.deals')
+                    @livewire('admin_dashboard.deals-table')
                 </div>
 
                 <!-- Users Tab -->
                 <div class="tab-pane fade" id="nav-Users" role="tabpanel" aria-labelledby="nav-Users-tab">
                     <h3>Users list</h3>
-                    @include('dashboards.admin_dashboard_tabs.users')
+                    @livewire('admin_dashboard.users-table')
                 </div>
 
                 <!-- Orders Tab -->
                 <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-orders-tab">
                     <h3>Orders list</h3>
-                    @include('dashboards.admin_dashboard_tabs.orders')
+                    @livewire('admin_dashboard.orders-table')
                 </div>
 
                 <!--Merchant Tab-->
                 <div class="tab-pane fade" id="nav-merchants" role="tabpanel" aria-labelledby="nav-merchants-tab"><!--list of merchants -->
-                    @include('dashboards.admin_dashboard_tabs.merchants')
+                    @livewire('admin_dashboard.merchants-table')
                 </div>
                 <!--Categories Tab -->
                 <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab">
@@ -49,4 +49,5 @@
                 </div>
         </div>
     </div>
+    @livewireScripts
 @endsection

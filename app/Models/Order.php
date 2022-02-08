@@ -22,6 +22,11 @@ class Order extends Model
         'status'
     ];
 
+    public static function search($search){
+        return empty($search) ? static::query()
+            : static::query()->where('id', 'like', '%'.$search.'%');
+    }
+
     //relations
     public function user(){
         return $this->belongsTo(User::class,'user_id');

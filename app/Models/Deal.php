@@ -44,7 +44,11 @@ class Deal extends Model
         return $query->whereRelation('categories', 'id' , $catId);
     }
 
-
+    public static function search($search){
+        return empty($search) ? static::query()
+            : static::query()->where('id', 'like', '%'.$search.'%')
+                ->orWhere('title', 'like', '%'.$search.'%');
+    }
 
     #Relations
     public function user(){
