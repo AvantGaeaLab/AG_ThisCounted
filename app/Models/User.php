@@ -65,4 +65,11 @@ class User extends Authenticatable
         return self::merchantsFavorite()->where('merchant_id', $merchantId)->exists();
     }
 
+    public static function search($search){
+        return empty($search) ? static::query()
+            : static::query()
+                ->Where('name', 'like', '%'.$search.'%')
+                ->orWhere('email', 'like', '%'.$search.'%')
+                ->orWhere('phone_number', 'like', '%'.$search.'%');
+    }
 }

@@ -1,3 +1,4 @@
+<div>
 <button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#merchantModal" >New merchant</button>
 <div class="modal fade" id="merchantModal" tabindex="-1" aria-labelledby="merchantModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -17,7 +18,23 @@
 <!--END add new merchant -->
 <!--list of merchants -->
 <h3>Merchants list</h3>
-<table>
+    <!-- Search Field -->
+    <div class="mb-2" style="display: inline-block">
+        <input wire:model.debounce.100ms="search" type="text" class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search merchant...">
+        <select wire:model="orderAsc" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+            <option value="0">Descending</option>
+            <option value="1">Ascending</option>
+        </select>
+        <select wire:model="perPage" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+        </select>
+    </div>
+    <!--END Search Field -->
+
+    <table>
     <thead>
     <tr>
         <th>Logo</th>
@@ -77,3 +94,7 @@
         </tbody>
     @endforeach
 </table>
+    <div  style="font-size: 24px;margin-top:18px; padding-left:45%;">
+    </div>
+    {!! $merchants->links() !!}
+</div>

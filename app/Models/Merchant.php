@@ -17,6 +17,12 @@ class Merchant extends Model
         'merchant_logo'
     ];
 
+    public static function search($search){
+        return empty($search) ? static::query()
+            : static::query()
+                ->Where('name', 'like', '%'.$search.'%');
+    }
+
     public function deals(){
         return $this->hasMany(Deal::class,'merchant_id');
     }
