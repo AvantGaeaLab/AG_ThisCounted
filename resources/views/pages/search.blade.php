@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __("Search: ".$title))
+@section('title', __("Search: ".$search))
 @section('content')
 
     <div class="content">
@@ -8,21 +8,12 @@
         @endif
 
         <h1 class="s-b-sm">
-            Search about: {{$title}}
+            Search about: {{$search}}
         </h1>
-            <br>
-        @forelse($searchDeals as $deal)
-            @include('deals.index')
-            @empty
-                <br>
-                <h4> Sorry, your search "{{$title}}" did not match any deals. Please try again.</h4>
-            @endforelse
 
-            @foreach($searchDeals as $deal)
-                @include('popups.showDeal')
-            @endforeach
-    </div>
+        @livewire('live-search', ['search'=>$search])
 
     @include('components.addFavoritejs')
+    @livewireScripts
 @endsection
 

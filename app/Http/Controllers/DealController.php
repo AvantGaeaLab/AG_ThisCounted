@@ -16,7 +16,7 @@ class DealController extends Controller
     {
         $this->middleware('auth')->except('show', 'catDeals','search');
     }
-    
+
     private function handleImgDeal($request,$deal, $imgNum)
     {
         if($request->hasFile('main_pic')) {
@@ -172,9 +172,9 @@ class DealController extends Controller
     }
 
     function search(Request $request){
-        $title = $request->title;
-        $searchDeals = Deal::where("title", "like", "%".$title."%")->ValidDeal()->latest()->get();
-        return view('pages.search', compact('searchDeals', 'title'));
+        $search = $request->search;
+
+        return view('pages.search', compact('search',));
     }
 
 }

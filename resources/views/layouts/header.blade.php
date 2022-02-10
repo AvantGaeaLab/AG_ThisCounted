@@ -18,7 +18,7 @@
         <!-- Search bar -->
         <div class="navbar-nav col-md-4 col-lg-3 col-6 pe-lg-5"  style="display: inline">
             <form type="get" action="{{route('deals.search')}}" class="d-flex">
-                <input class="form-control me-2" type="search" name="title" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>
         </div>
