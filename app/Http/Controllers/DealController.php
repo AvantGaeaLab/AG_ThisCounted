@@ -97,7 +97,6 @@ class DealController extends Controller
      */
     public function show(Deal $deal)
     {
-        $title=$deal->title;
         return view('deals.show', compact('deal'));
     }
 

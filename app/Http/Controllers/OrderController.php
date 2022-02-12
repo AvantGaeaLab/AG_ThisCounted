@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Stripe;
+use Session;
+
 
 class OrderController extends Controller
 {
@@ -28,15 +31,32 @@ class OrderController extends Controller
             'quantity' => 'min:1|max:50|required',
         ]);
 
-        $user = Auth::user();
-        $order = $user->orders()->create($request->except( 'deals'));
-        $order->quantity = $request->quantity;
-        $order->deals()->attach($request->deal_id);
-        $order->total = $request->price*$request->quantity;
+        $total = $request->price*$request->quantity;
 
-        $order->save();
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $charge = Stripe\Charge::create ([
+            "amount" => $total*100,
+            "currency" => "SGD",
+            "source" => $request->stripeToken,
+            "description" => "id: ".$request->deal_id." title: ".$request->deal_title,
+        ]);
+        $chargeId =$charge['id'];
+        if($chargeId){
 
-        return redirect('user_dashboard')->with('status', 'the order added successfully');
+            $user = Auth::user();
+            $order = $user->orders()->create($request->except( 'deals'));
+            $order->quantity = $request->quantity;
+            $order->deals()->attach($request->deal_id);
+            $order->total = $total;
+
+            $order->save();
+
+
+            return redirect()->route('user_dashboard')->with('status', 'the order added successfully');
+        }else{
+
+            return redirect()->route('user_dashboard')->with('error', 'The payment failed');
+        }
     }
 
     public function CheckOrder(Request $request, Order $item)
