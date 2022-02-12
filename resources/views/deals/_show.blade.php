@@ -53,7 +53,7 @@
     @endisset
 
     <br/>
-    @include('components.showCategories')
     <br><hr>
-    @include('forms._placeOrder')
+    <a href="{{route('deals.show',$deal)}}" class="btn MainButt" >Buy now</a>
+
 </div>

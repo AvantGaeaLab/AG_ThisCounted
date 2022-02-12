@@ -13,6 +13,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
 
 
     <!-- for the sliders -->
