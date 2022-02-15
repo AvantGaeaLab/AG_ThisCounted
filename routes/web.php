@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DealController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MerchantController;
@@ -60,4 +61,9 @@ Route::get("category/{category}",[CategoryController::class,'catDeals'])->name("
 Route::get("food",[PageController::class,'foodPage'])->name("foodPage");
 Route::get("Activities",[PageController::class,'activitiesPage'])->name("activitiesPage");
 
+//Exports Routes
+Route::get("usersExport",[ExportController::class, 'UsersExport'])->name('UsersExport');
+Route::get("DealsExport",[ExportController::class, 'DealsExport'])->name('DealsExport');
+Route::get("MerchantsExport",[ExportController::class, 'MerchantsExport'])->name('MerchantsExport');
+Route::get("OrdersExport",[ExportController::class, 'OrdersExport'])->name('OrdersExport');
 
