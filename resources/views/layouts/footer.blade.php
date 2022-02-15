@@ -22,7 +22,7 @@
                                 <p>
                                     <strong>2022 ThisCounted. All rights reserved.</strong>
                                     <br>
-                                    <span><a  style="color:black;" href="http://www.avantgaea.com/">design by Avant Gaea</a></span>
+                                    <span><a  style="color:black; font-size:13px" href="http://www.avantgaea.com/">design by Avant Gaea</a></span>
                                 </p>
                             </div>
                         </div>
@@ -36,9 +36,8 @@
                             <a href="https://www.instagram.com/thiscounted/" target="_blank"  >
                                 <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/>
                             </a>
-                        <a href="mailto:info@thiscounted.com" target="_blank"  >
-                        <img src="https://img.icons8.com/ios/50/000000/chat-message--v1.png"/>
-                        </a>
+                        <a href="mailto:ThisCountd@gmail.com" target="_blank"  >
+                            <img src="https://img.icons8.com/color/50/000000/gmail--v2.png"/>                        </a>
                     </div>
                 </div>
             </div>

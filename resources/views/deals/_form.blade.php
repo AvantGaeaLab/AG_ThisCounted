@@ -4,11 +4,12 @@
 </div>
 <div class="form-group mb-3">
     @foreach($categories as $key =>$title)
-        <label for="category_{{$key}}">{{$title}}</label>
-        <input id="category_{{$key}}" type="checkbox" name="categories[]" value="{{$key}}"
-               @if(isset($deal) && in_array($key, $dealCategories)) checked
-            @endif>
-    @endforeach
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" id="category_{{$key}}" type="checkbox" name="categories[]" value="{{$key}}"
+               @if(isset($deal) && in_array($key, $dealCategories)) checked @endif>
+        <label class="form-check-label" for="category_{{$key}}">{{$title}}</label>
+        </div>
+        @endforeach
 </div>
 <div class="form-group mb-3">
     <label  for="merchant">Merchant</label>
@@ -84,5 +85,3 @@
     @endisset
 </div>
 <button type="submit" class="MainButt btn mt-2">{{$submitText}}</button>
-
-
