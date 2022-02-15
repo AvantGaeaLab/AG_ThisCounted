@@ -1,5 +1,4 @@
 <!--add new category -->
-<button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#categoryModal" >New category</button>
 <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -25,6 +24,7 @@
 <!--END add new category -->
 <!-- category list table -->
 <h3>Categories list</h3>
+<button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#categoryModal" >New category</button>
 
 <table>
     <thead>

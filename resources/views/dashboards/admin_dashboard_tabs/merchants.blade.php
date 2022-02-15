@@ -1,5 +1,4 @@
 <div>
-<button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#merchantModal" >New merchant</button>
 <div class="modal fade" id="merchantModal" tabindex="-1" aria-labelledby="merchantModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -19,6 +18,9 @@
 <!--list of merchants -->
 <h3>Merchants list</h3>
     <!-- Search Field -->
+    <a class="btn MainButt" href="{{route('MerchantsExport')}}">Download merchants list</a>
+    <button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#merchantModal" >New merchant</button>
+
     <div class="mb-2" style="display: inline-block">
         <input wire:model.debounce.100ms="search" type="text" class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search merchant...">
         <select wire:model="orderAsc" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">

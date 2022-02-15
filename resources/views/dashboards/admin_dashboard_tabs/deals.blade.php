@@ -12,7 +12,6 @@
         .admin-deal-td:nth-of-type(6):before { font-weight: bold; content: "Status"; }
     }
 </style>
-<button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#dealModal" >New deal</button>
 <div class="modal fade" id="dealModal" tabindex="-1" aria-labelledby="dealModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -32,8 +31,9 @@
 
 <!--Deals list table -->
 <h3>Deals list</h3>
- <!-- Valid Deals -->
-            <div class="m-2" style="display: inline-block">
+    <a class="btn MainButt" href="{{route('DealsExport')}}">Download Deals list</a>
+    <button class="MainButt btn m-2" data-bs-toggle="modal" data-bs-target="#dealModal" >New deal</button>
+    <div class="m-2" style="display: inline-block">
                 <input wire:model.debounce.100ms="search" type="text" class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search deals...">
                 <select wire:model="status" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option value="">All</option>

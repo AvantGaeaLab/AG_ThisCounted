@@ -8,8 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show', 'catDeals','search');
+    }
+
     public function UserUpdate(Request $request){
         if(Auth::id() > 3){
             return abort(401);

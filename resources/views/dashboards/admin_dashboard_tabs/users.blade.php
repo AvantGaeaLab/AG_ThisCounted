@@ -1,4 +1,5 @@
 <div>
+    <a class="btn MainButt" href="{{route('UsersExport')}}">Download users list</a>
     <!-- Search Field -->
     <div class="mb-2" style="display: inline-block">
         <input wire:model.debounce.100ms="search" type="text" class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search user...">
