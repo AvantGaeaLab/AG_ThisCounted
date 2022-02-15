@@ -38,7 +38,6 @@
                     <a class="col" href="{{route('categories.deals', $category=4)}}" target="_blank">
                     <img class="subCat-img" src="{{asset('images/mainCats_imgs/Under20_Category.jpg')}}" alt="">
                     </a>
-                    <img class="sub-img-student" href="{{route('categories.deals', $category=6)}}" src="{{asset('images/mainCats_imgs/Student_exclusive.png')}}" alt="Student exclusive" >
                 </div>
 
             </div>
@@ -77,7 +76,8 @@
                     </div>
                             <hr>
                     <a class="merName" href="{{route('categories.deals', $category=6)}}" target="_blank">
-                    <h1> Students exclusive Deals </h1>
+                        <h1> Students exclusive Deals </h1>
+                        <img class="sub-img-student" src="{{asset('images/mainCats_imgs/Student_exclusive.png')}}" alt="Student exclusive" >
                     </a>
                     <div class="row slider mt-5">
                         @forelse($studentsCat as $deal)

@@ -11,15 +11,15 @@
 
         <!-- Social Links -->
         <div class="mt-auto col-lg-2 mb-auto col-3 col-md-1 ms-md-3 me-md-3" >
-            <a href="https://t.me/ThisCounted" target="_blank" class="btn telegramBut MainButt ms-xl-3"> join our channel</a>
+            <a href="https://t.me/ThisCounted" target="_blank" class="btn telegramBut MainButt ms-xl-3"> Join Telegram channel</a>
             <a href="https://www.instagram.com/thiscounted/" target="_blank" class="btn instagramBut MainButt mt-1 ms-xl-4" > Instagram </a>
         </div>
 
         <!-- Search bar -->
-        <div class="navbar-nav col-md-4 col-lg-3 col-6 pe-lg-5"  style="display: inline">
+        <div class="navbar-nav col-md-4 col-lg-4 col-6 pe-lg-5"  style="display: inline">
             <form type="get" action="{{route('deals.search')}}" class="d-flex">
                 <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <button class="btn MainButt" type="submit">Search</button>
             </form>
         </div>
         <!-- END Search bar -->
