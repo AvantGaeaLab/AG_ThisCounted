@@ -1,4 +1,6 @@
 @csrf
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+
 <div class="form-group" >
     <input type="text" name="title" class="form-control mb-3" placeholder="Title" @isset($deal) value="{{$deal->title}}"@endisset required>
 </div>
@@ -52,16 +54,20 @@
     <input type="text" name="retails_price" class="form-control" placeholder="retails_price" @isset($deal) value="{{$deal->retails_price}}"@endisset>
 </div>
 <div class="form-group mb-3">
-    <input type="number" step="any" min="0" name="price" class="form-control" placeholder="price" @isset($deal) value="{{$deal->price}}"@endisset>
+    <input type="number" step="any" min="0" name="price" class="form-control" placeholder="price" @isset($deal) value="{{$deal->price}}"@endisset required>
+</div>
+
+<div class="form-group mb-3">
+    <label  for="description_editor">Description</label>
+    <textarea type="textarea" id="description_editor" name="description" class="form-control" placeholder="description" >@isset($deal) {{$deal->description}}@endisset</textarea>
 </div>
 <div class="form-group mb-3">
-    <textarea type="textarea" name="description" class="form-control" placeholder="description" >@isset($deal) {{$deal->description}}@endisset</textarea>
+    <label  for="more_info_editor">More information</label>
+    <textarea type="textarea" id="more_info_editor" name="more_info" class="form-control" placeholder="More info" >@isset($deal) {{$deal->more_info}}@endisset</textarea>
 </div>
 <div class="form-group mb-3">
-    <input type="text" name="more_info" class="form-control" placeholder="more info" @isset($deal) value="{{$deal->more_info}}"@endisset>
-</div>
-<div class="form-group mb-3">
-    <input type="text" name="location" class="form-control" placeholder="location" @isset($deal) value="{{$deal->location}}"@endisset >
+    <label class="form-label" for="location_editor">Location</label>
+    <textarea type="textarea" id="location_editor" name="location" class="form-control" placeholder="location" >@isset($deal) {{$deal->location}}@endisset</textarea>
 </div>
 <div>
     <label for="main_pic"> Deal Main pic </label>
@@ -85,3 +91,24 @@
     @endisset
 </div>
 <button type="submit" class="MainButt btn mt-2">{{$submitText}}</button>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#description_editor' ))
+        .catch( error => {
+            console.error( error );
+        } );
+
+    ClassicEditor
+        .create( document.querySelector( '#more_info_editor' ) ,
+        )
+        .catch( error => {
+            console.error( error );
+        } );
+    ClassicEditor
+        .create( document.querySelector( '#location_editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+</script>

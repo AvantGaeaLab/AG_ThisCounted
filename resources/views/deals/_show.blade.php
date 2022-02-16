@@ -19,12 +19,12 @@
     <br>
     @isset($deal->more_info)
     <div>
-        <h4>{{$deal->more_info}}</h4>
+        <h4>{!!nl2br($deal->more_info)!!}</h4>
     </div>
     @endisset
     @isset($deal->location)
     <div>
-        <h4>{{$deal->location}}</h4>
+        <h4>{!!nl2br($deal->location)!!}</h4>
     </div>
     @endisset
     <br>
@@ -42,12 +42,12 @@
 
 @isset($deal->retails_price)
         <div>
-            <h4>{{$deal->retails_price}}</h4>
+            <h4>Retails Price: ${{$deal->retails_price}}</h4>
         </div>
     @endisset
     @isset($deal->price)
         <div>
-            <h4>{{$deal->price}}</h4>
+            <h4>Price: ${{$deal->price}}</h4>
             <br>
         </div>
     @endisset
@@ -57,3 +57,4 @@
     <a href="{{route('deals.show',$deal)}}" class="btn MainButt" >Buy now</a>
 
 </div>
+

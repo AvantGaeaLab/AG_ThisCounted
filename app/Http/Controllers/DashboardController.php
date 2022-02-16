@@ -19,7 +19,7 @@ class DashboardController extends Controller
     }
 
     public function user_dashboard(){
-        $order = Order::where('user_id', Auth::id())->get();;
+        $order = Order::where('user_id', Auth::id())->latest()->get();;
         return view('dashboards/user_dashboard', compact('order'));
     }
 

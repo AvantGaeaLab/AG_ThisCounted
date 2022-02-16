@@ -28,8 +28,8 @@ class CreateDealsTable extends Migration
             $table->string('retails_price')->nullable();
             $table->double('price')->nullable();
             $table->longText('description')->nullable();
-            $table->string('more_info')->nullable();
-            $table->string('location')->nullable();
+            $table->longText('more_info')->nullable();
+            $table->longText('location')->nullable();
             $table->string('status')->default('Valid');
             $table->softDeletes();
         });

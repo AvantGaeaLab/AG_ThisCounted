@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
     <!-- Scripts -->
-
+    <script charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=56406d7ee42fc6d285aad2"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
@@ -64,5 +64,4 @@
         @include('layouts.footer')
     </div>
 </body>
-
 </html>

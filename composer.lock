@@ -1012,16 +1012,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.83.0",
+            "version": "v8.83.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "29bc8779103909ebc428478b339ee6fa8703e193"
+                "reference": "bddba117f8bce2f3c9875ca1ca375a96350d0f4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/29bc8779103909ebc428478b339ee6fa8703e193",
-                "reference": "29bc8779103909ebc428478b339ee6fa8703e193",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/bddba117f8bce2f3c9875ca1ca375a96350d0f4d",
+                "reference": "bddba117f8bce2f3c9875ca1ca375a96350d0f4d",
                 "shasum": ""
             },
             "require": {
@@ -1181,20 +1181,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-02-08T15:44:51+00:00"
+            "time": "2022-02-15T15:05:20+00:00"
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.14.0",
+            "version": "v2.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "0647a87140c7522e75826cffcadb3ad6e01f71e9"
+                "reference": "89937617fa144ddb759a740861a47c4f2fd2245b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/0647a87140c7522e75826cffcadb3ad6e01f71e9",
-                "reference": "0647a87140c7522e75826cffcadb3ad6e01f71e9",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/89937617fa144ddb759a740861a47c4f2fd2245b",
+                "reference": "89937617fa144ddb759a740861a47c4f2fd2245b",
                 "shasum": ""
             },
             "require": {
@@ -1245,20 +1245,20 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
-            "time": "2022-01-12T15:07:43+00:00"
+            "time": "2022-02-15T08:08:57+00:00"
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "65c9faf50d567b65d81764a44526545689e3fe63"
+                "reference": "9e4b005daa20b0c161f3845040046dc9ddc1d74e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/65c9faf50d567b65d81764a44526545689e3fe63",
-                "reference": "65c9faf50d567b65d81764a44526545689e3fe63",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/9e4b005daa20b0c161f3845040046dc9ddc1d74e",
+                "reference": "9e4b005daa20b0c161f3845040046dc9ddc1d74e",
                 "shasum": ""
             },
             "require": {
@@ -1304,7 +1304,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2022-02-01T16:29:39+00:00"
+            "time": "2022-02-11T19:23:53+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1376,16 +1376,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "64a0f43492c00780b2261c56cd7007a4f370d95b"
+                "reference": "1596de849ecafc0bcc891389da939012b67f9d5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/64a0f43492c00780b2261c56cd7007a4f370d95b",
-                "reference": "64a0f43492c00780b2261c56cd7007a4f370d95b",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/1596de849ecafc0bcc891389da939012b67f9d5c",
+                "reference": "1596de849ecafc0bcc891389da939012b67f9d5c",
                 "shasum": ""
             },
             "require": {
@@ -1431,9 +1431,9 @@
                 "ui"
             ],
             "support": {
-                "source": "https://github.com/laravel/ui/tree/v3.4.3"
+                "source": "https://github.com/laravel/ui/tree/v3.4.4"
             },
-            "time": "2022-02-08T14:19:32+00:00"
+            "time": "2022-02-10T22:38:33+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3455,16 +3455,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.113.0",
+            "version": "v7.114.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "1aef1ccffad48f39952073e0ed53cb8f3f1b1d8c"
+                "reference": "63be231686c6874befb5b3a47fb8effb4c30b78b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/1aef1ccffad48f39952073e0ed53cb8f3f1b1d8c",
-                "reference": "1aef1ccffad48f39952073e0ed53cb8f3f1b1d8c",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/63be231686c6874befb5b3a47fb8effb4c30b78b",
+                "reference": "63be231686c6874befb5b3a47fb8effb4c30b78b",
                 "shasum": ""
             },
             "require": {
@@ -3509,9 +3509,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.113.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.114.0"
             },
-            "time": "2022-02-03T23:46:29+00:00"
+            "time": "2022-02-15T22:48:31+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6505,16 +6505,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.13.2",
+            "version": "v1.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "ede5e861549be2c3a8b789cdb34203a5aef5b92a"
+                "reference": "53dd949a2134bd468f50defce85de566a7800dd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/ede5e861549be2c3a8b789cdb34203a5aef5b92a",
-                "reference": "ede5e861549be2c3a8b789cdb34203a5aef5b92a",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/53dd949a2134bd468f50defce85de566a7800dd9",
+                "reference": "53dd949a2134bd468f50defce85de566a7800dd9",
                 "shasum": ""
             },
             "require": {
@@ -6561,7 +6561,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-02-08T14:14:12+00:00"
+            "time": "2022-02-11T14:28:50+00:00"
         },
         {
             "name": "mockery/mockery",
