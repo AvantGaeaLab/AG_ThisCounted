@@ -62,7 +62,7 @@
                     <td class="user-td td-fullTable" ><a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
                         {{$deal->merchant->name}}
                         </a></td>
-                    <td class="user-td td-fullTable">{{\Carbon\Carbon::parse($deal->end_at)->format('Y-m-d')}}</td>
+                    <td class="user-td td-fullTable">{{($deal->end_at)}}</td>
                         @include('popups.showDeal')
                     @endforeach
                     <td class="user-td td-fullTable">{{$item->quantity}}</td>

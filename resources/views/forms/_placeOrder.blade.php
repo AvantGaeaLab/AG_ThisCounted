@@ -30,7 +30,8 @@
 @if($deal->status == "Valid")
                 <form action="{{route('orders.store')}}" method="post" id="payment-form">
                     @csrf
-                    <div class="">
+                    @if($deal->price > 0)
+                    <div>
                         <label for="card-element">
                             Credit or debit card
                         </label>
@@ -41,9 +42,19 @@
                         <!-- Used to display form errors. -->
                         <div id="card-errors" role="alert"></div>
                     </div>
+                    @endif
+
+                    @if($deal->price > 0)
+                        <div id="Buy_button" style="visibility: hidden">
                     <label class="mt-3 quantity" for="quantity">Quantity:</label>
-                    <input class="form-control mt-3" style="display: inline-block; width: 80px" type="number" id="quantity" name="quantity" min="1" max="50" value="1"><br><br>
-                    <button class="btn btn-primary ">Submit Payment ($<span class="amount" id="amount"></span>)</button>
+                    <input class="form-control mt-3" style="display: inline-block; width: 80px" type="number" id="quantity" name="quantity" min="1" max="50" value="1"><br>
+                    <button class="btn btn-primary mt-2">Submit Payment ($<span class="amount" id="amount"></span>)</button>
+                        </div>
+                    @elseif($deal->price == 0)
+                        <label class="mt-3 quantity" for="quantity">Quantity:</label>
+                        <input class="form-control mt-3" style="display: inline-block; width: 80px" type="number" id="quantity" name="quantity" min="1" max="50" value="1"><br>
+                        <button class="btn MainButt mt-2">Get the deal now</button>
+                    @endif
                     <div class=".amount" id="#amount"></div>
                     <!-- hidden values -->
                     <input type="hidden" id="deal_id" name="deal_id" value="{{$deal->id}}">
@@ -53,10 +64,11 @@
                     <input type="hidden" id="total" name="total"  value="{{$deal->price}}">
                 </form>
     @else
-    <button type="submit" class="btn btn-danger mt-3" >The deal is invalid</button>
-@endif
-@endguest
+        <button type="submit" class="btn btn-danger mt-3" >The deal is invalid</button>
+    @endif
+    @endguest
 <script type="text/javascript">
+
 
     $(document).ready(function(){
 
@@ -104,6 +116,8 @@
             style: style
         });
         card.mount('#card-element');
+        document.getElementById("Buy_button").style.visibility = "visible";
+
         // Handle real-time validation errors from the card Element.
         card.addEventListener('change', function(event) {
             var displayError = document.getElementById('card-errors');
@@ -141,6 +155,8 @@
         }
     }
 </script>
+
+
 
 
 

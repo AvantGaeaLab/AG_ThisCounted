@@ -30,9 +30,18 @@ class OrderController extends Controller
         $request->validate([
             'quantity' => 'min:1|max:50|required',
         ]);
-
         $total = $request->price*$request->quantity;
 
+        if($total == 0){
+            $user = Auth::user();
+            $order = $user->orders()->create($request->except( 'deals'));
+            $order->quantity = $request->quantity;
+            $order->deals()->attach($request->deal_id);
+            $order->total = $total;
+            $order->save();
+            return redirect()->route('user_dashboard')->with('status', 'the order added successfully');
+
+        }elseif($total > 0)
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $charge = Stripe\Charge::create ([
             "amount" => $total*100,

@@ -14,10 +14,10 @@
             <h4 style="margin-top:3vh;margin-bottom:3vh; text-align:left; padding-left:6vw;"><b>Description:<br></b>{!!nl2br($deal->description)!!}</h4>
             <div style="margin-top:3vh; margin-bottom:3vh; text-align:left; padding-left:6vw;">
                 @isset($deal->more_info)
-                    <h4>{{$deal->more_info}}</h4>
+                    <h4>{!!nl2br($deal->more_info)!!}</h4>
                 @endisset
                 @isset($deal->location)
-                    <h4 >{{$deal->location}}</h4>
+                    <h4 >{!! $deal->location !!}</h4>
                 @endisset
             </div>
             @isset($deal->start_at)
@@ -31,7 +31,7 @@
                 <h4>${{$deal->retails_price}}</h4>
             @endisset
             @isset($deal->price)
-                <h4>${{$deal->price}}</h4>
+                <h4>Price: ${{$deal->price}}</h4>
             @endisset
             @include('components.showCategories')
             <br>
@@ -40,5 +40,12 @@
         </div>
     </div>
     </div>
+
+
+    <script>
+        document.querySelectorAll( 'oembed[url]' ).forEach( element => {
+            iframely.load( element, element.attributes.url.value );
+        } );
+    </script>
 
 @endsection
