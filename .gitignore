@@ -13,3 +13,8 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+*.png
+*.jpg
+*.jpg
+public/uploads/deals_pics/photo_2022-01-25_01-42-31.jpg
+*.jpg

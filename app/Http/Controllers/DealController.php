@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Deal;
+use App\Models\Image;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,25 +15,33 @@ class DealController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('show', 'catDeals','search');
+        $this->middleware('auth')->except('show', 'catDeals', 'search');
     }
 
-    private function handleImgDeal($request,$deal, $imgNum)
+    private function handleImgDeal($request, $deal)
     {
-        if($request->hasFile('main_pic')) {
-            $destination = 'uploads/deals_pics/'.$deal->main_pic;
-            if(File::exists($destination)){
-                Storage::delete($destination);
-                File::delete($destination);
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $image) {
+                $imageName = $deal->title . '-image-' . time() . rand(1, 100) . '.' . $image->extension();
+                $image->move('uploads/deals_pics', $imageName);
+                Image::create([
+                    'deal_id' => $deal->id,
+                    'image' => $imageName
+                ]);
             }
-            $file = $request->file('main_pic');
-            $filename=$file->getClientOriginalName();
-            $path = $request->file('main_pic')->storeAs('uploads/deals_pics',$filename);
-            $file->move('uploads/deals_pics', $filename);
-            $deal->main_pic = $filename;
         }
     }
 
+    private function updateImgDeal($request, $deal, $imgId)
+    {
+        $imageName = $deal->title . '-image-' . time() . rand(1, 100) . '.' . $request->file('updateImage')->extension();
+        $request->file('updateImage')->move('uploads/deals_pics', $imageName);
+        Image::Find($imgId)->update([
+            'id' => $imgId,
+            'deal_id' => $deal->id,
+            'image' => $imageName
+        ]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -51,7 +60,7 @@ class DealController extends Controller
      */
     public function create()
     {
-        if(Auth::id() > 3){
+        if (Auth::id() > 3) {
             return abort(401);
         }
 
@@ -64,35 +73,33 @@ class DealController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        if(Auth::id() > 3){
+        if (Auth::id() > 3) {
             return abort(401);
         }
         $request->validate([
             'title' => 'min:3|max:50|required',
             'categories' => 'required',
             'merchant_id' => 'required',
-            'main_pic' => 'required',
         ]);
 
         $user = Auth::user();
         $categories = array_values($request->categories);
         $deal = $user->deals()->create($request->except('categories'));
         $deal->categories()->attach($categories);
-        $this->handleImgDeal($request,$deal,'main_pic');
-
+        $this->handleImgDeal($request, $deal);
         $deal->save();
-        return redirect("admin_dashboard")->with('status','The Deal Added Successfully');
+        return redirect("admin_dashboard")->with('status', 'The Deal Added Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Deal  $deal
+     * @param \App\Models\Deal $deal
      * @return \Illuminate\Http\Response
      */
     public function show(Deal $deal)
@@ -103,30 +110,30 @@ class DealController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Deal  $deal
+     * @param \App\Models\Deal $deal
      * @return \Illuminate\Http\Response
      */
     public function edit(Deal $deal)
     {
-        if(Auth::id() > 3){
+        if (Auth::id() > 3) {
             return abort(401);
         }
         $categories = Category::all()->pluck('title', 'id');
         $merchants = Merchant::all();
         $dealCategories = $deal->categories()->pluck('id')->toArray();
-        return view('deals.edit', compact('categories', 'merchants', 'deal','dealCategories'));
+        return view('deals.edit', compact('categories', 'merchants', 'deal', 'dealCategories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Deal  $deal
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Deal $deal
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Deal $deal)
     {
-        if(Auth::id() > 3){
+        if (Auth::id() > 3) {
             return abort(401);
         }
 
@@ -135,7 +142,6 @@ class DealController extends Controller
             'categories' => 'required',
             'merchant_id' => 'required',
         ]);
-
         $deal->title = $request->title;
         $deal->merchant_id = $request->merchant_id;
         $deal->status = $request->status;
@@ -146,14 +152,30 @@ class DealController extends Controller
         $deal->description = $request->description;
         $deal->more_info = $request->more_info;
         $deal->location = $request->location;
-        $this->handleImgDeal($request,$deal,'main_pic');
+        $this->handleImgDeal($request, $deal);
 
         $deal->update();
         $deal->categories()->sync($request->categories);
-        return redirect('admin_dashboard')->with('status','The deal updated successfully');
+        return redirect('admin_dashboard')->with('status', 'The deal updated successfully');
 
     }
 
+    public function update_image(Request $request)
+    {
+        $image = Image::findOrFail($request->id);
+        $imgId = $image->id;
+        $destination = 'uploads/deals_pics/'.$image->image;
+        Storage::delete($destination);
+        File::delete($destination);
+        if ($request->has('updateImage')) {
+            $deal = Deal::find($request->deal_id);
+            $this->updateImgDeal($request, $deal, $imgId);
+            return redirect()->back()->with('status', 'The image updated successfully');
+        } else {
+            $image->delete();
+            return redirect()->back()->with('status', 'The image Deleted successfully');
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *

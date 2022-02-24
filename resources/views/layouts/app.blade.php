@@ -57,7 +57,11 @@
                     </ul>
                 </div>
             @endif
-            @yield('content')
+                @if (session('status'))
+                    <h6 class="alert alert-success">{{session('status')}}</h6>
+                @endif
+
+                @yield('content')
         </main>
         <!-- FOOTER -->
         @include('components.LiveChat')

@@ -1,7 +1,32 @@
 <div style="text-align:center">
-    <div>
-        <img class="myShow-img" src="{{asset('uploads/deals_pics/'.$deal->main_pic)}}">
-    </div>
+        <!-- Image -->
+    <div id="deals-carousel_{{$deal->id}}" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#deals-carousel_{{$deal->id}}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            @for ($i = 1; $i < $deal->images->count(); $i++)
+                <button type="button" data-bs-target="#deals-carousel_{{$deal->id}}" data-bs-slide-to="{{$i}}" aria-label="Slide 2"></button>
+            @endfor
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{asset('uploads/deals_pics/'.$deal->first_image())}}" class="d-block w-100" alt="...">
+            </div>
+            @foreach($deal->images->skip(1) as $image)
+            <div class="carousel-item">
+                <img src="{{asset('uploads/deals_pics/'.$image->image)}}" class="d-block w-100" alt="...">
+            </div>
+                @endforeach
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#deals-carousel_{{$deal->id}}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#deals-carousel_{{$deal->id}}" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+</div>
+    <!-- Deal Info -->
     <div>
         <a href="{{route('deals.show',$deal)}}">
          <h1 class="myShow-title"><b>{{$deal->title}}</b></h1>
@@ -55,6 +80,4 @@
     <br/>
     <br><hr>
     <a href="{{route('deals.show',$deal)}}" class="btn MainButt" >Buy now</a>
-
 </div>
-
