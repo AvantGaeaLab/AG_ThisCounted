@@ -1,7 +1,7 @@
 <div class="mySlider-main col-m-4">
         <h4 class="myTitle" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->title}}</h4>
         <div class="mySlider-main-img-container">
-            <img class="mySlider-main-img " data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" src="{{asset('uploads/deals_pics/'.$deal->main_pic)}}">
+            <img class="mySlider-main-img " data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" src="{{asset('uploads/deals_pics/'.$deal->first_image())}}">
         </div>
     <a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
         <b>{{$deal->merchant->name}}</b>

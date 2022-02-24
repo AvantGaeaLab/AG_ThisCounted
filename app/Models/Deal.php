@@ -51,11 +51,19 @@ class Deal extends Model
     }
 
     #Relations
+    public function images(){
+        return $this->hasMany(Image::class);
+    }
+
+    public function first_image(){
+        return $this->images->first()->image;
+    }
+
     public function user(){
-        return$this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
     public function merchant(){
-        return$this->belongsTo(Merchant::class, 'merchant_id');
+        return $this->belongsTo(Merchant::class, 'merchant_id');
     }
     //M2M between Deal&Category
     public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany

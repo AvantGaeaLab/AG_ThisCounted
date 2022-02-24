@@ -69,28 +69,48 @@
     <label class="form-label" for="location_editor">Location</label>
     <textarea type="textarea" id="location_editor" name="location" class="form-control" placeholder="location" >@isset($deal) {{$deal->location}}@endisset</textarea>
 </div>
-<div>
-    <label for="main_pic"> Deal Main pic </label>
-    <input type="file" name="main_pic" class="form-control">
-    @isset($deal->main_pic)
-        <img src="{{asset('uploads/deals_pics/'.$deal->main_pic)}}"  width="480px" height="720px">
-    @endisset
+@empty($deal)
+<div class="form-group mb-3">
+    <label for=""> The main image </label>
+    <input type="file" name="images[1]" class="form-control">
 </div>
-<div>
-    <label for="pic2"> Deal pic 2 </label>
-    <input type="file" name="pic2" class="form-control" >
-    @isset($deal->pic2)
-        <img src="{{asset('uploads/deals_pics/'.$deal->pic2)}}"  width="480px" height="720px" >
-    @endisset
+@endempty
+<div class="form-group mb-3">
+<label for=""> Extra images </label>
+    <input type="file" name="images[]" class="form-control" multiple>
 </div>
-<div>
-    <label for="pic3"> Deal pic 3 </label>
-    <input type="file" name="pic3" class="form-control" >
-    @isset($deal->pic3)
-        <img src="{{asset('uploads/deals_pics/'.$deal->pic3)}}"  width="480px" height="auto" >
-    @endisset
-</div>
+
 <button type="submit" class="MainButt btn mt-2">{{$submitText}}</button>
+</form>
+
+@isset($deal)
+        <div class="mb-3" style="width: 50%; margin: 0 auto">
+            @foreach($deal->images as $image)
+                <div class="mt-3">
+                <img class="img-thumbnail" src="{{asset('uploads/deals_pics/'.$image->image)}}"  width=100% height="720px" alt="{{$deal->title.'Image'}}">
+                    <!-- Update image button -->
+                    <form action="{{route('update_image')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <div class="mt-1" style="display: flex; width: 100%;">
+                        <input type="hidden" name="id" value="{{$image->id}}" >
+                        <input type="hidden" name="deal_id" value="{{$deal->id}}" >
+                        <input type="file" name="updateImage" class="form-control" required>
+                        <button type="submit" class="MainButt btn mx-2">update</button>
+                    </form>
+                    <!-- Delete image button -->
+                    @if($deal->images->count() > 1)
+                    <form action="{{route('update_image')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="id" value="{{$image->id}}" >
+                        <button type="submit" class="btn btn-danger " onclick="return confirm('Are you sure you want delete this image ?')">Delete</button>
+                    </form>
+                @endif
+                </div>
+        </div>
+                @endforeach
+@endisset
 
 <script>
     ClassicEditor

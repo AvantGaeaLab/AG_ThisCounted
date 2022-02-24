@@ -5,10 +5,19 @@
     <div class="content">
     <br>
     <div class="row">
-        <div class="col" >
-            <img class="myShow-img" src="{{asset('uploads/deals_pics/'.$deal->main_pic)}}">
+        <div class="col-6" >
+            <div class="slider-for">
+                @foreach($deal->images as $image)
+                    <img class="mb-1" src="{{asset('uploads/deals_pics/'.$image->image)}}" style="height: 680px; width:auto" alt="deal image">
+                @endforeach
+            </div>
+            <div class="slider-nav">
+                @foreach($deal->images as $image)
+                        <img class="mx-1" src="{{asset('uploads/deals_pics/'.$image->image)}}" style="height: 180px;" alt="deal image">
+                @endforeach
+            </div>
         </div>
-        <div class="col">
+        <div class="col-6">
             <h1 class="myShow-title">{{$deal->title}}</h1>
             <h4>Merchant: {{$deal->merchant->name}}</h4>
             <h4 style="margin-top:3vh;margin-bottom:3vh; text-align:left; padding-left:6vw;"><b>Description:<br></b>{!!nl2br($deal->description)!!}</h4>
@@ -41,7 +50,24 @@
     </div>
     </div>
 
-
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: true,
+            centerMode: true,
+            focusOnSelect: true
+        });
+    </script>
     <script>
         document.querySelectorAll( 'oembed[url]' ).forEach( element => {
             iframely.load( element, element.attributes.url.value );

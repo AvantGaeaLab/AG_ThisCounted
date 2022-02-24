@@ -36,7 +36,7 @@
                     <tbody>
                 <tr class="myTable-r">
                     <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
-                        <img class="myShow-img" src="{{asset('uploads/deals_pics/'.$deal->main_pic)}}" width="70" height="70"  alt="{{$deal->title}}">
+                        <img class="myShow-img" src="{{asset('uploads/deals_pics/'.$deal->first_image())}}" width="70" height="70"  alt="{{$deal->title}}">
                     </td>
                     <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
                         {{$deal->title}}
