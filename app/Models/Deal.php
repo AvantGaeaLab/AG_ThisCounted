@@ -16,11 +16,9 @@ class Deal extends Model
     protected $fillable =[
         'title',
         'merchant_id',
-        'main_pic',
-        'pic2',
-        'pic3',
         'start_at',
         'end_at',
+        'date',
         'retails_price',
         'price',
         'description',

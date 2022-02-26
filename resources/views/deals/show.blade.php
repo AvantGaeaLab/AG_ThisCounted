@@ -8,20 +8,27 @@
         <div class="col-6" >
             <div class="slider-for">
                 @foreach($deal->images as $image)
-                    <img class="mb-1" src="{{asset('uploads/deals_pics/'.$image->image)}}" style="height: 680px; width:auto" alt="deal image">
+                    <img class="mb-1" src="{{asset('uploads/deals_pics/'.$image->image)}}" alt="deal image">
                 @endforeach
             </div>
             <div class="slider-nav">
                 @foreach($deal->images as $image)
-                        <img class="mx-1" src="{{asset('uploads/deals_pics/'.$image->image)}}" style="height: 180px;" alt="deal image">
+                        <img class="mx-1" src="{{asset('uploads/deals_pics/'.$image->image)}}" style="height: 10%;" alt="deal image">
                 @endforeach
             </div>
         </div>
         <div class="col-6">
             <h1 class="myShow-title">{{$deal->title}}</h1>
-            <h4>Merchant: {{$deal->merchant->name}}</h4>
-            <h4 style="margin-top:3vh;margin-bottom:3vh; text-align:left; padding-left:6vw;"><b>Description:<br></b>{!!nl2br($deal->description)!!}</h4>
-            <div style="margin-top:3vh; margin-bottom:3vh; text-align:left; padding-left:6vw;">
+            <div>
+                    <h4>Merchant:
+                        <a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
+                        <b>{{$deal->merchant->name}}</b></a>
+                    </h4>
+            </div>
+            <div class="myDescription">
+            <h4 style="margin-top:3vh;margin-bottom:3vh; text-align:left; padding-left:2vw;"><b>Description:<br></b>{!!nl2br($deal->description)!!}</h4>
+            </div>
+                <div style="margin-top:3vh; margin-bottom:3vh; text-align:left; padding-left:2vw;">
                 @isset($deal->more_info)
                     <h4>{!!nl2br($deal->more_info)!!}</h4>
                 @endisset
@@ -36,6 +43,11 @@
                 <h4>End at: {{\Carbon\Carbon::parse($deal->end_at)->format('Y-m-d')}}</h4>
             @endisset
             <br>
+            @isset($deal->date)
+                <h4>{{$deal->date}}</h4>
+                <br>
+            @endisset
+            <hr>
         @isset($deal->retails_price)
                 <h4>${{$deal->retails_price}}</h4>
             @endisset

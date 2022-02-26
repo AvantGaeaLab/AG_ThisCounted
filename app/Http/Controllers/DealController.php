@@ -142,19 +142,9 @@ class DealController extends Controller
             'categories' => 'required',
             'merchant_id' => 'required',
         ]);
-        $deal->title = $request->title;
-        $deal->merchant_id = $request->merchant_id;
-        $deal->status = $request->status;
-        $deal->start_at = $request->start_at;
-        $deal->end_at = $request->end_at;
-        $deal->retails_price = $request->retails_price;
-        $deal->price = $request->price;
-        $deal->description = $request->description;
-        $deal->more_info = $request->more_info;
-        $deal->location = $request->location;
         $this->handleImgDeal($request, $deal);
 
-        $deal->update();
+        $deal->update($request->all());
         $deal->categories()->sync($request->categories);
         return redirect('admin_dashboard')->with('status', 'The deal updated successfully');
 
@@ -162,6 +152,10 @@ class DealController extends Controller
 
     public function update_image(Request $request)
     {
+        if (Auth::id() > 3) {
+            return abort(401);
+        }
+
         $image = Image::findOrFail($request->id);
         $imgId = $image->id;
         $destination = 'uploads/deals_pics/'.$image->image;

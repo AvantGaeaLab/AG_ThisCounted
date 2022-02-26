@@ -38,7 +38,7 @@
         </a>
     </div>
     <br>
-    <div>
+    <div class="myDescription">
         <h3>{!!nl2br($deal->description)!!}</h3>
     </div>
     <br>
@@ -72,12 +72,9 @@
     @endisset
     @isset($deal->price)
         <div>
-            <h4>Price: ${{$deal->price}}</h4>
-            <br>
+            <h4><b>Price: ${{$deal->price}}</b></h4>
         </div>
     @endisset
-
-    <br/>
-    <br><hr>
+    <hr>
     <a href="{{route('deals.show',$deal)}}" class="btn MainButt" >Buy now</a>
 </div>
