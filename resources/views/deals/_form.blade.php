@@ -2,7 +2,7 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 
 <div class="form-group" >
-    <input type="text" name="title" class="form-control mb-3" placeholder="Title" @isset($deal) value="{{$deal->title}}"@endisset required>
+    <input type="text" name="title" class="form-control mb-3" placeholder="Title" @isset($deal) value="{{$deal->title}}"@endisset value="{{ old('title') }}" required>
 </div>
 <div class="form-group mb-3">
     @foreach($categories as $key =>$title)
@@ -15,7 +15,7 @@
 </div>
 <div class="form-group mb-3">
     <label  for="merchant">Merchant</label>
-    <select id="merchant" class="form-select" name="merchant_id">
+    <select id="merchant" class="form-select" name="merchant_id" required>
         @isset($deal)
             <option value="{{$deal->merchant->id}}" selected>{{$deal->merchant->name}}</option>
         @endisset
@@ -48,31 +48,31 @@
     <input type="date" name="end_at" class="form-control" placeholder="end at" @isset($deal) value={{$deal->end_at}}@endisset>
 </div>
 <div class="form-group mb-3">
-    <input type="text" name="date" class="form-control" placeholder="the date of the deal" @isset($deal) value={{$deal->date}}@endisset>
+    <input type="text" name="date" class="form-control" placeholder="the date of the deal" @isset($deal) value="{{$deal->date}}"@endisset  value="{{ old('date') }}">
 </div>
 <div class="form-group mb-3">
-    <input type="text" name="retails_price" class="form-control" placeholder="retails_price" @isset($deal) value="{{$deal->retails_price}}"@endisset>
+    <input type="text" name="retails_price" class="form-control" placeholder="retails_price" @isset($deal) value="{{$deal->retails_price}}"@endisset  value="{{ old('retails_price') }}">
 </div>
 <div class="form-group mb-3">
-    <input type="number" step="any" min="0" name="price" class="form-control" placeholder="price" @isset($deal) value="{{$deal->price}}"@endisset required>
+    <input type="number" step="any" min="0" name="price" class="form-control" placeholder="price" @isset($deal) value="{{$deal->price}}"@endisset  value="{{ old('price') }}" required>
 </div>
 
 <div class="form-group mb-3">
     <label  for="description_editor">Description</label>
-    <textarea type="textarea" id="description_editor" name="description" class="form-control" placeholder="description" >@isset($deal) {{$deal->description}}@endisset</textarea>
+    <textarea type="textarea" id="description_editor" name="description" class="form-control" placeholder="description" >@isset($deal) {{$deal->description}}@endisset  {{old('description')}} </textarea>
 </div>
 <div class="form-group mb-3">
     <label  for="more_info_editor">More information</label>
-    <textarea type="textarea" id="more_info_editor" name="more_info" class="form-control" placeholder="More info" >@isset($deal) {{$deal->more_info}}@endisset</textarea>
+    <textarea type="textarea" id="more_info_editor" name="more_info" class="form-control" placeholder="More info" >@isset($deal) {{$deal->more_info}} @endisset {{old('more_info')}}</textarea>
 </div>
 <div class="form-group mb-3">
     <label class="form-label" for="location_editor">Location</label>
-    <textarea type="textarea" id="location_editor" name="location" class="form-control" placeholder="location" >@isset($deal) {{$deal->location}}@endisset</textarea>
+    <textarea type="textarea" id="location_editor" name="location" class="form-control" placeholder="location" >@isset($deal) {{$deal->location}}@endisset {{old('location')}}</textarea>
 </div>
 @empty($deal)
 <div class="form-group mb-3">
     <label for=""> The main image </label>
-    <input type="file" name="images[1]" class="form-control">
+    <input type="file" name="images[1]" class="form-control" required>
 </div>
 @endempty
 <div class="form-group mb-3">
@@ -112,6 +112,7 @@
                 @endforeach
 @endisset
 
+<!-- Checkbox required-->
 <script>
     ClassicEditor
         .create( document.querySelector( '#description_editor' ))
@@ -130,5 +131,4 @@
         .catch( error => {
             console.error( error );
         } );
-
 </script>

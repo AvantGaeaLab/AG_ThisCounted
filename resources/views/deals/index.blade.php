@@ -8,7 +8,9 @@
             <a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
                 <b class="card-text myDescription">{{$deal->merchant->name}}</b>
             </a>
-            <p class="myDescription">{!!nl2br($deal->description)!!}</p>
+            <div class="myDescription-slider">
+            <p>{!!nl2br($deal->description)!!}</p>
+            </div>
         </div>
         <div><b class="myPrice">${{$deal->price}}</b></div>
 
@@ -17,11 +19,12 @@
                 <i class="bi bi-heart-fill myHeart-deal"></i>
                 <p style="font-size:12px; margin: 0">Deal</p>
             </a>
-            <a class=" AddToFavorite guest-modal " href="#" data-deal-id="{{$deal->id}}" style="color:#636b6f;  font-size:33px; display: inline-block" >
+            <a class=" AddMerToFavorite guest-modal " href="#" data-deal-id="{{$deal->id}}" style="color:#636b6f;  font-size:33px; display: inline-block" >
                 <i class="bi bi-star-fill myHeart-deal"></i>
                 <p style="font-size:12px">Merchant</p>
             </a>
         </div>
+
         <div class="pb-4">
         @include('components.showCategories')
         </div>
