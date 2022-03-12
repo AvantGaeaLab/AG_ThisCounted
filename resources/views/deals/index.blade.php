@@ -5,8 +5,8 @@
         <img class="card-img-top" style="height:18rem" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" src="{{asset('uploads/deals_pics/'.$deal->first_image())}}">
         <div class="card-body">
             <h4 class="card-title myTitle-search align-middle" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->title}}</h4>
-            <a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
-                <b class="card-text myDescription">{{$deal->merchant->name}}</b>
+            <a class="merName" @isset($deal->merchant)href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank" @endisset>
+                <b class="card-text myDescription">{{$deal->merchant->name ?? "Deleted merchant"}}</b>
             </a>
             <div class="myDescription-slider">
             <p>{!!nl2br($deal->description)!!}</p>

@@ -33,9 +33,11 @@
         </a>
     </div>
     <div>
+        @isset($deal->merchant)
         <a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
-        <b class="myMerchantName">{{$deal->merchant->name}}</b>
+            <b class="myMerchantName">{{$deal->merchant->name ?? "Deleted merchant"}}</b>
         </a>
+        @endisset
     </div>
     <br>
     <div class="myDescription">

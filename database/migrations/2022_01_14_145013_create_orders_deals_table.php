@@ -17,11 +17,11 @@ class CreateOrdersDealsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedBigInteger('deal_id')->unsigned();
             $table->foreign('deal_id')->references('id')->on('deals')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });
