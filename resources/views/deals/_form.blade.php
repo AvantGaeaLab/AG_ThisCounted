@@ -17,11 +17,11 @@
     <label  for="merchant">Merchant</label>
     <select id="merchant" class="form-select" name="merchant_id" required>
         @isset($deal)
-            <option value="{{$deal->merchant->id}}" selected>{{$deal->merchant->name}}</option>
+            <option value="{{$deal->merchant->id ?? null}}" selected>{{$deal->merchant->name ?? "Deleted merchant"}}</option>
         @endisset
         <option></option>
             @foreach($merchants as $merchant)
-                <option value="{{$merchant->id}}">{{$merchant->name}}</option>
+                <option value="{{$merchant->id }}">{{$merchant->name}}</option>
             @endforeach
     </select>
 </div>

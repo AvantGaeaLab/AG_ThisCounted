@@ -82,11 +82,12 @@ class MerchantController extends Controller
         if(Auth::id() > 3){
             return abort(401);
         }
-        $merchant->name = "Deleted merchant";
+        if($merchant->deals->count() > 0){
         foreach($merchant->deals as $Dealsstatus)
             $Dealsstatus->status = "Deleted";
         $Dealsstatus->update();
-
+        }
+        $merchant->delete();
         return redirect()->back()->with('status','The Merchant Deleted Successfully');
     }
 

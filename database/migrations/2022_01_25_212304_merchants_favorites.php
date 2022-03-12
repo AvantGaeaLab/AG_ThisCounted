@@ -21,7 +21,8 @@ class MerchantsFavorites extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
+            $table->foreign('merchant_id')->references('id')->on('merchants')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

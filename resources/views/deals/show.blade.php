@@ -21,8 +21,9 @@
             <h1 class="myShow-title">{{$deal->title}}</h1>
             <div>
                     <h4>Merchant:
-                        <a class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank">
-                        <b>{{$deal->merchant->name}}</b></a>
+                        <a class="merName" @isset($deal->merchant) href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank"                            @endisset>
+                            <b>{{$deal->merchant->name ?? "Deleted merchant"}}</b>
+                        </a>
                     </h4>
             </div>
             <div class="myDescription">

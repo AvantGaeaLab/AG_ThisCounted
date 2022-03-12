@@ -44,11 +44,12 @@
             </td>
             @foreach($order->deals as $orderDeal)
                 <td>
-                    {{$orderDeal->title}}</td>
+                    {{$orderDeal->title}}
+                </td>
                 <td>
-                    <a class="merName" href="{{route('merchants.deals', $merchant=$orderDeal->merchant)}}" target="_blank"><b>
-                            {{$orderDeal->merchant->name}}
-                        </b></a>
+                   <a class="merName" @isset($deal->merchant) href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank"                             @endisset>
+                     <b>{{$deal->merchant->name ?? "Deleted merchant"}}</b>
+                   </a>
                 </td>
             @endforeach
             <td>{{$order->user->name}}</td>

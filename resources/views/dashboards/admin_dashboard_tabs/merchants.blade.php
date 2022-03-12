@@ -88,7 +88,7 @@
                 <form method='post' action="{{route('merchants.destroy', $newMerchant)}}">
                     @method('DELETE')
                     @csrf
-                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want delete all deals from ({{$newMerchant->name}}) ?')" >Delete deals</button>
+                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete ({{$newMerchant->name}}) and all deals from this merchant? \n warning: merchant name will be changed to (deleted merchant) in all orders linked to this merchant ')" >Delete merchant</button>
                 </form>
 
             </td>
