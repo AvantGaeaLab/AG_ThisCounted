@@ -35,13 +35,13 @@
                 @foreach($deals as $deal)
                     <tbody>
                 <tr class="myTable-r">
-                    <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
-                        <img class="myShow-img" src="{{asset('uploads/deals_pics/'.$deal->first_image())}}" width="70" height="70"  alt="{{$deal->title}}">
+                    <td class="myTitle_column" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
+                        <img class=" myShow-img" src="{{asset('uploads/deals_pics/'.$deal->first_image())}}" width="70" height="70"  alt="{{$deal->title}}">
                     </td>
-                    <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
+                    <td class="myTitle_column" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
                         {{$deal->title}}
                     </td>
-                    <td>{{$deal->merchant->name}}</td>
+                    <td>{{$deal->merchant->name ?? "Deleted merchant"}}</td>
                     <td data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->price}}</td>
                     <td>
                         <a class="myHeart-fav removeFavDeal" data-deal-id="{{$deal->id}}">

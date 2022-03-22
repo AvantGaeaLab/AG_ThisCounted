@@ -58,7 +58,7 @@
                     <tr>
                     <td class="user-td td-fullTable">{{$item->id}}</td>
                     @foreach($item->deals as $deal)
-                    <td class="user-td td-fullTable" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->title}}</td>
+                    <td class="myTitle_column user-td td-fullTable" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}">{{$deal->title}}</td>
                     <td class="user-td td-fullTable" >
                         <a @isset($deal->merchant->name) class="merName" href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank" @endisset>
                         {{$deal->merchant->name ?? "Deleted merchant"}}

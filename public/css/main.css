@@ -70,19 +70,21 @@ img {
     height: 12rem;
     border-radius: 25px;
 }
-
+.thumbnailsContainer{
+    min-height: 65vh;
+}
 .mainCat-img {
     display: inline-block ;
     margin: 0 auto;
     width: 80%;
     height: 87.2%;
     border-radius: 25px;
-
-}.subCat-img{
+}
+.subCat-img{
      display: inline-block;
      margin: 0 auto;
      width: 80%;
-     height: 70%;
+     height: 92.8%;
      border-radius: 25px;
  }
 
@@ -244,18 +246,21 @@ td, th {
 /* My text */
 .myDescription-slider{
     display: block;
-    margin-top:0 ;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     height:80px;
-    -webkit-line-clamp: 2 ;/* number of lines to show */
-    line-clamp: 2;
+    -webkit-line-clamp: 3 ;/* number of lines to show */
+    line-clamp: 3;
+    line-height: 20px;
     -webkit-box-orient: vertical;
-    padding : 12px;
 }
 .myDescription{
     word-wrap: break-word;
+    margin-top:3vh;
+    line-height: 100%;
+    margin-bottom:3vh;
+    text-align:left;
 }
 .myTitle{
     text-align-all: center;
@@ -343,6 +348,18 @@ only screen and (max-width: 760px),
         padding-right: 10px;
         white-space: nowrap;
     }
-    /*END Tables*/
 }
+.myTitle_column{
+    box-shadow: inset 0 0 0 0 #fcd517;
+    color: #0081ff;
+    font-weight: bold;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    text-decoration: underline dotted
+}
+.myTitle_column:hover{
+    box-shadow: inset 20px 20px 50px 20px #ffe781;
+    color: black;
+    cursor: pointer;
+}
+/*END Tables*/
 
