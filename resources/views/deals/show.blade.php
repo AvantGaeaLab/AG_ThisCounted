@@ -27,7 +27,7 @@
                     </h4>
             </div>
             <div class="myDescription">
-            <h4 style="margin-top:3vh;margin-bottom:3vh; text-align:left; padding-left:2vw;"><b>Description:<br></b>{!!nl2br($deal->description)!!}</h4>
+            <h4><b>Description:</b><br>{!!nl2br($deal->description)!!}</h4>
             </div>
                 <div style="margin-top:3vh; margin-bottom:3vh; text-align:left; padding-left:2vw;">
                 @isset($deal->more_info)

@@ -71,7 +71,7 @@
                         <td class="admin-deal-td td-fullTable">
                             {{$deal->id}}
                         </td >
-                        <td class="admin-deal-td td-fullTable" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
+                        <td class="myTitle_column admin-deal-td td-fullTable" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
                             {{$deal->title}}
                         </td>
                         <td class="admin-deal-td td-fullTable">

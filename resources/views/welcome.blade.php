@@ -16,7 +16,7 @@
                     </div>
                 @endif
             <!-- the main slider-->
-            <div>
+            <div class="thumbnailsContainer">
                 <div class="row">
                     <a class="col" href="{{route('foodPage')}}">
                     <img class='mainCat-img' src="{{asset('images/mainCats_imgs/food.jpg')}}" alt="">
@@ -101,10 +101,10 @@
                     <br>
                     <hr>
                     <div>
-                        <img class='sub-img-student mt-3' src="{{asset('images/thumbnails/Vendor Activty.png')}}" alt="Vendor Activity">
+                        <img class='sub-img-student mt-3' src="{{asset('images/thumbnails/Vendor Activty.png')}}" alt="Vendor Activity" loading="lazy">
                         <div class="row">
-                            <img class='subCat-img col mt-3' src="{{asset('images/thumbnails/Vendor Food.png')}}" alt="Vendor Activity">
-                            <img class='subCat-img col mt-3' src="{{asset('images/thumbnails/Telegram banner.png')}}" alt="Vendor Activity">
+                            <img class='subCat-img col mt-3' src="{{asset('images/thumbnails/Vendor Food.png')}}" alt="Vendor Activity" loading="lazy">
+                            <img class='subCat-img col mt-3' src="{{asset('images/thumbnails/Telegram banner.png')}}" alt="Vendor Activity" loading="lazy">
                         </div>
                     </div>
                 </div>

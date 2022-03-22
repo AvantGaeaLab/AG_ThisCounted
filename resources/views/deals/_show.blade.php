@@ -9,7 +9,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{asset('uploads/deals_pics/'.$deal->first_image())}}" class="d-block w-100" alt="...">
+                <img src="{{asset('uploads/deals_pics/'.$deal->first_image())}}" class="d-block w-100" alt="{{$deal->title}}" loading="lazy">
             </div>
             @foreach($deal->images->skip(1) as $image)
             <div class="carousel-item">
