@@ -30,9 +30,10 @@ Route::get('/', [PageController::class, 'mainPage'])->name('home');
 //Method routes
 Auth::routes();
 Route::get('CheckOrder', [OrderController::class, 'CheckOrder'])->name('CheckOrder');
+Route::patch('editImage', [DealController::class, 'update_image'])->name('update_image');
 Route::patch('UserUpdate',[UserController::class, 'UserUpdate'])->name('users.update');
 Route::delete('UserDelete',[UserController::class, 'DestroyUser'])->name('users.delete');
-Route::patch('editImage', [DealController::class, 'update_image'])->name('update_image');
+Route::patch('resetPassword',[UserController::class, 'resetPassword'])->name('resetPassword');
 
 //Resource routes
 Route::resource('deals', DealController::class);

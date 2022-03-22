@@ -27,4 +27,23 @@ class UserController extends Controller
         $user->update($request->except('password'));
         return redirect()->back()->with('status','User Updated Successfully');
     }
+
+    public function resetPassword(Request $request){
+        $request->validate([
+           'current_password' => 'required|min:8|max:100',
+           'new_password' => 'required|min:8|max:100',
+           'confirm_password' => 'required|same:new_password',
+        ]);
+
+        $current_user = auth()->user();
+
+        if(Hash::check($request->current_password, $current_user->password)){
+            $current_user->update([
+                'password'=>bcrypt($request->new_password)
+            ]);
+            return redirect()->back()->with('status','Password updated successfully');
+        }else{
+            return redirect()->back()->with('error','current password does not match');
+        }
+    }
 }
