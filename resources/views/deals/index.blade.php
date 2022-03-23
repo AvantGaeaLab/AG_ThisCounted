@@ -14,16 +14,7 @@
         </div>
         <div><b class="myPrice">${{$deal->price}}</b></div>
 
-        <div class="mb-2 justify-content-center" style="white-space: nowrap;" >
-            <a class=" me-5 AddToFavorite guest-modal " href="#" data-deal-id="{{$deal->id}}" style="color:#636b6f;  font-size:32px; display: inline-block" >
-                <i class="bi bi-heart-fill myHeart-deal"></i>
-                <p style="font-size:12px; margin: 0">Deal</p>
-            </a>
-            <a class=" AddMerToFavorite guest-modal " href="#" data-deal-id="{{$deal->id}}" style="color:#636b6f;  font-size:33px; display: inline-block" >
-                <i class="bi bi-star-fill myHeart-deal"></i>
-                <p style="font-size:12px">Merchant</p>
-            </a>
-        </div>
+        @include('components.favorite')
 
         <div class="pb-4">
         @include('components.showCategories')
