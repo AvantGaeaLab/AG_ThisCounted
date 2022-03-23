@@ -17,7 +17,7 @@
             url:"{{Route('favorites.store')}}",
             data:{'dealId': $(this).attr('data-deal-id')},
             success: function(data){
-                alert('❤ Deal added to favorite !')
+                location.reload();
             }
         })
     })
@@ -42,7 +42,7 @@
             url:"{{Route('MerStore')}}",
             data:{'merchantId': $(this).attr('data-merchant-id')},
             success: function(data){
-                alert('⭐ Merchant added to favorite !')
+                location.reload();
             }
         })
     })

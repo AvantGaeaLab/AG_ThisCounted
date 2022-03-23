@@ -125,8 +125,8 @@
 
         </div>
         <!-- for the sliders -->
-
         @include('components.addFavoritejs')
+        @include('components.deleteFavoritejs')
         @include('components.sliderjs')
 
 @endsection

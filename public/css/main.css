@@ -233,10 +233,38 @@ td, th {
 .myHeart-deal:hover{
     color: #f66f6c;
 }
-.myHeart-fav{
+.myHeart-deal-added{
+    text-align:center;
+    height:30px;
+    width:30px;
+    size:40px;
+    color: #ff3434;
     font-size:30px;
-    color:red;
+    display: inline-block
 }
+
+.myFav-merchant{
+    text-align:center;
+    height:30px;
+    width:30px;
+    size:40px;
+    color:#636b6f;
+    font-size:30px;
+    display: inline-block
+}
+.myFav-merchant:hover{
+    color: #5da9e9;
+}
+.myFav-merchant-added{
+    text-align:center;
+    height:30px;
+    width:30px;
+    size:40px;
+    color: #1f95f3;
+    font-size:30px;
+    display: inline-block
+}
+
 /* end icons */
 
 /*Show popup*/
@@ -262,10 +290,11 @@ td, th {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    height:80px;
+    word-wrap: break-word;
+    height:78px;
     -webkit-line-clamp: 3 ;/* number of lines to show */
     line-clamp: 3;
-    line-height: 20px;
+    line-height: 22px;
     -webkit-box-orient: vertical;
 }
 .myDescription{
