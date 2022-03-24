@@ -65,7 +65,7 @@ class DealController extends Controller
         }
 
         $categories = Category::all()->pluck('title', 'id');
-        $merchants = Merchant::all();
+        $merchants = Merchant::all()->sortBy('name');;
         return view('deals.create', compact('categories', 'merchants'));
 
     }
@@ -119,7 +119,7 @@ class DealController extends Controller
             return abort(401);
         }
         $categories = Category::all()->pluck('title', 'id');
-        $merchants = Merchant::all();
+        $merchants = Merchant::all()->sortBy('name');
         $dealCategories = $deal->categories()->pluck('id')->toArray();
         return view('deals.edit', compact('categories', 'merchants', 'deal', 'dealCategories'));
     }

@@ -45,7 +45,10 @@ class Deal extends Model
     public static function search($search){
         return empty($search) ? static::query()
             : static::query()->where('id', 'like', '%'.$search.'%')
-                ->orWhere('title', 'like', '%'.$search.'%');
+                ->orWhere('title', 'like', '%'.$search.'%')
+                ->orWhereHas('merchant', function ($query) use($search) {
+                    $query->where('name',  'like', '%'.$search.'%');})
+                ;
     }
 
     #Relations

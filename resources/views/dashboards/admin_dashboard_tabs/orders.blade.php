@@ -1,7 +1,7 @@
 <div>
     <a class="btn MainButt" href="{{route('OrdersExport')}}">Download orders list</a>
     <div class="m-2" style="display: inline-block">
-        <input wire:model.debounce.100ms="search" type="text" class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search by ID...">
+        <input wire:model.debounce.100ms="search" type="text" class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search by ID or user name...">
         <select wire:model="status" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
             <option value="">All</option>
             <option value="Valid">Valid</option>
@@ -47,8 +47,8 @@
                     {{$orderDeal->title}}
                 </td>
                 <td>
-                   <a class="merName" @isset($deal->merchant) href="{{route('merchants.deals', $merchant=$deal->merchant)}}" target="_blank"                             @endisset>
-                     <b>{{$deal->merchant->name ?? "Deleted merchant"}}</b>
+                   <a class="merName" @isset($orderDeal->merchant) href="{{route('merchants.deals', $merchant=$orderDeal->merchant)}}" target="_blank"@endisset>
+                     <b>{{$orderDeal->merchant->name ?? "Deleted merchant"}}</b>
                    </a>
                 </td>
             @endforeach
