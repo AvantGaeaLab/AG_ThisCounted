@@ -24,7 +24,12 @@ class Order extends Model
 
     public static function search($search){
         return empty($search) ? static::query()
-            : static::query()->where('id', 'like', '%'.$search.'%');
+            : static::query()->where('id', 'like', '%'.$search.'%')
+                ->orWhereHas('user', function ($query) use($search) {
+                    $query->where('name',  'like', '%'.$search.'%');})
+                ->orWhereHas('deals', function ($query) use($search) {
+                    $query->where('title',  'like', '%'.$search.'%');})
+            ;
     }
 
     //relations

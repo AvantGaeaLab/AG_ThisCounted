@@ -23,3 +23,4 @@
 
     </div>
 </div>
+@include('components.deleteFavoritejs')

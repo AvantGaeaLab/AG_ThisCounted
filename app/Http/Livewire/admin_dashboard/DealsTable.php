@@ -22,7 +22,7 @@ class DealsTable extends Component
 
     public function render()
     {
-        $merchants = Merchant::all();
+        $merchants = Merchant::all()->sortBy('name');
         $categories = Category::all()->pluck('title', 'id');
 
         return view('dashboards.admin_dashboard_tabs.deals',
