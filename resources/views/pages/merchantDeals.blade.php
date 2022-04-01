@@ -24,5 +24,6 @@
     </div>
 
     @include('components.addFavoritejs')
+    @include('components.deleteFavoritejs')
 @endsection
 

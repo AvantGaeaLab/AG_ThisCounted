@@ -14,6 +14,7 @@
         @livewire('live-search', ['search'=>$search])
 
     @include('components.addFavoritejs')
+    @include('components.deleteFavoritejs')
     @livewireScripts
 @endsection
 

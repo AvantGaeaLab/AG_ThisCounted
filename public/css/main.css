@@ -54,22 +54,90 @@ img {
     border-radius: 20px;
 }
 
-.mySlider-main-img-container{
-    display: block;
+/* Sliders */
+.slider{
+    display: inline-block;
+    width: 100%;
+}
+.mySlider-main{
+    display: flex;
+    margin:10px;
+    padding-top:0.5%;
+    background-color: rgba(255, 243, 205, 0.89);
+    border: 0.5px solid black;
+    border-radius:10px
+}
+.mySlider-main-img-container {
     margin: 0 auto;
     width: 200px;
     height: 200px;
+}
+@media (min-width: 359px) {
+    .mySlider-main-img-container {
+        margin: 0 auto;
+        width: 300px;
+        height: 300px;
+    }
+    .myDescription-slider {
+        font-size:1.2rem
+    }
+}
+@media (min-width: 501px) {
+    .mySlider-main-img-container {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+    }
+}
+@media (min-width: 1400px) {
+    .mySlider-main-img-container {
+        margin: 0 auto;
+        width: 220px;
+        height: 220px;
+    }
+}
+@media (min-width: 1600px) {
+    .mySlider-main-img-container {
+        margin: 0 auto;
+        width: 260px;
+        height: 260px;
+    }
+    }
+@media (min-width: 2000px) {
+    .mySlider-main-img-container {
+        margin: 0 auto;
+        width: 320px;
+        height: 320px;
+    }
+    .myDescription-slider {
+    font-size:1.14rem
+    }
 }
 .mySlider-main{
     word-wrap: break-word;
 }
 .mySlider-main-img {
-    display: inline-block;
     margin: 0 auto;
-    width: 12rem;
-    height: 12rem;
+    width: 100%;
+    height: 100%;
     border-radius: 25px;
 }
+.myDescription-slider {
+    display: block;
+   overflow: hidden;
+    padding-left:10px;
+    padding-right:10px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    word-wrap: break-word;
+    height:78px;
+    -webkit-line-clamp: 3 ;/* number of lines to show */
+    line-clamp: 3;
+    line-height: 22px;
+    -webkit-box-orient: vertical;
+}
+/* END Sliders */
+
 .thumbnailsContainer{
     min-height: 65vh;
 }
@@ -285,18 +353,6 @@ td, th {
 }
 
 /* My text */
-.myDescription-slider{
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    word-wrap: break-word;
-    height:78px;
-    -webkit-line-clamp: 3 ;/* number of lines to show */
-    line-clamp: 3;
-    line-height: 22px;
-    -webkit-box-orient: vertical;
-}
 .myDescription{
     word-wrap: break-word;
     margin-top:3vh;
@@ -328,10 +384,15 @@ td, th {
     background-color: #c4c4cd;
 }
 .myTitle-search{
-    padding:5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
     border-radius:3px;
     background-color: rgb(255, 220, 97);
-    height:60px;
+    height:52px;
 }
 .merName{
     color:black;

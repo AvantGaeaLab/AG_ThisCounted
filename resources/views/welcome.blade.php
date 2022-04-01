@@ -16,6 +16,7 @@
                     </div>
                 @endif
             <!-- the main slider-->
+                @include('components.thumbnailSlider')
             <div class="thumbnailsContainer">
                 <div class="row">
                     <a class="col" href="{{route('foodPage')}}">
@@ -43,9 +44,9 @@
             </div>
                 <!-- new deals slider-->
                 <br>
-                <div class="mt-5">
+                <div>
                     <h1> New Deals </h1>
-                    <div class="row slider">
+                    <div class="slider">
                         @forelse($lastDeals as $deal)
                             @include('forms._home_DealsSlider', $deal)
                         @empty
@@ -77,7 +78,6 @@
                             <hr>
                     <a class="merName" href="{{route('categories.deals', $category=6)}}" target="_blank">
                         <h1> Students exclusive Deals </h1>
-                        <img class="sub-img-student" src="{{asset('images/mainCats_imgs/Student_exclusive.png')}}" alt="Student exclusive" >
                     </a>
                     <div class="row slider mt-5">
                         @forelse($studentsCat as $deal)
@@ -101,11 +101,7 @@
                     <br>
                     <hr>
                     <div>
-                        <img class='sub-img-student mt-3' src="{{asset('images/thumbnails/Vendor Activty.png')}}" alt="Vendor Activity" loading="lazy">
-                        <div class="row">
-                            <img class='subCat-img col mt-3' src="{{asset('images/thumbnails/Vendor Food.png')}}" alt="Vendor Activity" loading="lazy">
-                            <img class='subCat-img col mt-3' src="{{asset('images/thumbnails/Telegram banner.png')}}" alt="Vendor Activity" loading="lazy">
-                        </div>
+                        @include('components.thumbnailSlider2')
                     </div>
                 </div>
             </div>

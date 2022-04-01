@@ -22,4 +22,9 @@
             @include('popups.showDeal')
         @endforeach
     </div>
+
+    <!-- JavaScript -->
+    @include('components.addFavoritejs')
+    @include('components.deleteFavoritejs')
+
 @endsection
