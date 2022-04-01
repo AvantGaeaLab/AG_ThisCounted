@@ -1,4 +1,4 @@
-<div class="mb-5 justify-content-center" style="white-space: nowrap;" >
+<div class="mb-1 justify-content-center" style="white-space: nowrap;" >
 
     <!-- Deals favorite -->
     @auth()

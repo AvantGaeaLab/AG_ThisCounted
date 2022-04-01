@@ -47,7 +47,7 @@
         <!-- Header -->
         @include('layouts.header')
         <!-- END Header -->
-        <main class="myContainer container py-5">
+        <main class="myContainer container">
             @if($errors->any())
                 <div class="alert alert-warning">
                     <ul>

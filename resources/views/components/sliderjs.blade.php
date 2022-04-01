@@ -9,12 +9,12 @@
         dots: true,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 4000,
         responsive: [
             {
                 breakpoint: 1400,
                 settings: {
-                    slidesToShow: 6,
+                    slidesToShow: 5,
                     slidesToScroll: 2,
                     infinite: true,
                     dots: true
@@ -52,7 +52,7 @@
                 }
             },
             {
-                breakpoint: 380,
+                breakpoint: 0,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
