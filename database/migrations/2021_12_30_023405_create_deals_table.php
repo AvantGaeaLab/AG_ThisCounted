@@ -18,7 +18,7 @@ class CreateDealsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('merchant_id');
             $table->timestamps();
-            $table->longText('title')->unique();
+            $table->string('title')->unique();
             $table->datetime('start_at')->nullable();
             $table->datetime('end_at')->nullable();
             $table->longText('date')->nullable();
