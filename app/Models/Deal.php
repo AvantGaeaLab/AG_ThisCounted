@@ -24,6 +24,7 @@ class Deal extends Model
         'description',
         'more_info',
         'location',
+        'map',
         'status',
     ];
 

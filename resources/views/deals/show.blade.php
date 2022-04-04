@@ -36,7 +36,11 @@
                 @isset($deal->location)
                     <h4 >{!! $deal->location !!}</h4>
                 @endisset
+                @isset($deal->map)
+                    {!!$deal->map!!}
+                @endisset
             </div>
+
             @isset($deal->start_at)
                 <h4>Start at: {{\Carbon\Carbon::parse($deal->start_at)->format('Y-m-d')}}</h4>
             @endisset
