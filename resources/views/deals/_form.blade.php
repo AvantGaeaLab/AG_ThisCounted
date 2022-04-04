@@ -69,6 +69,11 @@
     <label class="form-label" for="location_editor">Location</label>
     <textarea type="textarea" id="location_editor" name="location" class="form-control" placeholder="location" >@isset($deal) {{$deal->location}}@endisset {{old('location')}}</textarea>
 </div>
+<div class="form-group mb-3">
+    <label  for="map">map</label>
+    <input type="text" name="map" class="form-control" placeholder="map" @isset($deal) value="{{$deal->map}}" @endisset  value="{{ old('map') }}">
+</div>
+
 @empty($deal)
 <div class="form-group mb-3">
     <label for=""> The main image </label>
