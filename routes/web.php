@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'mainPage'])->name('welcome');
 
 //Method routes
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('CheckOrder', [OrderController::class, 'CheckOrder'])->name('CheckOrder');
 Route::patch('editImage', [DealController::class, 'update_image'])->name('update_image');
 Route::patch('UserUpdate',[UserController::class, 'UserUpdate'])->name('users.update');
