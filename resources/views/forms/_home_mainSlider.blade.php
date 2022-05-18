@@ -1,5 +1,5 @@
 <div class="mySlider-main col-md-12">
-    <img class='mySlider-main-img' src="{{asset('uploads/mainCats_imgs/'.$categoryImg)}}" alt="" width="200" height="200">
+    <img class='mySlider-main-img' src="{{asset('storage/uploads/mainCats_imgs/'.$categoryImg)}}" alt="" width="200" height="200">
 </div>
 <!--
 <div class="card-body">

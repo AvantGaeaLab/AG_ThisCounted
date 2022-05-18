@@ -6,7 +6,7 @@
             <label for="merchant_logo"> Merchant logo </label>
             <input type="file" name="merchant_logo" class="form-control">
             @isset($newMerchant->merchant_logo)
-                <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$newMerchant->merchant_logo)}}">
+                <img class="myTable-img" src="{{asset('storage/uploads/merchants_logo/'.$newMerchant->merchant_logo)}}">
             @endisset
         </div>
     <div class="modal-footer">

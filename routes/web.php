@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PageController::class, 'mainPage'])->name('home');
+Route::get('/', [PageController::class, 'mainPage'])->name('welcome');
 
 //Method routes
 Auth::routes();

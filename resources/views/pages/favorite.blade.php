@@ -36,7 +36,7 @@
                     <tbody>
                 <tr class="myTable-r">
                     <td class="myTitle_column" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
-                        <img class=" myShow-img" src="{{asset('uploads/deals_pics/'.$deal->first_image())}}" width="70" height="70"  alt="{{$deal->title}}">
+                        <img class=" myShow-img" src="{{asset('storage/uploads/deals_pics/'.$deal->first_image())}}" width="70" height="70"  alt="{{$deal->title}}">
                     </td>
                     <td class="myTitle_column" data-bs-toggle="modal" data-bs-target="#dealModal{{$deal->id}}" >
                         {{$deal->title}}
@@ -70,7 +70,7 @@
                     <tr>
                     <td>
                         @isset($merchant->merchant_logo)
-                            <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$merchant->merchant_logo)}}">
+                            <img class="myTable-img" src="{{asset('storage/uploads/merchants_logo/'.$merchant->merchant_logo)}}">
                         @endisset
                     </td>
                     <td>

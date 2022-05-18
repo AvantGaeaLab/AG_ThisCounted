@@ -92,7 +92,7 @@
         <div class="mb-3" style="width: 50%; margin: 0 auto">
             @foreach($deal->images as $image)
                 <div class="mt-3">
-                <img class="img-thumbnail" src="{{asset('uploads/deals_pics/'.$image->image)}}"  width=100% height="720px" alt="{{$deal->title.'Image'}}">
+                <img class="img-thumbnail" src="{{asset('storage/uploads/deals_pics/'.$image->image)}}"  width=100% height="720px" alt="{{$deal->title.'Image'}}">
                     <!-- Update image button -->
                     <form action="{{route('update_image')}}" method="POST" enctype="multipart/form-data">
                         @csrf
