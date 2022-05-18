@@ -34,6 +34,9 @@ class DealController extends Controller
 
     private function updateImgDeal($request, $deal, $imgId)
     {
+        $request->validate([
+            'updateImage'=>'max:2000',
+        ]);
         $imageName = $deal->title . '-image-' . time() . rand(1, 100) . '.' . $request->file('updateImage')->extension();
         $request->file('updateImage')->storeAs('uploads/deals_pics', $imageName, 'public');
         Image::Find($imgId)->update([
@@ -82,9 +85,12 @@ class DealController extends Controller
             return abort(401);
         }
         $request->validate([
-            'title' => 'min:3|max:50|required',
+            'title' => 'min:3|max:50|required|unique:deals,title',
             'categories' => 'required',
             'merchant_id' => 'required',
+            'start_at'=>'after_or_equal:today|nullable',
+            'end_at'=>'after_or_equal:today|nullable',
+            'images.*'=>'max:2000',
         ]);
 
         $user = Auth::user();
@@ -138,9 +144,12 @@ class DealController extends Controller
         }
 
         $request->validate([
-            'title' => 'min:3|max:50|required',
+            'title' => 'min:3|max:50|required|unique:deals,title,'.$deal->id,
             'categories' => 'required',
             'merchant_id' => 'required',
+            'start_at'=>'after_or_equal:today|nullable',
+            'end_at'=>'after_or_equal:today|nullable',
+            'images.*'=>'max:2000',
         ]);
         $this->handleImgDeal($request, $deal);
 
