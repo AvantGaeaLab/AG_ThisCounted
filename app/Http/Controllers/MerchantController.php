@@ -27,6 +27,10 @@ class MerchantController extends Controller
         if(Auth::id() > 3){
             return abort(401);
         }
+        $request->validate([
+            'name' => 'min:2|max:50|required|unique:merchants,name',
+            'merchant_logo'=>'max:2000',
+        ]);
 
         $merchant = new Merchant;
         $merchant->name = $request->name;
@@ -49,12 +53,14 @@ class MerchantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Merchant $merchant)
-
     {
         if(Auth::id() > 3){
             return abort(401);
         }
-
+        $request->validate([
+            'name' => 'min:2|max:50|required|unique:merchants,name,'.$merchant->id,
+            'merchant_logo'=>'max:2000',
+        ]);
         $merchant->name = $request->name;
         if($request->hasFile('merchant_logo')) {
             $destination = 'storage/uploads/merchants_logo/'.$merchant->merchant_logo;
