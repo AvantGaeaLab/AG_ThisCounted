@@ -23,7 +23,7 @@ class DealController extends Controller
         if ($request->has('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = $deal->title . '-image-' . time() . rand(1, 100) . '.' . $image->extension();
-                $image->move('uploads/deals_pics', $imageName);
+                $image->storeAs('uploads/deals_pics', $imageName, 'public');
                 Image::create([
                     'deal_id' => $deal->id,
                     'image' => $imageName
@@ -35,7 +35,7 @@ class DealController extends Controller
     private function updateImgDeal($request, $deal, $imgId)
     {
         $imageName = $deal->title . '-image-' . time() . rand(1, 100) . '.' . $request->file('updateImage')->extension();
-        $request->file('updateImage')->move('uploads/deals_pics', $imageName);
+        $request->file('updateImage')->storeAs('uploads/deals_pics', $imageName, 'public');
         Image::Find($imgId)->update([
             'id' => $imgId,
             'deal_id' => $deal->id,

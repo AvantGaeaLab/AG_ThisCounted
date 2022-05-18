@@ -6,6 +6,7 @@ use App\Models\Merchant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class MerchantController extends Controller
 {
@@ -33,7 +34,7 @@ class MerchantController extends Controller
             $file = $request->file('merchant_logo');
             $extension = $file->getClientOriginalExtension();
             $filename=time().'.'.$extension;
-            $file->move('uploads/merchants_logo', $filename);
+            $file->storeAs('uploads/merchants_logo', $filename, 'public');
             $merchant->merchant_logo = $filename;
         }
         $merchant->save();
@@ -48,6 +49,7 @@ class MerchantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Merchant $merchant)
+
     {
         if(Auth::id() > 3){
             return abort(401);
@@ -55,14 +57,15 @@ class MerchantController extends Controller
 
         $merchant->name = $request->name;
         if($request->hasFile('merchant_logo')) {
-            $destination = 'uploads/merchants_logo/'.$merchant->merchant_logo;
+            $destination = 'storage/uploads/merchants_logo/'.$merchant->merchant_logo;
             if(File::exists($destination)){
+                Storage::delete($destination);
                 File::delete($destination);
             }
             $file = $request->file('merchant_logo');
             $extension = $file->getClientOriginalExtension();
             $filename=time().'.'.$extension;
-            $file->move('uploads/merchants_logo', $filename);
+            $file->storeAs('uploads/merchants_logo', $filename, 'public');
             $merchant->merchant_logo = $filename;
         }
         $merchant->update();

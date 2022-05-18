@@ -95,7 +95,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     window.onload = function() {
-        var stripe = Stripe('pk_test_51KRzxiJBiKMhxHfnyUEeayOQVDb3DlzLxlkV0y6RCx8MU0WjhZ6mpmwUHI5hYLxTe2Fss0DA5xaVSrCGn7UPFNs100PXv9nC5s');
+        var stripe = Stripe("{{config('services.stripe.key')}}");
         var elements = stripe.elements();
         var style = {
             base: {

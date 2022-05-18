@@ -42,7 +42,7 @@ class OrderController extends Controller
             return redirect()->route('user_dashboard')->with('status', 'the order added successfully');
 
         }elseif($total > 0)
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $charge = Stripe\Charge::create ([
             "amount" => $total*100,
             "currency" => "SGD",

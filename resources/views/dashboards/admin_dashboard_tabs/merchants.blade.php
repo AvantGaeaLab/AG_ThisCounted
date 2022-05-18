@@ -51,7 +51,7 @@
             <td>
                 <div >
                     @isset($newMerchant->merchant_logo)
-                        <img class="myTable-img" src="{{asset('uploads/merchants_logo/'.$newMerchant->merchant_logo)}}"  width="auto" height="720px" >
+                        <img class="myTable-img" src="{{asset('storage/uploads/merchants_logo/'.$newMerchant->merchant_logo)}}"  width="auto" height="720px" >
                     @endisset
                 </div>
             </td>

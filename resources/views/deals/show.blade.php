@@ -8,12 +8,12 @@
         <div class="col-6" >
             <div class="slider-for">
                 @foreach($deal->images as $image)
-                    <img class="mb-1" src="{{asset('uploads/deals_pics/'.$image->image)}}" alt="deal image">
+                    <img class="mb-1" src="{{asset('storage/uploads/deals_pics/'.$image->image)}}" alt="deal image">
                 @endforeach
             </div>
             <div class="slider-nav">
                 @foreach($deal->images as $image)
-                        <img class="mx-1" src="{{asset('uploads/deals_pics/'.$image->image)}}" style="height: 10%;" alt="deal image">
+                        <img class="mx-1" src="{{asset('storage/uploads/deals_pics/'.$image->image)}}" style="height: 10%;" alt="deal image">
                 @endforeach
             </div>
         </div>
