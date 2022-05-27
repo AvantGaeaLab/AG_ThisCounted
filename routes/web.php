@@ -62,6 +62,7 @@ Route::get("merchant/{merchant}",[MerchantController::class,'merDeals'])->name("
 Route::get("category/{category}",[CategoryController::class,'catDeals'])->name("categories.deals");
 Route::get("food",[PageController::class,'foodPage'])->name("foodPage");
 Route::get("Activities",[PageController::class,'activitiesPage'])->name("activitiesPage");
+Route::get("policy",[PageController::class,'policy'])->name("policy");
 
 //Exports Routes
 Route::get("usersExport",[ExportController::class, 'UsersExport'])->name('UsersExport');

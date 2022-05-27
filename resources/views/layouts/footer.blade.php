@@ -29,7 +29,7 @@
                     </div>
                     <!-- END Logo&Rights -->
 
-                    <div class="col mt-auto mb-auto">
+                    <div class="col mt-auto mb-auto mb-xs-3">
                             <a href="https://t.me/ThisCounted" target="_blank">
                                 <img src="https://img.icons8.com/fluency/48/000000/telegram-app.png"/>
                             </a>
@@ -37,7 +37,13 @@
                                 <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/>
                             </a>
                         <a href="mailto:ThisCountd@gmail.com" target="_blank"  >
-                            <img src="https://img.icons8.com/color/50/000000/gmail--v2.png"/>                        </a>
+                            <img src="https://img.icons8.com/color/50/000000/gmail--v2.png"/>
+                        </a>
+                        <div>
+                            <a href="{{route('policy')}}">
+                                POLICY
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
