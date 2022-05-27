@@ -139,7 +139,7 @@ img {
 /* END Sliders */
 
 .thumbnailsContainer{
-    min-height: 65vh;
+    min-height: 100%;
 }
 .mainCat-img {
     display: inline-block ;
@@ -396,6 +396,15 @@ td, th {
 }
 .merName{
     color:black;
+}
+
+.termsPara{
+    font-size: 14px;
+}
+.container-policy{
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    padding: 3% 10%;
 }
 /* END Text */
 

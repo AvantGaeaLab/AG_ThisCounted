@@ -78,4 +78,8 @@ class PageController extends Controller
             'Indoor',
             'Outdoor'));
     }
+
+    public function policy(){
+        return view('pages.policy');
+    }
 }
