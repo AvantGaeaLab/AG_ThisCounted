@@ -12,15 +12,16 @@ class FavoriteController extends Controller
     }
 
     //Deals favorites
-    public function store(Request $request)
+    public function store()
     {
         if (!auth()->user()->favoriteHas(request('dealId'))) {
             auth()->user()->dealsFavorite()->attach(request('dealId'));
-            return redirect()->back()->with('status', 'The Deal in the favorite list');
+            return response()->json(['success' => true]);
         }
     }
     public function destroy(){
         auth()->user()->dealsFavorite()->detach(request('dealId'));
+        return response()->json(['success' => true]);
     }
 
     //Merchant
@@ -28,11 +29,12 @@ class FavoriteController extends Controller
     {
         if (!auth()->user()->merchantFavoriteHas(request('merchantId'))) {
             auth()->user()->merchantsFavorite()->attach(request('merchantId'));
-            return redirect()->back()->with('status', 'The Merchant in the favorite list');
+            return response()->json(['success' => true]);
         }
     }
     public function MerDestroy(){
         auth()->user()->merchantsFavorite()->detach(request('merchantId'));
+        return response()->json(['success' => true]);
     }
 
     public function show(){

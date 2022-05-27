@@ -89,5 +89,47 @@
         </div>
     </div>
     </div>
-    @include('components.deleteFavoritejs')
+
+    <!-- Delete favorite deals -->
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(document).on('click', '.removeFavDeal', function (e){
+            e.preventDefault();
+            $.ajax({
+                type:'delete',
+                url:"{{Route('favorites.destroy')}}",
+                data:{'dealId': $(this).attr('data-deal-id')},
+                success: function(response){
+                    location.reload();
+                }
+            })
+        })
+    </script>
+
+    <!-- Delete favorite merchants -->
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).on('click', '.removeFavMerchant', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'delete',
+                url: "{{Route('MerDestroy')}}",
+                data: {'merchantId': $(this).attr('data-merchant-id')},
+                success: function (response) {
+                    location.reload();
+                }
+            })
+        })
+    </script>
+
 @endsection
