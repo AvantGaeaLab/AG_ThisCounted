@@ -76,7 +76,7 @@
                     <form class="col-6" method='post' action="{{route('categories.destroy', $key)}}">
                         @method('DELETE')
                         @csrf
-                        <a class="btn btn-danger" onclick="return confirm('Are you sure you want delete ({{$title}}) ?')" >Delete</a>
+                        <button class="btn btn-danger" onclick="return confirm('Are you sure you want delete ({{$title}}) ?')" >Delete</button>
                     </form>
                 </div>
             </td>
