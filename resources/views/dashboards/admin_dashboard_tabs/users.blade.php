@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="password">User password</label>
-                                        <input type="password" class="form-control" id="password" placeholder="User phone number" name="password">
+                                        <input type="password" class="form-control" id="password" placeholder="User password" name="password">
                                     </div>
                                         <hr>
                                         <button type="submit" class="btn MainButt">Update</button>

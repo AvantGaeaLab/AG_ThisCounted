@@ -28,7 +28,8 @@
     @endif
 @else
 @if($deal->status == "Valid")
-                <form action="{{route('orders.store')}}" method="post" id="payment-form">
+    @if(Auth::user()->hasVerifiedEmail())
+        <form action="{{route('orders.store')}}" method="post" id="payment-form">
                     @csrf
                     @if($deal->price > 0)
                     <div>
@@ -63,6 +64,17 @@
                     <input type="hidden" class="price" name="price" id="price" value="{{ $deal->price}}">
                     <input type="hidden" id="total" name="total"  value="{{$deal->price}}">
                 </form>
+        @else
+        <p class="font-monospace" style="color: #f15942;font-size: calc(100% + 0.7vw);">Please verify your email to make orders</p>
+        <div >
+        <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+            @csrf
+            <p class="p-0 m-0 align-baseline">Check the spam emails or  </p>
+            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __(' click here to request another .') }}</button>
+        </form>
+            to <b> ({{Auth::user()->email}}) </b>
+        </div>
+        @endif
     @else
         <button type="submit" class="btn btn-danger mt-3" >The deal is invalid</button>
     @endif
