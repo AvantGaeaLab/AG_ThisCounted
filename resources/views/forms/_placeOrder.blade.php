@@ -65,7 +65,7 @@
                     <input type="hidden" id="total" name="total"  value="{{$deal->price}}">
                 </form>
         @else
-        <p class="font-monospace" style="color: #f15942;font-size: calc(100% + 0.7vw);">Please verify your email to make orders</p>
+        <p class="font-monospace" style="color: #f15942; font-size: calc(100% + 0.7vw);">Please verify your email to make orders</p>
         <div >
         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
             @csrf

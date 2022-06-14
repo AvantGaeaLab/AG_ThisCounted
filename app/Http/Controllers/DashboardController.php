@@ -18,14 +18,17 @@ class DashboardController extends Controller
         $this->middleware('auth')->except('show', 'catDeals');
     }
 
+    public function isAdmin(){
+        isAdmin();
+    }
+
     public function user_dashboard(){
         $order = Order::where('user_id', Auth::id())->latest()->get();;
         return view('dashboards/user_dashboard', compact('order'));
     }
 
     public function admin_dashboard(Request $request, Deal $deal){
-        if(Auth::id() > 3){
-            return abort(401);}
+        $this->isAdmin();
 
         $categories = Category::all()->pluck('title', 'id');
 

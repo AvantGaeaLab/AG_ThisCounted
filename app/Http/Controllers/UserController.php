@@ -16,10 +16,13 @@ class UserController extends Controller
         $this->middleware('auth')->except('show', 'catDeals','search');
     }
 
+    public function isAdmin(){
+        isAdmin();
+    }
+
     public function UserUpdate(Request $request){
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $user = User::find($request->id);
         if (isset($request->password)){
         $user->password = Hash::make($request->password);

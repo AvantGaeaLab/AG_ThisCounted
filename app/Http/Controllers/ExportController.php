@@ -17,30 +17,30 @@ class ExportController extends Controller
         $this->middleware('auth')->except('show', 'catDeals','search');
     }
 
+    public function isAdmin(){
+        isAdmin();
+    }
+
     public function UsersExport(){
-        if (Auth::id() > 3) {
-            return abort(401);}
+        $this->isAdmin();
 
         return (new UserExport())->download('ThisCounted Users '.date('Y-m-d').'.xlsx');
     }
 
     public function DealsExport(){
-        if (Auth::id() > 3) {
-            return abort(401);}
+        $this->isAdmin();
 
         return (new DealsExport())->download('ThisCounted Deals '.date('Y-m-d').'.xlsx');
     }
 
     public function OrdersExport(){
-        if (Auth::id() > 3) {
-            return abort(401);}
+        $this->isAdmin();
 
         return (new OrdersExport())->download('ThisCounted Orders '.date('Y-m-d').'.xlsx');
     }
 
     public function MerchantsExport(){
-        if (Auth::id() > 3) {
-            return abort(401);}
+        $this->isAdmin();
 
         return (new MerchantsExport())->download('ThisCounted Merchants '.date('Y-m-d').'.xlsx');
     }

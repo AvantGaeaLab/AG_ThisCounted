@@ -18,6 +18,10 @@ class DealController extends Controller
         $this->middleware('auth')->except('show', 'catDeals', 'search');
     }
 
+    public function isAdmin(){
+        isAdmin();
+    }
+
     private function handleImgDeal($request, $deal)
     {
         if ($request->has('images')) {
@@ -63,9 +67,7 @@ class DealController extends Controller
      */
     public function create()
     {
-        if (Auth::id() > 3) {
-            return abort(401);
-        }
+        $this->isAdmin();
 
         $categories = Category::all()->pluck('title', 'id');
         $merchants = Merchant::all()->sortBy('name');;
@@ -81,9 +83,8 @@ class DealController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::id() > 3) {
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $request->validate([
             'title' => 'min:3|max:50|required|unique:deals,title',
             'categories' => 'required',
@@ -121,9 +122,8 @@ class DealController extends Controller
      */
     public function edit(Deal $deal)
     {
-        if (Auth::id() > 3) {
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $categories = Category::all()->pluck('title', 'id');
         $merchants = Merchant::all()->sortBy('name');
         $dealCategories = $deal->categories()->pluck('id')->toArray();
@@ -139,9 +139,7 @@ class DealController extends Controller
      */
     public function update(Request $request, Deal $deal)
     {
-        if (Auth::id() > 3) {
-            return abort(401);
-        }
+        $this->isAdmin();
 
         $request->validate([
             'title' => 'min:3|max:50|required|unique:deals,title,'.$deal->id,
@@ -161,9 +159,7 @@ class DealController extends Controller
 
     public function update_image(Request $request)
     {
-        if (Auth::id() > 3) {
-            return abort(401);
-        }
+        $this->isAdmin();
 
         $image = Image::findOrFail($request->id);
         $imgId = $image->id;
@@ -187,9 +183,8 @@ class DealController extends Controller
      */
     public function destroy(Deal $deal)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $deal->status="Deleted";
         $deal->update();
         return redirect()->back()->with('status','The Deal Deleted Successfully');
