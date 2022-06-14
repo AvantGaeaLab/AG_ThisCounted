@@ -12,11 +12,10 @@ class CategoryController extends Controller
 
     public function __construct(){
         $this->middleware('auth')-> except('show', 'catDeals');
-        if(Auth::id() > 3){
-            return abort(401);
-        }
     }
-
+    public function isAdmin(){
+        isAdmin();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,9 +45,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
 
         $category = new Category;
         $category->title = $request->title;
@@ -87,9 +84,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $category->update($request->all());
         return redirect()->back()->with('status','Category Updated Successfully');
     }
@@ -102,9 +98,8 @@ class CategoryController extends Controller
      */
     public function destroy($key)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $category = Category::Find($key);
 
         $category->delete();

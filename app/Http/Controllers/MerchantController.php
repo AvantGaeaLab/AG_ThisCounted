@@ -16,6 +16,10 @@ class MerchantController extends Controller
         $this->middleware('auth')->except('merDeals');
     }
 
+    public function isAdmin(){
+        isAdmin();
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -24,9 +28,8 @@ class MerchantController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $request->validate([
             'name' => 'min:2|max:50|required|unique:merchants,name',
             'merchant_logo'=>'max:2000',
@@ -54,9 +57,8 @@ class MerchantController extends Controller
      */
     public function update(Request $request, Merchant $merchant)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $request->validate([
             'name' => 'min:2|max:50|required|unique:merchants,name,'.$merchant->id,
             'merchant_logo'=>'max:2000',
@@ -88,9 +90,8 @@ class MerchantController extends Controller
      */
     public function destroy(Merchant $merchant)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         if($merchant->deals->count() > 0){
         foreach($merchant->deals as $Dealsstatus)
             $Dealsstatus->status = "Deleted";
