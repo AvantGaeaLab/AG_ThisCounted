@@ -5,7 +5,7 @@
     <div class="content">
     <br>
     <div class="row">
-        <div class="col-6" >
+        <div class="col-md-6 col-sm-12" >
             <div class="slider-for">
                 @foreach($deal->images as $image)
                     <img class="mb-1" src="{{asset('storage/uploads/deals_pics/'.$image->image)}}" alt="deal image">
@@ -17,7 +17,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-6 col-sm-12">
             <h1 class="myShow-title">{{$deal->title}}</h1>
             <div>
                     <h4>Merchant:
@@ -27,7 +27,7 @@
                     </h4>
             </div>
             <div class="myDescription">
-            <h4><b>Description:</b><br>{!!nl2br($deal->description)!!}</h4>
+            <h4 class="myDescription-text"><b>Description:</b><br>{!!nl2br($deal->description)!!}</h4>
             </div>
                 <div style="margin-top:3vh; margin-bottom:3vh; text-align:left; padding-left:2vw;">
                 @isset($deal->more_info)

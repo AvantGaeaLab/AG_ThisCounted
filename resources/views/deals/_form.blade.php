@@ -67,11 +67,16 @@
 </div>
 <div class="form-group mb-3">
     <label class="form-label" for="location_editor">Location</label>
-    <textarea type="textarea" id="location_editor" name="location" class="form-control" placeholder="location" >@isset($deal) {{$deal->location}}@endisset {{old('location')}}</textarea>
+    <textarea type="textarea" id="location_editor" name="location" class="form-control" placeholder="Location" >@isset($deal) {{$deal->location}}@endisset {{old('location')}}</textarea>
 </div>
 <div class="form-group mb-3">
     <label  for="map">map</label>
-    <input type="text" name="map" class="form-control" placeholder="map" @isset($deal) value="{{$deal->map}}" @endisset  value="{{ old('map') }}">
+    <input type="text" name="map" class="form-control" placeholder="Map" @isset($deal) value="{{$deal->map}}" @endisset  value="{{ old('map') }}">
+    <a href="https://www.google.com/maps/@1.3488524,103.8733454,14.5z"
+       target="popup"
+       onclick="window.open('https://www.google.com/maps/@1.3488524,103.8733454,14.5z','popup','width=%90,height=auto'); return false;">
+        Map search
+    </a>
 </div>
 
 @empty($deal)
