@@ -15,6 +15,10 @@ class OrderController extends Controller
         $this->middleware(['auth', 'verified']);
     }
 
+    public function isAdmin(){
+        isAdmin();
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -94,9 +98,8 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $order->update($request->all());
         return redirect()->back()->with('status','Order Updated Successfully');
     }
@@ -109,9 +112,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        if(Auth::id() > 3){
-            return abort(401);
-        }
+        $this->isAdmin();
+
         $order->delete();
         return redirect()->back()->with('status','The Order Deleted Successfully');
     }

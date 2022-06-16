@@ -20,6 +20,10 @@ class UserController extends Controller
         isAdmin();
     }
 
+    public function isDev(){
+        isDev();
+    }
+
     public function UserUpdate(Request $request){
         $this->isAdmin();
 
@@ -48,5 +52,12 @@ class UserController extends Controller
         }else{
             return redirect()->back()->with('error','current password does not match');
         }
+    }
+
+    public function destroyUser(Request $request){
+        $this->isDev();
+        $user = User::Find($request->id);
+        $user->delete();
+        return redirect()->back()->with('status','User deleted successfully');
     }
 }

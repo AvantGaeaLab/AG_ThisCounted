@@ -32,6 +32,7 @@ Route::get('CheckOrder', [OrderController::class, 'CheckOrder'])->name('CheckOrd
 Route::patch('editImage', [DealController::class, 'update_image'])->name('update_image');
 Route::patch('UserUpdate',[UserController::class, 'UserUpdate'])->name('users.update');
 Route::delete('UserDelete',[UserController::class, 'DestroyUser'])->name('users.delete');
+Route::delete('destroyUser',[UserController::class, 'destroyUser'])->name('destroyUser');
 Route::patch('resetPassword',[UserController::class, 'resetPassword'])->name('resetPassword');
 Route::get('/auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('authGoogle');
 Route::get('/callback/google', [GoogleSocialiteController::class, 'handleCallback']);

@@ -7,7 +7,8 @@
             <h6 class="alert alert-success">{{session('status')}}</h6>
         @endif
 
-        <h1 class="s-b-sm">
+            <img class="myTable-img mt-5" src="{{asset('storage/uploads/merchants_logo/'.$merchant->merchant_logo)}}"  width="auto" height="50%"  alt="">
+        <h1 class="s-b-sm mt-3">
              {{$merchant->name}}
         </h1>
         <br>

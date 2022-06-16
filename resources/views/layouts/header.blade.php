@@ -58,7 +58,7 @@
                         <a class="dropdown-item  " href="{{ route('user_dashboard') }}">
                             {{ __('User dashboard') }}
                         </a>
-                        @if(Auth::id()<=3)
+                        @if(Auth::id()<=4)
                             <a class="dropdown-item  " href="{{ route('admin_dashboard') }}">
                                 {{ __('Admin dashboard') }}
                             </a>
