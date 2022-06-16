@@ -27,7 +27,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [PageController::class, 'mainPage'])->name('welcome');
 
 //Method routes
-Auth::routes(['verify' => true]);
+Auth::routes();
 Route::get('CheckOrder', [OrderController::class, 'CheckOrder'])->name('CheckOrder');
 Route::patch('editImage', [DealController::class, 'update_image'])->name('update_image');
 Route::patch('UserUpdate',[UserController::class, 'UserUpdate'])->name('users.update');
