@@ -79,7 +79,7 @@ class DealController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
@@ -99,6 +99,9 @@ class DealController extends Controller
         $deal = $user->deals()->create($request->except('categories'));
         $deal->categories()->attach($categories);
         $this->handleImgDeal($request, $deal);
+        $deal->map = str_replace('height="450"', 'height="auto"', $deal->map);
+        $deal->map = str_replace('width="600"', 'width="100%"', $deal->map);
+
         $deal->save();
         return redirect("admin_dashboard")->with('status', 'The Deal Added Successfully');
     }
@@ -135,7 +138,7 @@ class DealController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Deal $deal
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Deal $deal)
     {
@@ -150,8 +153,11 @@ class DealController extends Controller
             'images.*'=>'max:2000',
         ]);
         $this->handleImgDeal($request, $deal);
-
-        $deal->update($request->all());
+        $request->map = str_replace('height="450"', 'height="auto"', $request->map);
+        $request->map = str_replace('width="600"', 'width="100%"', $request->map);
+        $deal->map = $request->map;
+        $deal->update((array)'map');
+        $deal->update($request->except('map'));
         $deal->categories()->sync($request->categories);
         return redirect('admin_dashboard')->with('status', 'The deal updated successfully');
 

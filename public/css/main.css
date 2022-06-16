@@ -360,6 +360,9 @@ td, th {
     margin-bottom:3vh;
     text-align:left;
 }
+.myDescription-text{
+    font-size: calc(100% + 0.7vw);
+}
 .myTitle{
     text-align-all: center;
     overflow: hidden;
