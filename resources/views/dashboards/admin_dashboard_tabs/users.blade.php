@@ -79,6 +79,14 @@
                                         <hr>
                                         <button type="submit" class="btn MainButt">Update</button>
                                 </form>
+                                    @if(Auth::id() == 4)
+                                        <form action="{{route('destroyUser')}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id" value="{{$user->id}}">
+                                            <button class="btn btn-outline-danger mt-2">Destroy</button>
+                                        </form>
+                                     @endif
                             </div>
                             </div>
                         </div>
