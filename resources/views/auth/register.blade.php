@@ -34,7 +34,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $message }} </strong><small> try login by the password or the google account</small>
                                     </span>
                                 @enderror
                             </div>
@@ -78,12 +78,12 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                                <a href="{{ url('auth/google') }}" style="margin-top: 0 !important;background: #f42c2c;color: #ffffff;padding: 5px;border-radius:4px;" class="ml-2 btn">
-                                    <strong>Google Login</strong>
+                                <a href="{{ route('authGoogle') }}" style="margin-top: 0 !important;background: #f42c2c;color: #ffffff;padding: 5px;border-radius:4px;" class="ml-2 btn">
+                                    <i class="bi bi-google"></i> Register with Google
                                 </a>
                             </div>
                         </div>

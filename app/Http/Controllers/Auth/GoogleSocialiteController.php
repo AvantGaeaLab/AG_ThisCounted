@@ -34,15 +34,15 @@ class GoogleSocialiteController extends Controller
             $finduser = User::where('social_id', $user->id)->first();
 
             if($finduser){
-
                 Auth::login($finduser);
-
                 return redirect('/home');
 
             }else{
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
+                    'phone_number' => ' ',
+                    'email_verified_at' => now(),
                     'social_id'=> $user->id,
                     'social_type'=> 'google',
                     'password' => encrypt('my-google')
@@ -54,7 +54,7 @@ class GoogleSocialiteController extends Controller
             }
 
         } catch (Exception $e) {
-            dd($e->getMessage());
+            return redirect('/login')->with('error', 'Email Address is Already Registered');
         }
     }
 }

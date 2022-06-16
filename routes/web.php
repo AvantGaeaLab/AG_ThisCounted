@@ -27,14 +27,14 @@ use App\Http\Controllers\UserController;
 Route::get('/', [PageController::class, 'mainPage'])->name('welcome');
 
 //Method routes
-Auth::routes(['verify' => true]);
+Auth::routes();
 Route::get('CheckOrder', [OrderController::class, 'CheckOrder'])->name('CheckOrder');
 Route::patch('editImage', [DealController::class, 'update_image'])->name('update_image');
 Route::patch('UserUpdate',[UserController::class, 'UserUpdate'])->name('users.update');
 Route::delete('UserDelete',[UserController::class, 'DestroyUser'])->name('users.delete');
 Route::patch('resetPassword',[UserController::class, 'resetPassword'])->name('resetPassword');
-Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
-Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
+Route::get('/auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('authGoogle');
+Route::get('/callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
 //Resource routes
 Route::resource('deals', DealController::class);

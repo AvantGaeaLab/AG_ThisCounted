@@ -38,7 +38,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'https://www.thiscounted.com/callback/google',
+        'redirect' => '/callback/google',
 ],
 
 ];

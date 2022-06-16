@@ -4,6 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (session('error'))
+                <h6 class="alert alert-danger">{{session('error')}}</h6>
+            @endif
+
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -56,7 +60,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
+                                <a href="{{ route('authGoogle') }}" style="margin-top: 0 !important;background: #f42c2c;color: #ffffff;padding: 5px;border-radius:4px;" class="ml-2 btn">
+                                    <i class="bi bi-google"></i> Login with Google
+                                </a>
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
