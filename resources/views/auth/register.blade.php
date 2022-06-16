@@ -82,6 +82,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <a href="{{ url('auth/google') }}" style="margin-top: 0 !important;background: #f42c2c;color: #ffffff;padding: 5px;border-radius:4px;" class="ml-2 btn">
+                                    <strong>Google Login</strong>
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DealController;
@@ -32,6 +33,8 @@ Route::patch('editImage', [DealController::class, 'update_image'])->name('update
 Route::patch('UserUpdate',[UserController::class, 'UserUpdate'])->name('users.update');
 Route::delete('UserDelete',[UserController::class, 'DestroyUser'])->name('users.delete');
 Route::patch('resetPassword',[UserController::class, 'resetPassword'])->name('resetPassword');
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
 //Resource routes
 Route::resource('deals', DealController::class);

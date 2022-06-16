@@ -20,6 +20,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'phone_number',
         'password',
+        'social_id',
+        'social_type'
     ];
 
     use HasApiTokens, HasFactory, Notifiable;

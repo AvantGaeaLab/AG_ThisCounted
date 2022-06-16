@@ -33,6 +33,12 @@ return [
     'stripe'=>[
         'secret'=>env('STRIPE_SECRET'),
         'key'=>env('STRIPE_KEY')
-    ]
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => 'https://www.thiscounted.com/callback/google',
+],
 
 ];
